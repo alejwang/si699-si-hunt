@@ -1,0 +1,18 @@
+{
+  "resultsCount": 1,
+  "results": [
+    {
+      "event_id": 1,
+      "event_name": "MSI Orientation",
+      "event_description": "Welcome new MSI student! Come with us to have some fun in NQ.",
+      "event_capacity": 0,
+      "holder_id": 1,
+      "holder_name": "UMSI Official",
+      "start_time": "...",
+      "end_time": "...",
+      "location_id": 1,
+      "location_name": "North Quad" ,
+      "location_is_armap_available": 1
+    }
+  ]
+}
