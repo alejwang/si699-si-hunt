@@ -1,7 +1,7 @@
 from db import db
 
 class LocationModel(db.Model):
-    __tablename__ = 'locations'
+    __tablename__ = "locations"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
@@ -22,12 +22,16 @@ class LocationModel(db.Model):
         return json
 
     @classmethod
-    def find_location_by_name(cls, name):
-        return {'location_result': cls.query.filter_by(name=name).first().json()}
+    def find_location_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
 
-    def find_all_locations(cls):
-        return {'location_results': list(map(lambda x: x.json(), cls.query.order_by(id).all()))}
-        # To-do here: the query order?
+    @classmethod
+    def find_location_by_name(cls, name):
+        return cls.query.filter_by(name=name).first()
+
+    # def find_all_locations(cls):
+    #     return {"location_results": list(map(lambda x: x.json(), cls.query.order_by(id).all()))}
+    #     # To-do here: the query order?
     
     def save_to_db(self):
         db.session.add(self)

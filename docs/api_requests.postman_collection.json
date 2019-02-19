@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "b6e9f2fb-5d9c-4cf8-a3e4-6ce3bb2191df",
+		"name": "Team1 - App FANCY",
+		"description": "Team test for Rahul, Yu, Rora and Zhen.\nNeed to run the flask app locally first.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign up - /register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"mark_newman\",\n\t\"password\": \"699699699\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log in - /auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4122732-d1da-4d0b-ba2f-910455257a00",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"mark_newman\",\n\t\"password\": \"699699699\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/auth",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Get list - /events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/events",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"events"
+							]
+						},
+						"description": "This should return a list of events, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /event/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/event/2019 MSI Orentation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"event",
+								"2019 MSI Orentation"
+							]
+						},
+						"description": "This will return one specific event, uniquely identified by its name. No two events may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /events/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTk1MTksImlhdCI6MTU1MDU1OTIxOSwibmJmIjoxNTUwNTU5MjE5LCJpZGVudGl0eSI6MX0.0DOxd1ypVHKsR6agBYGTLmXHzaJ5CPXQHdc6nb6KDr0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"For all new 2020 MSI/MHI student\",\n    \"capacity\": 0,\n    \"organizer_id\": 1,\n    \"start_time\": \"2020-08-25 10:00\",\n    \"end_time\": \"2020-08-25 17:00\",\n    \"location_id\": 1,\n    \"is_published\": 1,\n    \"pub_date\": \"2020-08-20 10:00\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/event/2020 MSI Orentation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"event",
+								"2020 MSI Orentation"
+							]
+						},
+						"description": "This will create a new event, if the event already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /event/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://127.0.0.1:5000/event/2020 MSI Orentation",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"event",
+								"2020 MSI Orentation"
+							]
+						},
+						"description": "This will delete an event."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organizer",
+			"item": [
+				{
+					"name": "Get list - /organizers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/organizers",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"organizers"
+							]
+						},
+						"description": "This should return a list of organizers, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /organizer/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/organizer/UMSI Admissions",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"organizer",
+								"UMSI Admissions"
+							]
+						},
+						"description": "This will return one specific organizer, uniquely identified by its name. No two organizer may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /organizer/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTcwMzUsImlhdCI6MTU1MDU1NjczNSwibmJmIjoxNTUwNTU2NzM1LCJpZGVudGl0eSI6MX0.YozbTp2Sk_TLd4sWG38xUtF3mWmXskL-SMxXLnXB4Eg"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"School of Infomation Registrar\",\n    \"email\": \"umsi.registrar@umich.edu\",\n    \"address\": \"333 Maynard, Suite 500\",\n    \"is_official\": 1\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/organizer/UMSI Admissions",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"organizer",
+								"UMSI Admissions"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /organizer/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://127.0.0.1:5000/organizer/UMSI Admissions2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"organizer",
+								"UMSI Admissions2"
+							]
+						},
+						"description": "This will delete an organizer."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Get list - /locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/locations",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"locations"
+							]
+						},
+						"description": "This should return a list of locations, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /location/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/location/NQ 1265",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"location",
+								"NQ 1265"
+							]
+						},
+						"description": "This will return one specific location, uniquely identified by its name. No two locations may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /location/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTg1MTEsImlhdCI6MTU1MDU1ODIxMSwibmJmIjoxNTUwNTU4MjExLCJpZGVudGl0eSI6MX0.y9wNJxIS4eNE6JGRHfIZYLDQ-ztSCnIFKjYq-i2PTMQ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"capacity\": 0\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/location/NQ Student Lounge3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"location",
+								"NQ Student Lounge3"
+							]
+						},
+						"description": "This will create a new location, if the location already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /location/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTg1MTEsImlhdCI6MTU1MDU1ODIxMSwibmJmIjoxNTUwNTU4MjExLCJpZGVudGl0eSI6MX0.y9wNJxIS4eNE6JGRHfIZYLDQ-ztSCnIFKjYq-i2PTMQ"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://127.0.0.1:5000/location/NQ Student Lounge3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"location",
+								"NQ Student Lounge3"
+							]
+						},
+						"description": "This will delete a location."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

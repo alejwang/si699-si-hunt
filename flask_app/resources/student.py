@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.student import StudentModel
+from models.school import SchoolModel
 
 class Student(Resource):
     parser = reqparse.RequestParser()
@@ -20,8 +21,12 @@ class Student(Resource):
     def post(self, name):
         if StudentModel.find_by_name(name):
             return {'message': "A student with name '{}' already exists.".format(name)}, 400
-
+        
         data = Student.parser.parse_args()
+        return (data)
+
+        if not SchoolModel.find_by_id(data['school_id']):
+            return {'message': "Attr school_id {} not exist in table school.".format(data['school_id'])}, 400
 
         student = StudentModel(name, **data) # (name, data['name'], data['school_id'])
 

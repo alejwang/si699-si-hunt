@@ -7,13 +7,14 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister
-from resources.student import Student, StudentList
-from resources.school import School, SchoolList
+from resources.event import Event, EventList
+from resources.organizer import Organizer, OrganizerList
+from resources.location import Location, LocationList
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'dante'
+app.secret_key = 'team_fancyfancy'
 api = Api(app)
 
 @app.before_first_request
@@ -22,10 +23,13 @@ def create_tables():
 
 jwt = JWT(app, authenticate, identity)
 
-api.add_resource(School, '/school/<string:name>')
-api.add_resource(Student, '/student/<string:name>')
-api.add_resource(SchoolList, '/schools')
-api.add_resource(StudentList, '/students')
+
+api.add_resource(Event, '/event/<string:name>')
+api.add_resource(EventList, '/events')
+api.add_resource(Organizer, '/organizer/<string:name>')
+api.add_resource(OrganizerList, '/organizers')
+api.add_resource(Location, '/location/<string:name>')
+api.add_resource(LocationList, '/locations')
 
 api.add_resource(UserRegister, '/register')
 
