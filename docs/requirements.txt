@@ -1,0 +1,14 @@
+aniso8601==4.1.0
+Click==7.0
+Flask==1.0.2
+Flask-JWT==0.3.2
+Flask-RESTful==0.3.7
+Flask-SQLAlchemy==2.3.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+PyJWT==1.4.2
+pytz==2018.9
+six==1.12.0
+SQLAlchemy==1.2.18
+Werkzeug==0.14.1
