@@ -33,8 +33,9 @@ class Event(Resource):
         if not OrganizerModel.find_organizer_by_id(data["organizer_id"]):
             return {"message": "Holder_id not valid".format(data["holder_id"])}, 400
 
+        # print(data)
         event = EventModel(name, **data)
-        print(event.json())
+        # print(event.json()) can't do it here because no commitment made to create the foreign key
         try:
             event.save_to_db()
         except Exception as e:
