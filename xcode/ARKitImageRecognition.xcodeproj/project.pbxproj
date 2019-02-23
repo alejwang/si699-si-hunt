@@ -81,8 +81,7 @@
 				183A660D221DC9A500DCC5AB /* Book */,
 				183A6610221DC9A500DCC5AB /* Mountain */,
 			);
-			name = "3D Models";
-			path = "../../ARKitImageRecognition-master/ARKitImageRecognition/3D Models";
+			path = "3D Models";
 			sourceTree = "<group>";
 		};
 		183A6609221DC9A500DCC5AB /* Tree */ = {
