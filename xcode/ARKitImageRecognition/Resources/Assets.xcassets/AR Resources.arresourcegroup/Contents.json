@@ -1,0 +1,50 @@
+{
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "resources" : [
+    {
+      "filename" : "Book.arreferenceimage"
+    },
+    {
+      "filename" : "iMac 21.5-inch.arreferenceimage"
+    },
+    {
+      "filename" : "iMac 27-inch.arreferenceimage"
+    },
+    {
+      "filename" : "IMG_1374.arreferenceimage"
+    },
+    {
+      "filename" : "IMG_1378.arreferenceimage"
+    },
+    {
+      "filename" : "iPad 9.7-inch.arreferenceimage"
+    },
+    {
+      "filename" : "iPad Pro 10.5-inch.arreferenceimage"
+    },
+    {
+      "filename" : "iPad Pro 12.9-inch.arreferenceimage"
+    },
+    {
+      "filename" : "iPhone 5.5-inch.arreferenceimage"
+    },
+    {
+      "filename" : "iPhone X.arreferenceimage"
+    },
+    {
+      "filename" : "MacBook 12-inch.arreferenceimage"
+    },
+    {
+      "filename" : "MacBook Pro 13-inch.arreferenceimage"
+    },
+    {
+      "filename" : "Snow Mountain.arreferenceimage"
+    },
+    {
+      "filename" : "Trees In the Dark.arreferenceimage"
+    }
+  ]
+}
