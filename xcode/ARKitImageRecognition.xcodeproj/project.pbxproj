@@ -63,9 +63,7 @@
 		1488324B1EFC3EBF0043E0AB /* Additional View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9C16A329222465D40028CEAC /* EventTableViewController.swift */,
 				C41366B81EB80DD400EC054A /* StatusViewController.swift */,
-				9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */,
 			);
 			path = "Additional View Controllers";
 			sourceTree = "<group>";
@@ -118,11 +116,24 @@
 			path = Mountain;
 			sourceTree = "<group>";
 		};
+		18477B6E223D7C1B00596E94 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
+				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
+				C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */,
+				9C16A329222465D40028CEAC /* EventTableViewController.swift */,
+				9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */,
+				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		3929C47F1E89EC2C00E00B60 = {
 			isa = PBXGroup;
 			children = (
 				11063F3B1EBE651B0033EE6D /* README.md */,
-				3929C48A1E89EC2C00E00B60 /* ARKitImageRecognition */,
+				3929C48A1E89EC2C00E00B60 /* SI Hunt APP */,
 				3929C4891E89EC2C00E00B60 /* Products */,
 				C14382D0C143840000000001 /* Configuration */,
 				C16C1080C16BFB2000000001 /* LICENSE */,
@@ -137,18 +148,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3929C48A1E89EC2C00E00B60 /* ARKitImageRecognition */ = {
+		3929C48A1E89EC2C00E00B60 /* SI Hunt APP */ = {
 			isa = PBXGroup;
 			children = (
+				18477B6E223D7C1B00596E94 /* Controllers */,
 				183A6608221DC9A500DCC5AB /* 3D Models */,
-				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
-				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
-				C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */,
-				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
 				9C16A328222463DB0028CEAC /* Model */,
 				1488324C1EFC3ED00043E0AB /* Resources */,
 			);
-			path = ARKitImageRecognition;
+			path = "SI Hunt APP";
 			sourceTree = "<group>";
 		};
 		9C16A328222463DB0028CEAC /* Model */ = {
@@ -402,7 +410,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q8S8833ZU;
-				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = try.merge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -421,7 +429,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Q8S8833ZU;
-				INFOPLIST_FILE = "$(SRCROOT)/ARKitImageRecognition/Resources/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = try.merge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
