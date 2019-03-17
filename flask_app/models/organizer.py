@@ -27,6 +27,7 @@ class OrganizerModel(db.Model):
 
     def json(self):
         json = {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "email": self.email,

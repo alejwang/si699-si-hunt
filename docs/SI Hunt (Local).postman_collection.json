@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "b6e9f2fb-5d9c-4cf8-a3e4-6ce3bb2191df",
-		"name": "Team1 - App FANCY",
+		"_postman_id": "6cbdadec-3965-4687-bbc9-5249bda47df0",
+		"name": "SI Hunt (Local)",
 		"description": "Team test for Rahul, Yu, Rora and Zhen.\nNeed to run the flask app locally first.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -196,7 +196,10 @@
 								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/event/2020 MSI Orentation",
 							"protocol": "http",
@@ -293,7 +296,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTcwMzUsImlhdCI6MTU1MDU1NjczNSwibmJmIjoxNTUwNTU2NzM1LCJpZGVudGl0eSI6MX0.YozbTp2Sk_TLd4sWG38xUtF3mWmXskL-SMxXLnXB4Eg"
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI3OTgzNTAsImlhdCI6MTU1Mjc5NzE1MCwibmJmIjoxNTUyNzk3MTUwLCJpZGVudGl0eSI6MX0.RspjWAcdoAwqfGufXOdjfw3pVw0E2OANop6cZcmyyO8"
 							}
 						],
 						"body": {
@@ -329,7 +332,10 @@
 								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/organizer/UMSI Admissions2",
 							"protocol": "http",
@@ -426,7 +432,7 @@
 							},
 							{
 								"key": "Authorization",
-								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTg1MTEsImlhdCI6MTU1MDU1ODIxMSwibmJmIjoxNTUwNTU4MjExLCJpZGVudGl0eSI6MX0.y9wNJxIS4eNE6JGRHfIZYLDQ-ztSCnIFKjYq-i2PTMQ"
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI3OTQ5MzIsImlhdCI6MTU1Mjc5NDYzMiwibmJmIjoxNTUyNzk0NjMyLCJpZGVudGl0eSI6MX0.aA5jTiFnlVhvgrmWtkoUrXJGlS4TFSKCB9c5fY_fYp4"
 							}
 						],
 						"body": {
@@ -434,7 +440,7 @@
 							"raw": "{\n    \"capacity\": 0\n}"
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/location/NQ Student Lounge3",
+							"raw": "http://127.0.0.1:5000/location/NQ Student Lounge",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -445,7 +451,7 @@
 							"port": "5000",
 							"path": [
 								"location",
-								"NQ Student Lounge3"
+								"NQ Student Lounge"
 							]
 						},
 						"description": "This will create a new location, if the location already exists, it will fail."
@@ -462,7 +468,10 @@
 								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTg1MTEsImlhdCI6MTU1MDU1ODIxMSwibmJmIjoxNTUwNTU4MjExLCJpZGVudGl0eSI6MX0.y9wNJxIS4eNE6JGRHfIZYLDQ-ztSCnIFKjYq-i2PTMQ"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://127.0.0.1:5000/location/NQ Student Lounge3",
 							"protocol": "http",
@@ -479,6 +488,262 @@
 							]
 						},
 						"description": "This will delete a location."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Navigation Node",
+			"item": [
+				{
+					"name": "Get list - /nav/nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/nodes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"nodes"
+							]
+						},
+						"description": "This should return a list of nodes in navigation, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/node/NQ/1/0/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"1",
+								"0",
+								"0"
+							]
+						},
+						"description": "This will return one nav node, uniquely identified by its 4 inputs."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new -  /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDcxOTEsImlhdCI6MTU1MjgwNTk5MSwibmJmIjoxNTUyODA1OTkxLCJpZGVudGl0eSI6MX0.7h0qI4-3dDf2YYomJz2cW__R7-4FUq3P7atjDbcJ3GE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"default_exit_direction\": 0,\n    \"special_type\": \"elevator\",\n    \"location_name\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/node/NQ/2/0/100",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"2",
+								"0",
+								"100"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete -  /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDYzNDYsImlhdCI6MTU1MjgwNTE0NiwibmJmIjoxNTUyODA1MTQ2LCJpZGVudGl0eSI6MX0.Mw972llNu8fDrHR1_8gAl0zLq7io-x2kvFR8pfiJ4tk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/node/NQ/1/0/0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"1",
+								"0",
+								"0"
+							]
+						},
+						"description": "This will delete an organizer."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Navigation Link",
+			"item": [
+				{
+					"name": "Get list - /nav/links",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/links",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"links"
+							]
+						},
+						"description": "This should return a list of nodes in navigation, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new -  /nav/link/<node1>/<node2>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDcxOTEsImlhdCI6MTU1MjgwNTk5MSwibmJmIjoxNTUyODA1OTkxLCJpZGVudGl0eSI6MX0.7h0qI4-3dDf2YYomJz2cW__R7-4FUq3P7atjDbcJ3GE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_two_way\": true,\n    \"is_auth_needed\": false\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/link/1/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"link",
+								"1",
+								"4"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete -  /nav/link/<node1>/<node2>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDYzNDYsImlhdCI6MTU1MjgwNTE0NiwibmJmIjoxNTUyODA1MTQ2LCJpZGVudGl0eSI6MX0.Mw972llNu8fDrHR1_8gAl0zLq7io-x2kvFR8pfiJ4tk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/nav/link/1/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"nav",
+								"link",
+								"1",
+								"2"
+							]
+						},
+						"description": "This will delete an organizer."
 					},
 					"response": []
 				}

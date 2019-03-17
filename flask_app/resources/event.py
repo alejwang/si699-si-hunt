@@ -44,7 +44,7 @@ class Event(Resource):
 
     @jwt_required()
     def delete(self, id):
-        event = EventModel.find_by_id(id)
+        event = EventModel.find_event_by_id(id)
         if event:
             event.delete_from_db()
             return {"message": "Event deleted"}

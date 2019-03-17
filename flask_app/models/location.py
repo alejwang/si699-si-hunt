@@ -15,11 +15,15 @@ class LocationModel(db.Model):
 
     def json(self):
         json = {
+            "id": self.id,
             "name": self.name,
             "capacity": self.capacity,
             "is_armap_available": self.is_armap_available
         }
         return json
+
+    def activate_armap(self):
+        self.is_armap_available = True
 
     @classmethod
     def find_location_by_id(cls, id):

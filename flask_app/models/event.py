@@ -32,6 +32,7 @@ class EventModel(db.Model):
 
     def json(self):
         json = {
+            "id": self.id,
             "name": self.name,
             "description": self.description,
             "capacity": self.capacity,

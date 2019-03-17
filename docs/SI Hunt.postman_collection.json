@@ -1,0 +1,702 @@
+{
+	"info": {
+		"_postman_id": "b6e9f2fb-5d9c-4cf8-a3e4-6ce3bb2191df",
+		"name": "SI Hunt",
+		"description": "Team test for Rahul, Yu, Rora and Zhen.\nNeed to run the flask app locally first.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign up - /register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"mark_newman\",\n\t\"password\": \"699699699\"\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/register",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log in - /auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a4122732-d1da-4d0b-ba2f-910455257a00",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"mark_newman\",\n\t\"password\": \"699699699\"\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/auth",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Get list - /events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/events",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"events"
+							]
+						},
+						"description": "This should return a list of events, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /event/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTEwNzY5OTQsImlhdCI6MTU1MTA3NjY5NCwibmJmIjoxNTUxMDc2Njk0LCJpZGVudGl0eSI6MX0.kGJdeduu9O5dZSd35wrhzSd11m0BBP_YYoiNP79zKPc",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/event/Happy Spring Break",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"event",
+								"Happy Spring Break"
+							]
+						},
+						"description": "This will return one specific event, uniquely identified by its name. No two events may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /events/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTEwNzY5OTQsImlhdCI6MTU1MTA3NjY5NCwibmJmIjoxNTUxMDc2Njk0LCJpZGVudGl0eSI6MX0.kGJdeduu9O5dZSd35wrhzSd11m0BBP_YYoiNP79zKPc"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"For all 699 student\",\n    \"capacity\": 0,\n    \"organizer_id\": 1,\n    \"start_time\": \"2019-02-26 10:00\",\n    \"end_time\": \"2019-02-26 12:00\",\n    \"location_id\": 2,\n    \"is_published\": 1,\n    \"pub_date\": \"2019-02-25 10:00\"\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/event/Happy Spring Break",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"event",
+								"Happy Spring Break"
+							]
+						},
+						"description": "This will create a new event, if the event already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /event/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/event/Happy Spring Break2",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"event",
+								"Happy Spring Break2"
+							]
+						},
+						"description": "This will delete an event."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organizer",
+			"item": [
+				{
+					"name": "Get list - /organizers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/organizers",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"organizers"
+							]
+						},
+						"description": "This should return a list of organizers, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /organizer/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/organizer/UMSI Admissions",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"organizer",
+								"UMSI Admissions"
+							]
+						},
+						"description": "This will return one specific organizer, uniquely identified by its name. No two organizer may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /organizer/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTEwNzY5OTQsImlhdCI6MTU1MTA3NjY5NCwibmJmIjoxNTUxMDc2Njk0LCJpZGVudGl0eSI6MX0.kGJdeduu9O5dZSd35wrhzSd11m0BBP_YYoiNP79zKPc"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"School of Infomation Registrar\",\n    \"email\": \"umsi.registrar@umich.edu\",\n    \"address\": \"333 Maynard, Suite 500\",\n    \"is_official\": 1\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/organizer/UMSI Admissions",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"organizer",
+								"UMSI Admissions"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /organizer/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY3NDQsImlhdCI6MTU1MDU1NjQ0NCwibmJmIjoxNTUwNTU2NDQ0LCJpZGVudGl0eSI6MX0.lTBlEGopvtahU4QEyFT42GB_TtPgpKgvo8ZfNlWIlBg"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/organizer/UMSI Admissions2",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"organizer",
+								"UMSI Admissions2"
+							]
+						},
+						"description": "This will delete an organizer."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "Get list - /locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/locations",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"locations"
+							]
+						},
+						"description": "This should return a list of locations, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /location/<name>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTEwNzY5OTQsImlhdCI6MTU1MTA3NjY5NCwibmJmIjoxNTUxMDc2Njk0LCJpZGVudGl0eSI6MX0.kGJdeduu9O5dZSd35wrhzSd11m0BBP_YYoiNP79zKPc",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/location/NQ 2435",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"location",
+								"NQ 2435"
+							]
+						},
+						"description": "This will return one specific location, uniquely identified by its name. No two locations may have the same name."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new - /location/<name>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTEwNzY5OTQsImlhdCI6MTU1MTA3NjY5NCwibmJmIjoxNTUxMDc2Njk0LCJpZGVudGl0eSI6MX0.kGJdeduu9O5dZSd35wrhzSd11m0BBP_YYoiNP79zKPc"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"capacity\": 30\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/location/NQ 2435",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"location",
+								"NQ 2435"
+							]
+						},
+						"description": "This will create a new location, if the location already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete - /location/<name>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTg1MTEsImlhdCI6MTU1MDU1ODIxMSwibmJmIjoxNTUwNTU4MjExLCJpZGVudGl0eSI6MX0.y9wNJxIS4eNE6JGRHfIZYLDQ-ztSCnIFKjYq-i2PTMQ"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/location/NQ 2165",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"location",
+								"NQ 2165"
+							]
+						},
+						"description": "This will delete a location."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Navigation Node",
+			"item": [
+				{
+					"name": "Get list - /nav/nodes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/nodes",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"nodes"
+							]
+						},
+						"description": "This should return a list of nodes in navigation, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Get info - /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTA1NTY0MjIsImlhdCI6MTU1MDU1NjEyMiwibmJmIjoxNTUwNTU2MTIyLCJpZGVudGl0eSI6MX0.xpcCrFgt8DjAt0AAVurpK3jcPzSj6pQafenv1c8tbow",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/node/NQ/1/0/0",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"1",
+								"0",
+								"0"
+							]
+						},
+						"description": "This will return one nav node, uniquely identified by its 4 inputs."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new -  /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDcxOTEsImlhdCI6MTU1MjgwNTk5MSwibmJmIjoxNTUyODA1OTkxLCJpZGVudGl0eSI6MX0.7h0qI4-3dDf2YYomJz2cW__R7-4FUq3P7atjDbcJ3GE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"default_exit_direction\": 0,\n    \"special_type\": \"elevator or stair here\",\n    \"location_name\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/node/NQ/2/0/10000",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"2",
+								"0",
+								"10000"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete -  /nav/node/<building>/<level>/<x>/<y>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDYzNDYsImlhdCI6MTU1MjgwNTE0NiwibmJmIjoxNTUyODA1MTQ2LCJpZGVudGl0eSI6MX0.Mw972llNu8fDrHR1_8gAl0zLq7io-x2kvFR8pfiJ4tk"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/node/NQ/1/0/0",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"node",
+								"NQ",
+								"1",
+								"0",
+								"0"
+							]
+						},
+						"description": "This will delete an organizer."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Navigation Link",
+			"item": [
+				{
+					"name": "Get list - /nav/links",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/links",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"links"
+							]
+						},
+						"description": "This should return a list of nodes in navigation, each in JSON format."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new -  /nav/link/<node1>/<node2>",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDcxOTEsImlhdCI6MTU1MjgwNTk5MSwibmJmIjoxNTUyODA1OTkxLCJpZGVudGl0eSI6MX0.7h0qI4-3dDf2YYomJz2cW__R7-4FUq3P7atjDbcJ3GE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_two_way\": true,\n    \"is_auth_needed\": false\n}"
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/link/1/2",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"link",
+								"1",
+								"2"
+							]
+						},
+						"description": "This will create a new organizer, if the organizer already exists, it will fail."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete -  /nav/link/<node1>/<node2>",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NTI4MDgyMTYsImlhdCI6MTU1MjgwNzAxNiwibmJmIjoxNTUyODA3MDE2LCJpZGVudGl0eSI6MX0.IY-Kje2q3dF3bGhVdL2fuovDuyIHM2_rZxdryS8vMUE"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://alejwang.pythonanywhere.com/nav/link/1/4",
+							"protocol": "http",
+							"host": [
+								"alejwang",
+								"pythonanywhere",
+								"com"
+							],
+							"path": [
+								"nav",
+								"link",
+								"1",
+								"4"
+							]
+						},
+						"description": "This will delete an organizer."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
