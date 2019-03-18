@@ -1,4 +1,4 @@
-from db import db
+from extensions import db
 
 class LocationModel(db.Model):
     __tablename__ = "locations"

@@ -1,8 +1,8 @@
-from db import db
+from extensions import db
 
 class OrganizerModel(db.Model):
-    __tablename__ = "organizers"
 
+    __tablename__ = "organizers"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(255))

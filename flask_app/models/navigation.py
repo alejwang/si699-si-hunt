@@ -1,4 +1,4 @@
-from db import db
+from extensions import db
 
 class NavNodeModel(db.Model):
     __tablename__ = "nav_nodes"
@@ -69,21 +69,17 @@ class NavLinkModel(db.Model):
     node_to_id = db.Column(db.Integer, db.ForeignKey("nav_nodes.id"))
     distance = db.Column(db.Integer)
     direction_2d = db.Column(db.Integer)
-    level_from = db.Column(db.Integer)
-    level_to = db.Column(db.Integer)  
     is_two_way = db.Column(db.Boolean)
     is_auth_needed = db.Column(db.Boolean)
 
     node_from = db.relationship("NavNodeModel", foreign_keys=[node_from_id])
     node_to = db.relationship("NavNodeModel", foreign_keys=[node_to_id])
 
-    def __init__(self, node_from_id, node_to_id, distance, direction_2d, level_from, level_to, is_two_way, is_auth_needed):
+    def __init__(self, node_from_id, node_to_id, distance, direction_2d, is_two_way, is_auth_needed):
         self.node_from_id = node_from_id
         self.node_to_id = node_to_id
         self.direction_2d = direction_2d
         self.distance = distance
-        self.level_from = level_from
-        self.level_to = level_to
         self.is_two_way = is_two_way
         self.is_auth_needed = is_auth_needed
         
@@ -95,20 +91,17 @@ class NavLinkModel(db.Model):
             "distance": self.distance,
             "direction_2d": self.direction_2d,
         }
-        if self.level_from and self.level_to:
-            json['level_from'] = self.level_from
-            json['level_to'] = self.level_to
         return json
 
     @classmethod
-    def find_navigation_link_by_id(cls, id):
+    def find_nav_link_by_id(cls, id):
         return cls.query.filter_by(id=id).first()
 
     @classmethod
-    def find_navigation_link_by_nodes(cls, node_from_id, node_to_id):
+    def find_nav_link_by_nodes(cls, node_from_id, node_to_id):
         filters = {'node_from_id': node_from_id, 'node_to_id': node_to_id}
         return cls.query.filter_by(**filters).first()
-    
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
