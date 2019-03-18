@@ -239,26 +239,45 @@ class NavLinkList(Resource):
         return {"nav_link_results": list(map(lambda x: x.json(), NavLinkModel.query.all()))}
 
 
-@api.route('nav/path/<start>/<end>')
-@api.param('start', 'Start node ID number')
-@api.param('end', 'End node ID number')
+@api.route('nav/path')
 class NavFindPath(Resource):
+    
+    parser = api.parser()
+    parser.add_argument("start_node", type=int, default=1, location='args', required=False, help="start node id")
+    parser.add_argument("end_node", type=int, default=6, location='args', required=False, help="end node id")
+    parser.add_argument("start_location", type=int, location='args', required=False, help="if start_node is blank, please fill in start location id")
+    parser.add_argument("end_location", type=int, location='args', required=False, help="if end_node is blank, please fill in end location id")
+
     @api.doc(security=None, responses={200:'OK', 400: 'Bad request: item already exsits', 404: 'Not found'})
-    def get(self, start, end):
+    @api.expect(parser)
+    def get(self):
         """returns steps for indoor navigation"""
-        if start == end:
-            return {"message": "You're already here"}, 400
-        start_node = NavNodeModel.find_nav_node_by_id(start)
-        end_node = NavNodeModel.find_nav_node_by_id(end)
+
+        data = NavFindPath.parser.parse_args()
+        (start_node, end_node) = (0, 0)
+        if data["start_node"]:
+            start_node = NavNodeModel.find_nav_node_by_id(data["start_node"])
+        elif data["start_location"]:
+            start_node = NavNodeModel.find_nav_node_by_location_id(data["start_location"])
+        if data["end_node"]:
+            end_node = NavNodeModel.find_nav_node_by_id(data["end_node"])
+        elif data["end_location"]:
+            end_node = NavNodeModel.find_nav_node_by_location_id(data["end_location"])
+        
         if not start_node or not end_node:
             return {"message": "Node(s) not exsits"}, 400
 
+        if start_node.id == end_node.id:
+            return {"message": "You're already here"}, 400
+
+        print(start_node.id, end_node.id)
+
         edges = list(map(lambda x: x.json(), NavLinkModel.query.all()))
-        heap = dijkstra.run(edges, int(start), int(end))
+        heap = dijkstra.run(edges, int(start_node.id), int(end_node.id))
         if heap == float("inf"):
             return {"message": "No path found"}, 404
 
-        path_instructions = {"path": []}
+        instructions = []
         heap = heap[1]
         current_step_to = heap[0]  #3
         while heap[1]:
@@ -271,41 +290,78 @@ class NavFindPath(Resource):
                 step_instruction = {
                     "node_to_id": link.node_to_id,
                     "distance": link.distance,
-                    "direction_2d": link.direction_2d
+                    "direction_2d": link.direction_2d,
+                    "to_level": link.node_to.level,
+                    "default_exit_direction": link.node_to.default_exit_direction
                 }
-                if link.direction_2d == -1:
-                    step_instruction["direction_2d"] = link.node_to.default_exit_direction
+                # if link.direction_2d == -1:
+                #     step_instruction["direction_2d"] = link.node_to.default_exit_direction
                 if link.node_to.location:
                     step_instruction["node_to_location_name"] = link.node_to.location.name
                 if link.node_to.special_type:
                     step_instruction["node_to_special_type"] = link.node_to.special_type
-                    if link.node_to.special_type in vertical_move:
-                        step_instruction["to_floor"] = link.node_to.level
+                    # if link.node_to.special_type in vertical_move:
+                    #     step_instruction["to_floor"] = link.node_to.level
             else:
                 filters = {'node_from_id': current_step_to, 'node_to_id': current_step_from}
                 link = NavLinkModel.find_nav_link_by_nodes(**filters)
                 step_instruction = {
                     "node_to_id": link.node_from_id,
                     "distance": link.distance,
-                    "direction_2d": (link.direction_2d + 180)%360 if link.direction_2d > -1 else -1
+                    "direction_2d": (link.direction_2d + 180)%360 if link.direction_2d > -1 else -1,
+                    "to_level": link.node_from.level,
+                    "default_exit_direction": link.node_from.default_exit_direction
                 }
-                if link.direction_2d == -1:
-                    step_instruction["direction_2d"] = link.node_from.default_exit_direction
+                # if link.direction_2d == -1:
+                #     step_instruction["direction_2d"] = link.node_from.default_exit_direction
                 if link.node_from.location:
                     step_instruction["node_to_location_name"] = link.node_from.location.name
                 if link.node_from.special_type:
                     step_instruction["node_to_special_type"] = link.node_from.special_type
                     if link.node_from.special_type in vertical_move:
                         step_instruction["to_floor"] = link.node_from.level
-
-            path_instructions["path"].insert(0, step_instruction)
-
+            
+            instructions.insert(0, step_instruction)
             current_step_to = current_step_from
 
-        # print(heap)
-        return path_instructions, 200
+        if len(instructions) <= 2:
+            return  {"path": instructions}, 200
 
-# Send API call to /find/<from_node_id>/<to_location_id> using GET method.
+        fixed_instructions = instructions[:1]
+        for each in instructions[1:]:
+            
+            if ((fixed_instructions[-1]["direction_2d"] == -1) and (not each["direction_2d"] == -1)) or ((not fixed_instructions[-1]["direction_2d"] == -1) and (each["direction_2d"] == -1)):
+                fixed_instructions.append(each)
+                continue
+            if ("node_to_special_type" in each) and ("node_to_special_type" in fixed_instructions[-1]):
+                if not each["node_to_special_type"] == fixed_instructions[-1]["node_to_special_type"]:
+                    fixed_instructions.append(each)
+                    continue
+            if ((fixed_instructions[-1]["direction_2d"] == -1) and (each["direction_2d"] == -1)):
+                fixed_instructions[-1]["node_to_id"] = each["node_to_id"]
+                fixed_instructions[-1]["distance"] += each["distance"]
+                if "node_to_location_name" in each:
+                    fixed_instructions[-1]["node_to_location_name"] = each["node_to_location_name"]
+                if "node_to_special_type" in each:
+                    fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
+                if "to_floor" in each:
+                    fixed_instructions[-1]["to_floor"] = each["to_floor"]
+            elif (each["direction_2d"] < fixed_instructions[-1]["direction_2d"] + 10) and (each["direction_2d"] >= fixed_instructions[-1]["direction_2d"] - 10):
+                fixed_instructions[-1]["node_to_id"] = each["node_to_id"]
+                fixed_instructions[-1]["distance"] += each["distance"]
+                if "node_to_location_name" in each:
+                    fixed_instructions[-1]["node_to_location_name"] = each["node_to_location_name"]
+                if "node_to_special_type" in each:
+                    fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
+                if "to_floor" in each:
+                    fixed_instructions[-1]["to_floor"] = each["to_floor"]
+            else:
+                fixed_instructions.append(each)
+
+        return {"path": fixed_instructions}, 200
+        
+
+# Send API call to /find/<from_node_id>/<to_node_id> using GET method.
 # No header/body needed.
 
 # Output format:

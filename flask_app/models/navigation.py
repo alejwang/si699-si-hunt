@@ -12,7 +12,7 @@ class NavNodeModel(db.Model):
     default_exit_direction = db.Column(db.Integer)
     location_id = db.Column(db.Integer, db.ForeignKey("locations.id"))
 
-    location = db.relationship("LocationModel")
+    location = db.relationship("LocationModel", backref="nav_node")
 
     def __init__(self, building, level, pos_x, pos_y, default_exit_direction, special_type, location_id = None):
         self.building = building
@@ -90,6 +90,8 @@ class NavLinkModel(db.Model):
             "node_to_id": self.node_to_id,
             "distance": self.distance,
             "direction_2d": self.direction_2d,
+            "is_two_way": self.is_two_way,
+            "is_auth_needed": self.is_auth_needed
         }
         return json
 
