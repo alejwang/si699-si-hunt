@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class EventTableViewController: UITableViewController {
     
-    //MARK: Properties
+    //Constants
+    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/events"
     
+    //MARK: Properties
     var events = [Event]()
 
     override func viewDidLoad() {
@@ -24,7 +28,8 @@ class EventTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         //Load the sample data
-        loadSampleEvents()
+        getEventData(url:APICLIENT_URL)
+        //loadSampleEvents()
     }
 
     // MARK: - Table view data source
@@ -46,10 +51,44 @@ class EventTableViewController: UITableViewController {
         let event = events[indexPath.row]
         
         cell.nameLabel.text = event.name
-        cell.timeLabel.text = event.time
-        cell.locationLabel.text = event.location
+        cell.timeLabel.text = event.start_time + " - " + event.end_time
+        cell.locationLabel.text = event.location_name
 
         return cell
+    }
+    
+    func getEventData(url: String){
+        Alamofire.request(url, method: .get).responseJSON {
+            response in
+            if response.result.isSuccess{
+                print("Success!Get the data")
+                let eventJSON : JSON = JSON(response.result.value!)
+                self.updateEventData(json:eventJSON)
+            }
+            else{
+                print("Error")
+            }
+        }
+    }
+    
+    func updateEventData(json:JSON) {
+        let event_results = json["event_results"].arrayValue
+        for event in event_results{
+            events.append(Event(name: event["name"].stringValue,
+                                description: event["description"].stringValue,
+                                capacity: event["capacity"].intValue,
+                                organizer_id: event["organizer_id"].intValue ,
+                                organizer_name: event["organizer_name"].stringValue,
+                                start_time: event["start_time"].stringValue,
+                                end_time: event["end_time"].stringValue,
+                                location_id: event["location_id"].intValue,
+                                location_name: event["location_name"].stringValue,
+                                location_is_armap_available: event["location_is_armap_available"].boolValue,
+                                is_published: event["is_published"].boolValue,
+                                pub_date: event["pub_date"].stringValue )!)
+        }
+        self.tableView.reloadData()
+        
     }
 
     /*
@@ -97,14 +136,14 @@ class EventTableViewController: UITableViewController {
     }
     */
     
-    private func loadSampleEvents(){
-        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{
-            fatalError("Unable to instantiate event1")
-        }
-        guard let event2 = Event(name:"Information Expo", time:"Mar.03.2019", location:"space2435") else{
-            fatalError("Unable to instantiate event2")
-        }
-        
-        events += [event1, event2]
-    }
+//    private func loadSampleEvents(){
+//        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{
+//            fatalError("Unable to instantiate event1")
+//        }
+//        guard let event2 = Event(name:"Information Expo", time:"Mar.03.2019", location:"space2435") else{
+//            fatalError("Unable to instantiate event2")
+//        }
+//
+//        events += [event1, event2]
+//    }
 }
