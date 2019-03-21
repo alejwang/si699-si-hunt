@@ -8,6 +8,8 @@ Main view controller for the AR experience.
 import ARKit
 import SceneKit
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
@@ -17,6 +19,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     let fadeDuration: TimeInterval = 0.3
     let rotateDuration: TimeInterval = 3
     let waitDuration: TimeInterval = 0.5
+    
+    var NODE_URL = "http://alejwang.pythonanywhere.com/nav/node/"
+    var Navnode = [Nodes]()
     
     lazy var fadeAndSpinAction: SCNAction = {
         return .sequence([
@@ -35,31 +40,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             ])
     }()
     
-    lazy var treeNode: SCNNode = {
-        guard let scene = SCNScene(named: "tree.scn"),
-            let node = scene.rootNode.childNode(withName: "tree", recursively: false) else { return SCNNode() }
-        let scaleFactor = 0.005
-        node.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        node.eulerAngles.x = -.pi / 2
-        return node
-    }()
-    
-    lazy var bookNode: SCNNode = {
-        guard let scene = SCNScene(named: "book.scn"),
-            let node = scene.rootNode.childNode(withName: "book", recursively: false) else { return SCNNode() }
-        let scaleFactor  = 0.1
-        node.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        return node
-    }()
-    
-    lazy var mountainNode: SCNNode = {
-        guard let scene = SCNScene(named: "mountain.scn"),
-            let node = scene.rootNode.childNode(withName: "mountain", recursively: false) else { return SCNNode() }
-        let scaleFactor  = 0.25
-        node.scale = SCNVector3(scaleFactor, scaleFactor, scaleFactor)
-        node.eulerAngles.x += -.pi / 2
-        return node
-    }()
     
     /// The view controller that displays the status and "restart experience" UI.
     lazy var statusViewController: StatusViewController = {
@@ -132,60 +112,57 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //let referenceImage = imageAnchor.referenceImage.name else { return }
         updateQueue.async {
             
-            // Create a plane to visualize the initial position of the detected image.
-//            let plane = SCNPlane(width: referenceImage.physicalSize.width,
-//                                 height: referenceImage.physicalSize.height)
-//            let planeNode = SCNNode(geometry: plane)
-//            planeNode.opacity = 0.25
-            
-            /*
-             `SCNPlane` is vertically oriented in its local coordinate space, but
-             `ARImageAnchor` assumes the image is horizontal in its local space, so
-             rotate the plane to match.
-             */
-//            planeNode.eulerAngles.x = -.pi / 2
-            
-            /*
-             Image anchors are not tracked after initial detection, so create an
-             animation that limits the duration for which the plane visualization appears.
-             */
-//            planeNode.runAction(self.imageHighlightAction)
-            
-            // Add the plane visualization to the scene.
-//            node.addChildNode(planeNode)
-            
         }
 
         DispatchQueue.main.async {
             guard let imageAnchor = anchor as? ARImageAnchor,
                 let imageName = imageAnchor.referenceImage.name else { return }
-            self.statusViewController.cancelAllScheduledMessages()
-            self.statusViewController.showMessage("Detected image “\(imageName)”")
             
-            let overlayNode = self.getNode(withImageName: imageName)
-            overlayNode.opacity = 0
-            overlayNode.position.y = 0.2
-            overlayNode.runAction(self.fadeAndSpinAction)
+            // Requestion the details of the location: id and name
+            let imageNameArr = imageName.characters.split{$0 == "a"}.map(String.init)
+            self.NODE_URL = self.NODE_URL + imageNameArr[0] + "/" + imageNameArr[1] + "/" + imageNameArr[2] + "/" + imageNameArr[3]
+            print(self.NODE_URL)
             
-            node.addChildNode(overlayNode)
-            
+            Alamofire.request(self.NODE_URL, method: .get).responseJSON {
+                response in
+                if response.result.isSuccess{
+                    print("Get the location!")
+                    let startJSON : JSON = JSON(response.result.value!)
+                    self.updateStartNode(json: startJSON)
+                }
+                else{
+                    print("Error")
+                }
+            }
+            self.NODE_URL = "http://alejwang.pythonanywhere.com/nav/node/"
         }
     }
-    func getNode(withImageName name: String) -> SCNNode {
-        var node = SCNNode()
-        switch name {
-        case "Book":
-            node = bookNode
-        case "Snow Mountain":
-            node = mountainNode
-        case "Trees In the Dark":
-            node = treeNode
-        default:
-            break
-        }
-        return node
+    
+    func updateStartNode(json:JSON) {
+        
+        // Get the location id
+        let node_id = json["nav_node_result"]["id"]//.arrayValue
+        print(node_id)
+        
+        // Get the location name
+        let node_name = json["nav_node_result"]["location_name"]
+        print(node_name)
+        
+        // Show the location name on the User interfaces
+        self.statusViewController.cancelAllScheduledMessages()
+        self.statusViewController.showMessage("Detected image “\(node_name)”")
+//        for node in node_results {
+//                self.Navnode.append(Nodes(id: node["id"].intValue,
+//                                    building: node["building"].stringValue,
+//                                    level: node["level"].intValue,
+//                                    pos_x: node["pos_x"].intValue ,
+//                                    pos_y: node["pos_y"].intValue,
+//                                    default_exit_direction: node["default_exit_direction"].intValue,
+//                                    location_id: node["location_id"].intValue,
+//                                    location_name: node["location_name"].stringValue)!)
+//        }
     }
-
+    
     var imageHighlightAction: SCNAction {
         return .sequence([
             .wait(duration: 0.25),

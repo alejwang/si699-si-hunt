@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "IMG_1378.HEIC"
+      "filename" : "1295sign.jpg"
     }
   ],
   "info" : {
@@ -10,7 +10,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "width" : 6,
+    "width" : 5,
     "unit" : "inches"
   }
 }

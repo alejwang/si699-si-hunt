@@ -14,6 +14,10 @@
 		183A6615221DC9A500DCC5AB /* book.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 183A660E221DC9A500DCC5AB /* book.jpg */; };
 		183A6616221DC9A500DCC5AB /* book.scn in Resources */ = {isa = PBXBuildFile; fileRef = 183A660F221DC9A500DCC5AB /* book.scn */; };
 		183A6617221DC9A500DCC5AB /* mountain.scn in Resources */ = {isa = PBXBuildFile; fileRef = 183A6611221DC9A500DCC5AB /* mountain.scn */; };
+		184D7C8322433E750059E964 /* Navnode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C8222433E750059E964 /* Navnode.swift */; };
+		184D7C852243450A0059E964 /* Nodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C842243450A0059E964 /* Nodes.swift */; };
+		18B127552240920400ED09A0 /* Pods-ARKitImageRecognition.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 573AA9A7AEED2D40C6947A39 /* Pods-ARKitImageRecognition.debug.xcconfig */; };
+		18B127562240920600ED09A0 /* Pods-ARKitImageRecognition.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = BD4249CB0E6025B96CFF8937 /* Pods-ARKitImageRecognition.release.xcconfig */; };
 		3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */; };
 		3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48D1E89EC2C00E00B60 /* ViewController.swift */; };
 		3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3929C48F1E89EC2C00E00B60 /* Main.storyboard */; };
@@ -34,6 +38,8 @@
 		183A660E221DC9A500DCC5AB /* book.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = book.jpg; sourceTree = "<group>"; };
 		183A660F221DC9A500DCC5AB /* book.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = book.scn; sourceTree = "<group>"; };
 		183A6611221DC9A500DCC5AB /* mountain.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mountain.scn; sourceTree = "<group>"; };
+		184D7C8222433E750059E964 /* Navnode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navnode.swift; sourceTree = "<group>"; };
+		184D7C842243450A0059E964 /* Nodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nodes.swift; sourceTree = "<group>"; };
 		3929C4881E89EC2C00E00B60 /* ARKitImageRecognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKitImageRecognition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3929C48D1E89EC2C00E00B60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				9C16A326222461100028CEAC /* Event.swift */,
+				184D7C8222433E750059E964 /* Navnode.swift */,
+				184D7C842243450A0059E964 /* Nodes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,7 +247,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = R3STN86BB8;
+						DevelopmentTeam = 4Q8S8833ZU;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -268,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18B127562240920600ED09A0 /* Pods-ARKitImageRecognition.release.xcconfig in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
 				183A6613221DC9A500DCC5AB /* tree.png in Resources */,
 				180F711422178AC500539296 /* Assets.xcassets in Resources */,
@@ -275,6 +284,7 @@
 				183A6612221DC9A500DCC5AB /* tree.scn in Resources */,
 				183A6614221DC9A500DCC5AB /* 3D Models Credits.md in Resources */,
 				183A6616221DC9A500DCC5AB /* book.scn in Resources */,
+				18B127552240920400ED09A0 /* Pods-ARKitImageRecognition.debug.xcconfig in Resources */,
 				3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */,
 				183A6615221DC9A500DCC5AB /* book.jpg in Resources */,
 			);
@@ -337,8 +347,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
+				184D7C852243450A0059E964 /* Nodes.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
+				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
 				9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */,
 				9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
@@ -480,10 +492,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = 4Q8S8833ZU;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = info.qin.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -499,10 +511,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = 4Q8S8833ZU;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = info.qin.one;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
