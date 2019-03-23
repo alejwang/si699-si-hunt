@@ -217,7 +217,8 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Detail"/>
                                             <connections>
-                                                <segue destination="Oy0-8G-PPb" kind="show" id="RBc-WQ-Xq1"/>
+                                                <action selector="detailsPressed:" destination="lhu-Ur-1vm" eventType="touchUpInside" id="cej-1A-xZn"/>
+                                                <segue destination="Oy0-8G-PPb" kind="show" identifier="seeEventDetail" id="RBc-WQ-Xq1"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -241,29 +242,63 @@
             </objects>
             <point key="canvasLocation" x="-1151" y="669"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Detail View Controller-->
         <scene sceneID="Uji-W5-1Ip">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Oy0-8G-PPb" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Oy0-8G-PPb" customClass="EventDetailViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yRU-gj-7Dv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqq-Qv-rBf">
-                                <rect key="frame" x="38" y="97" width="92" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-Aa-ZEx">
+                                <rect key="frame" x="147" y="87" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKn-JA-YrK">
+                                <rect key="frame" x="16" y="126" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpe-4U-BBH">
+                                <rect key="frame" x="16" y="163" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqq-Qv-rBf">
+                                <rect key="frame" x="16" y="200" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zEV-CN-uXH" firstAttribute="trailing" secondItem="yqq-Qv-rBf" secondAttribute="trailing" constant="16" id="0xE-v6-SQC"/>
+                            <constraint firstItem="yqq-Qv-rBf" firstAttribute="leading" secondItem="zEV-CN-uXH" secondAttribute="leading" constant="16" id="1Mz-jZ-3Jv"/>
+                            <constraint firstItem="ucM-Aa-ZEx" firstAttribute="centerX" secondItem="yRU-gj-7Dv" secondAttribute="centerX" id="49g-pu-jRE"/>
+                            <constraint firstItem="bpe-4U-BBH" firstAttribute="top" secondItem="dKn-JA-YrK" secondAttribute="bottom" constant="16" id="ANn-Wf-7Ft"/>
+                            <constraint firstItem="dKn-JA-YrK" firstAttribute="leading" secondItem="zEV-CN-uXH" secondAttribute="leading" constant="16" id="D3S-Hf-5Nx"/>
+                            <constraint firstItem="bpe-4U-BBH" firstAttribute="leading" secondItem="zEV-CN-uXH" secondAttribute="leading" constant="16" id="DW3-zU-Tt7"/>
+                            <constraint firstItem="ucM-Aa-ZEx" firstAttribute="top" secondItem="zEV-CN-uXH" secondAttribute="top" constant="23" id="Kxg-e7-jbd"/>
+                            <constraint firstItem="dKn-JA-YrK" firstAttribute="top" secondItem="zEV-CN-uXH" secondAttribute="top" constant="62" id="s6O-8t-Tg3"/>
+                            <constraint firstItem="yqq-Qv-rBf" firstAttribute="top" secondItem="bpe-4U-BBH" secondAttribute="bottom" constant="16" id="xCR-k9-TJJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="zEV-CN-uXH"/>
                     </view>
+                    <connections>
+                        <outlet property="eventDetail" destination="yqq-Qv-rBf" id="s7M-Zx-cBi"/>
+                        <outlet property="eventLocationLabel" destination="dKn-JA-YrK" id="wwG-Zd-kBU"/>
+                        <outlet property="eventOrganizerLabel" destination="bpe-4U-BBH" id="JmI-S8-Jnp"/>
+                        <outlet property="eventTitleLabel" destination="ucM-Aa-ZEx" id="kEe-0Y-fZe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKO-hK-hvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="669"/>
+            <point key="canvasLocation" x="-442.39999999999998" y="668.81559220389806"/>
         </scene>
         <!--Event-->
         <scene sceneID="UO7-xq-Cf7">

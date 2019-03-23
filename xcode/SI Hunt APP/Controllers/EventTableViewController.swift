@@ -17,7 +17,15 @@ class EventTableViewController: UITableViewController {
     
     //MARK: Properties
     var events = [Event]()
+    var indexPathforDetail: IndexPath?
 
+    @IBAction func detailsPressed(_ sender: UIButton) {
+        let button = sender
+        let cell = button.superview!.superview! as! EventTableViewCell
+        indexPathforDetail = tableView.indexPath(for: cell)
+        print(indexPathforDetail)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -90,6 +98,8 @@ class EventTableViewController: UITableViewController {
         self.tableView.reloadData()
         
     }
+    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -126,15 +136,25 @@ class EventTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seeEventDetail" {
+            print(indexPathforDetail![1])
+            let detailVC = segue.destination as! EventDetailViewController
+            let event = events[indexPathforDetail![1]]
+            detailVC.eventDescription = event.description
+            detailVC.eventLocation = event.location_name
+            detailVC.eventTitle = event.name
+            detailVC.eventOrganizer = event.organizer_name
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
     }
-    */
+ 
     
 //    private func loadSampleEvents(){
 //        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{

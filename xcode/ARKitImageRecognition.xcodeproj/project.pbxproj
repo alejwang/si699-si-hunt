@@ -22,6 +22,7 @@
 		3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3929C48D1E89EC2C00E00B60 /* ViewController.swift */; };
 		3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3929C48F1E89EC2C00E00B60 /* Main.storyboard */; };
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
+		5B1E1B972246ABC200A5365B /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */; };
 		9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */; };
 		9C16A327222461100028CEAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A326222461100028CEAC /* Event.swift */; };
 		9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A329222465D40028CEAC /* EventTableViewController.swift */; };
@@ -48,6 +49,7 @@
 		3929C4971E89EC2C00E00B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		573AA9A7AEED2D40C6947A39 /* Pods-ARKitImageRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.debug.xcconfig"; path = "Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.debug.xcconfig"; sourceTree = "<group>"; };
+		5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitImageRecognition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		9C16A326222461100028CEAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */,
 				9C16A329222465D40028CEAC /* EventTableViewController.swift */,
 				9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */,
+				5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
 			);
 			path = Controllers;
@@ -352,6 +355,7 @@
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
 				9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */,
+				5B1E1B972246ABC200A5365B /* EventDetailViewController.swift in Sources */,
 				9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
