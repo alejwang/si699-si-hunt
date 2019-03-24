@@ -17,7 +17,11 @@ class EventTableViewController: UITableViewController {
     
     //MARK: Properties
     var events = [Event]()
+<<<<<<< HEAD
     var indexPathforDetail: IndexPath?
+=======
+    
+>>>>>>> 6155e4f97c4ed52266c3143a7c4ae8b97af07c30
 
     @IBAction func detailsPressed(_ sender: UIButton) {
         let button = sender
@@ -61,7 +65,6 @@ class EventTableViewController: UITableViewController {
         cell.nameLabel.text = event.name
         cell.timeLabel.text = event.start_time + " - " + event.end_time
         cell.locationLabel.text = event.location_name
-
         return cell
     }
     
@@ -81,6 +84,13 @@ class EventTableViewController: UITableViewController {
     
     func updateEventData(json:JSON) {
         let event_results = json["event_results"].arrayValue
+        
+        //let node_id = json["event_results"]["location_id"]//.arrayValue
+        // Get the location name
+        //let node_name = json["event_results"]["location_name"]
+        
+        
+        
         for event in event_results{
             events.append(Event(name: event["name"].stringValue,
                                 description: event["description"].stringValue,
