@@ -32,7 +32,7 @@ class UserLogIn(Resource):
 
 
 @api.route("register")
-@api.hide
+# @api.hide
 class UserRegister(Resource):
 
     parser = api.parser()
@@ -52,3 +52,31 @@ class UserRegister(Resource):
         user.save_to_db()
 
         return {"message": "User created successfully."}, 201
+
+
+@api.route("profile/<username>")
+@api.param("username")
+# @api.hide
+class UserProfile(Resource):
+
+    parser = api.parser()
+    parser.add_argument('tags_list', action='append', required=False)
+
+
+    @api.doc(security=None, responses={200:'OK'})
+    def get(self, username):
+        user = UserModel.find_user_by_username(username)
+        if not user:
+            return {"message": "User not exists"}, 400
+        return user.json(), 200
+    
+    @api.doc(security=None, responses={201:'Created', 400: 'Bad request: item already exsits'})
+    @api.expect(parser)
+    def put(self, username):
+        data = UserProfile.parser.parse_args()
+        user = UserModel.find_user_by_username(username)
+        if not user:
+            return {"message": "User not exists"}, 400
+        user.set_profile(tags_list = data['tags_list'])
+        user.update_to_db()
+        return user.json(), 200

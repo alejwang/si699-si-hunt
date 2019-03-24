@@ -15,14 +15,15 @@ api = Namespace('Event', description='Events waiting for students to discover')
 class Event(Resource):
 
     parser = api.parser()
-    parser.add_argument("description", required=True, help="Event needs a description.")
-    parser.add_argument("capacity", type=int, required=True, help="Event needs a capacity.")
+    parser.add_argument("description", required=True, default="cool!", help="Event needs a description.")
+    parser.add_argument("capacity", type=int, required=True, default=10,help="Event needs a capacity.")
     parser.add_argument("organizer_id", type=int, required=True, help="Event needs an organizer id.")
-    parser.add_argument("start_time", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, help="Event needs a start time.")
-    parser.add_argument("end_time", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, help="Event needs a end time.")
+    parser.add_argument("start_time", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, default="2019-04-30 10:00",help="Event needs a start time.")
+    parser.add_argument("end_time", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, default="2019-04-30 12:00", help="Event needs a end time.")
     parser.add_argument("location_id", type=int, required=True, help="Event needs a location id.")
-    parser.add_argument("is_published", type=int, required=True, help="Event needs a is_publish tag.")
-    parser.add_argument("pub_date", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, help="Event needs a publish date.")
+    parser.add_argument("is_published", type=int, required=True, default=False, help="Event needs a is_publish tag.")
+    parser.add_argument("pub_date", type=lambda s: datetime.strptime(s, "%Y-%m-%d %H:%M"), required=True, default="2019-03-01 12:00",help="Event needs a publish date.")
+    parser.add_argument('tags_list', action='append')
 
 
     @api.doc(security=None, responses={200:'OK', 404: 'Not found'})
@@ -43,9 +44,9 @@ class Event(Resource):
         if EventModel.find_event_by_name(name):
             return {"message": "An event with name '{}' already exists. Please try to use another name".format(name)}, 400
         if not LocationModel.find_location_by_id(data["location_id"]):
-            return {"message": "Location_id not valid".format(data["location_id"])}, 400
+            return {"message": "Location_id not valid"}, 400
         if not OrganizerModel.find_organizer_by_id(data["organizer_id"]):
-            return {"message": "Holder_id not valid".format(data["holder_id"])}, 400
+            return {"message": "Holder_id not valid"}, 400
 
         event = EventModel(name, **data)
         try:

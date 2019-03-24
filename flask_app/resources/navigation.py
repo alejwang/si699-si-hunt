@@ -298,10 +298,14 @@ class NavFindPath(Resource):
                 #     step_instruction["direction_2d"] = link.node_to.default_exit_direction
                 if link.node_to.location:
                     step_instruction["node_to_location_name"] = link.node_to.location.name
+                # else:
+                #     step_instruction.pop('node_to_location_name', None)
                 if link.node_to.special_type:
                     step_instruction["node_to_special_type"] = link.node_to.special_type
                     # if link.node_to.special_type in vertical_move:
                     #     step_instruction["to_floor"] = link.node_to.level
+                # else:
+                #     step_instruction.pop('node_to_special_type', None)
             else:
                 filters = {'node_from_id': current_step_to, 'node_to_id': current_step_from}
                 link = NavLinkModel.find_nav_link_by_nodes(**filters)
@@ -316,10 +320,14 @@ class NavFindPath(Resource):
                 #     step_instruction["direction_2d"] = link.node_from.default_exit_direction
                 if link.node_from.location:
                     step_instruction["node_to_location_name"] = link.node_from.location.name
+                # else:
+                #     step_instruction.pop('node_to_location_name', None)
                 if link.node_from.special_type:
                     step_instruction["node_to_special_type"] = link.node_from.special_type
-                    if link.node_from.special_type in vertical_move:
-                        step_instruction["to_floor"] = link.node_from.level
+                    # if link.node_from.special_type in vertical_move:
+                    #     step_instruction["to_floor"] = link.node_from.level
+                # else:
+                #     step_instruction.pop('node_to_special_type', None) 
             
             instructions.insert(0, step_instruction)
             current_step_to = current_step_from
@@ -342,19 +350,32 @@ class NavFindPath(Resource):
                 fixed_instructions[-1]["distance"] += each["distance"]
                 if "node_to_location_name" in each:
                     fixed_instructions[-1]["node_to_location_name"] = each["node_to_location_name"]
+                else:
+                    fixed_instructions[-1].pop("node_to_location_name", None)
                 if "node_to_special_type" in each:
                     fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
+                else:
+                    fixed_instructions[-1].pop("node_to_special_type", None)
                 if "to_floor" in each:
                     fixed_instructions[-1]["to_floor"] = each["to_floor"]
+                else:
+                    fixed_instructions[-1].pop("to_floor", None)
+                
             elif (each["direction_2d"] < fixed_instructions[-1]["direction_2d"] + 10) and (each["direction_2d"] >= fixed_instructions[-1]["direction_2d"] - 10):
                 fixed_instructions[-1]["node_to_id"] = each["node_to_id"]
                 fixed_instructions[-1]["distance"] += each["distance"]
                 if "node_to_location_name" in each:
                     fixed_instructions[-1]["node_to_location_name"] = each["node_to_location_name"]
+                else:
+                    fixed_instructions[-1].pop("node_to_location_name", None)
                 if "node_to_special_type" in each:
                     fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
+                else:
+                    fixed_instructions[-1].pop("node_to_special_type", None)
                 if "to_floor" in each:
                     fixed_instructions[-1]["to_floor"] = each["to_floor"]
+                else:
+                    fixed_instructions[-1].pop("to_floor", None)
             else:
                 fixed_instructions.append(each)
 
