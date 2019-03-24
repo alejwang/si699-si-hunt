@@ -15,6 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var blurView: UIVisualEffectView!
+    @IBOutlet weak var currentLocation: UILabel!
     
     let fadeDuration: TimeInterval = 0.3
     let rotateDuration: TimeInterval = 3
@@ -147,6 +148,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Get the location name
         let node_name = json["nav_node_result"]["location_name"]
         print(node_name)
+        currentLocation.text = node_name.stringValue
         
         // Show the location name on the User interfaces
         self.statusViewController.cancelAllScheduledMessages()

@@ -15,6 +15,10 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
+    
+    @IBOutlet weak var startNavigate: UIButton!
+    var destination: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +28,10 @@ class EventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        print("I want to go to" + locationLabel.text!)
     }
+    
+    
+    
 
 }
