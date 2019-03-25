@@ -17,11 +17,8 @@ class EventTableViewController: UITableViewController {
     
     //MARK: Properties
     var events = [Event]()
-<<<<<<< HEAD
     var indexPathforDetail: IndexPath?
-=======
-    
->>>>>>> 6155e4f97c4ed52266c3143a7c4ae8b97af07c30
+
 
     @IBAction func detailsPressed(_ sender: UIButton) {
         let button = sender
