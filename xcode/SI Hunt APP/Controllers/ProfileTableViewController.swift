@@ -30,18 +30,9 @@ class ProfileTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
 
     func getProfileData(url: String, username: String){
-        Alamofire.request(url, method: .get).responseJSON {
+        Alamofire.request(url + username, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
                 print("Success!Get the data")
@@ -56,9 +47,13 @@ class ProfileTableViewController: UITableViewController {
     
     func updateProfileData(json: JSON) {
         var username = json["username"].stringValue
-        var tags = json["tags"].arrayValue
+        var tags = [String]()
+        for tag in json["tags"].arrayValue {
+            tags.append(tag.stringValue)
+        }
+        print(tags)
         if tags != [] {
-            userInterestLabel.text = tags.joined(separator:", ")
+            userInterestLabel.text = tags.joined(separator: ", ")
         } else {
             userInterestLabel.text = "0"
         }
