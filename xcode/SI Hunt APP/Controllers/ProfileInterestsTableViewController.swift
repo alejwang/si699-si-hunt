@@ -1,21 +1,20 @@
 //
-//  ProfileTableViewController.swift
-//  
+//  ProfileInterestsTableViewController.swift
+//  ARKitImageRecognition
 //
 //  Created by Alejandro Wang on 3/25/19.
+//  Copyright © 2019 Apple. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ProfileTableViewController: UITableViewController {
+class ProfileInterestsTableViewController: UITableViewController {
 
-    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
-    
-    
-    @IBOutlet weak var userUsernameLabel: UILabel!
-    @IBOutlet weak var userInterestLabel: UILabel!
+    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/tags"
+    var myTags = ["UX", "Data"]
+    var allTags = [Tag]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +25,61 @@ class ProfileTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        getProfileData(url: APICLIENT_URL, username: "mark_newman")
+        getTagData(url: APICLIENT_URL)
     }
 
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+    }
+    
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
-    func getProfileData(url: String, username: String){
-        Alamofire.request(url + username, method: .get).responseJSON {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return allTags.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
+        cell.textLabel!.text = allTags[indexPath.row].name
+        let isSelected = myTags.contains(allTags[indexPath.row].name)
+        cell.setSelected(isSelected, animated: false)
+        cell.accessoryType = isSelected ? .checkmark : .none
+        return cell
+        // TO FIX: setSelected is not working.
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
+    }
+    
+    
+
+    func getTagData(url: String){
+        Alamofire.request(url, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
                 print("Success!Get the data")
-                let profileJSON : JSON = JSON(response.result.value!)
-                self.updateProfileData(json:profileJSON)
+                let tagsJSON : JSON = JSON(response.result.value!)
+                for tagJSON in tagsJSON["tag_results"].arrayValue {
+                    self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
+                }
+                self.tableView.reloadData()
+                
             }
             else{
                 print("Error")
@@ -46,37 +87,6 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
-    func updateProfileData(json: JSON) {
-        let username = json["username"].stringValue
-        if username != "" {
-            userUsernameLabel.text = username
-        } else {
-            userUsernameLabel.text = "Please log in"
-        }
-        var tags = [String]()
-        for tag in json["tags"].arrayValue {
-            tags.append(tag.stringValue)
-        }
-        print(tags)
-        if tags != [] {
-            userInterestLabel.text = tags.joined(separator: ", ")
-        } else {
-            userInterestLabel.text = "0"
-        }
-        
-        
-    }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -121,7 +131,5 @@ class ProfileTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    
 
 }

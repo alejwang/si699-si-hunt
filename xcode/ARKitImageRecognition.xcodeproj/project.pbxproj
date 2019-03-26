@@ -31,6 +31,7 @@
 		D96B2B20C3FBE18E15E4E9F6 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */; };
 		E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
+		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,8 +61,9 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
-		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTableViewController.swift; path = "/Users/alejwang/Github/si699-fapp-sprints/xcode/SI Hunt APP/Controllers/ProfileTableViewController.swift"; sourceTree = "<absolute>"; };
+		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */,
+				E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
 				C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */,
@@ -357,6 +360,7 @@
 			files = (
 				E7833BD022499863005A5478 /* Tag.swift in Sources */,
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
+				E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */,
 				184D7C852243450A0059E964 /* Nodes.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,

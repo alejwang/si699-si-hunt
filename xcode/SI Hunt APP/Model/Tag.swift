@@ -14,17 +14,23 @@ class Tag {
     
     var id: Int
     var name: String
+    var priority: Int
     
     
     // MARK: Initialization
     // ****************************************************************
     
-    init?(id: Int, name: String){
+    init?(id: Int, name: String, priority: Int){
         if name.isEmpty {
             return nil
         }
         
         self.name = name
         self.id = id
+        self.priority = priority
+    }
+    
+    var description: String {
+        return "<\(type(of: self)): \(id) - \(name) - p\(priority)>"
     }
 }
