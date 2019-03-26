@@ -46,10 +46,11 @@ class Event {
     var location_is_armap_available: Bool
     var is_published: Bool
     var pub_date: String
+    var tags: [String]
     
     //MARK: Initialization
     
-    init?(name: String, description: String, capacity: Int, organizer_id: Int, organizer_name: String, start_time: String, end_time: String, location_id: Int, location_name: String, location_is_armap_available: Bool, is_published: Bool, pub_date: String){
+    init?(name: String, description: String, capacity: Int, organizer_id: Int, organizer_name: String, start_time: String, end_time: String, location_id: Int, location_name: String, location_is_armap_available: Bool, is_published: Bool, pub_date: String, tags: [String]){
         if name.isEmpty {
             return nil
         }
@@ -66,6 +67,7 @@ class Event {
         self.location_is_armap_available = location_is_armap_available
         self.is_published = is_published
         self.pub_date = pub_date
+        self.tags = tags
     }
     
 }
