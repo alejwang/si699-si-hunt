@@ -12,6 +12,8 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
+    firstname = db.Column(db.String(80))
+    lastname = db.Column(db.String(80))
     fullname = db.Column(db.String(80))
     description = db.Column(db.String(80))
 
@@ -32,16 +34,27 @@ class UserModel(db.Model):
     def json(self):
         json = {
             'username': self.username,
+            'fistname': self.firstname if self.firstname else "",
+            'lastname': self.lastname if self.lastname else "",
+            'description': self.description,
             'tags': [tag.name for tag in self.tags]
         }
         return json
 
-    def set_profile(self, tags_list, old_password = None, new_password = None, fullname = None, description = None):
+    def set_profile(self, tags_list, old_password = None, new_password = None, firstname = None, lastname = None, description = None):
         self.tags = []
-        for tag_name in tags_list:
-            tag = TagModel.find_tag_by_name(tag_name)
-            if tag :
-                self.tags.append(tag)
+        if tags_list:
+            for tag_name in tags_list:
+                tag = TagModel.find_tag_by_name(tag_name)
+                if tag :
+                    self.tags.append(tag)
+        if firstname:
+            self.firstname = firstname
+        if lastname:
+            self.lastname = lastname
+        if description:
+            self.description = description
+        db.session.commit()
 
     def set_as_administrator(self, is_administrator):
         return None
@@ -51,8 +64,8 @@ class UserModel(db.Model):
         db.session.add(self)
         db.session.commit()
     
-    def update_to_db(self):
-        db.session.commit()
+    # def update_to_db(self):
+    #     db.session.commit()
 
     # @classmethod” is a decorator which runs the function underneath in a certain way. The method can be called without a particular instance of the class. If they don"t take self as parameter, you can call the method by class or instance.
     @classmethod

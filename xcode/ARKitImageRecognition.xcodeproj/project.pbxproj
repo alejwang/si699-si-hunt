@@ -29,6 +29,8 @@
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		D96B2B20C3FBE18E15E4E9F6 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */; };
+		E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CD22514A1C00562B5E /* LogInViewController.swift */; };
+		E77E46D0225157B200562B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CF225157B200562B5E /* APIClient.swift */; };
 		E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
 		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
@@ -61,6 +63,8 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				3929C4971E89EC2C00E00B60 /* Info.plist */,
 				3929C48F1E89EC2C00E00B60 /* Main.storyboard */,
 				39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */,
+				E77E46CF225157B200562B5E /* APIClient.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */,
 				5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
+				E77E46CD22514A1C00562B5E /* LogInViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -259,7 +265,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = R3STN86BB8;
+						DevelopmentTeam = V5J5T3A338;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -366,8 +372,10 @@
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
 				9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */,
+				E77E46D0225157B200562B5E /* APIClient.swift in Sources */,
 				5B1E1B972246ABC200A5365B /* EventDetailViewController.swift in Sources */,
 				9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */,
+				E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
@@ -508,10 +516,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = V5J5T3A338;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.alej;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -527,10 +535,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = V5J5T3A338;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.alej;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

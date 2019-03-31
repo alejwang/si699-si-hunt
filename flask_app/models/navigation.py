@@ -44,8 +44,8 @@ class NavNodeModel(db.Model):
         return cls.query.filter_by(id=id).first()
 
     @classmethod
-    def find_nav_node_by_location_id(cls, location_id):
-        return cls.query.filter_by(location_id=location_id).first()
+    def find_nav_node_by_location_id(cls, id):
+        return cls.query.filter_by(location_id=id).first()
 
     @classmethod
     def find_nav_node_by_pos(cls, building, level, pos_x, pos_y):

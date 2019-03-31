@@ -13,7 +13,8 @@ import SwiftyJSON
 class ProfileInterestsTableViewController: UITableViewController {
 
     let APICLIENT_URL = "https://alejwang.pythonanywhere.com/tags"
-    var myTags = ["UX", "Data"]
+//    var myTags = ["UX", "Data"]
+    var myTags = [String]()
     var allTags = [Tag]()
     
     override func viewDidLoad() {

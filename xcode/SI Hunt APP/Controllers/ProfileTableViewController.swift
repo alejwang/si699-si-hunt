@@ -13,29 +13,34 @@ class ProfileTableViewController: UITableViewController {
 
     let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
     
+    var username = "mark_newman"
     
     @IBOutlet weak var userUsernameLabel: UILabel!
+    @IBOutlet weak var userHeadlineLabel: UILabel!
     @IBOutlet weak var userInterestLabel: UILabel!
+    
+    @IBOutlet weak var logoutIncellButton: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        // Sets the large title and transparent bar
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        self.navigationItem.hidesBackButton = true;
         
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().isTranslucent = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.logoutFunction))
+        logoutIncellButton.isUserInteractionEnabled = true
+        logoutIncellButton.addGestureRecognizer(tap)
         
         getProfileData(url: APICLIENT_URL, username: "mark_newman")
     }
-
+    
+    @objc func logoutFunction(sender:UITapGestureRecognizer) {
+        
+        print("> Tapped Log out")
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+    
+    
     // MARK: - Table view data source
 
 
@@ -60,11 +65,17 @@ class ProfileTableViewController: UITableViewController {
         } else {
             userUsernameLabel.text = "Please log in"
         }
+        let headline = json["description"].stringValue
+        if headline != "" {
+            userHeadlineLabel.text = headline
+        } else {
+            userHeadlineLabel.text = "..."
+        }
         var tags = [String]()
         for tag in json["tags"].arrayValue {
             tags.append(tag.stringValue)
         }
-        print(tags)
+//        print(tags)
         if tags != [] {
             userInterestLabel.text = tags.joined(separator: ", ")
         } else {

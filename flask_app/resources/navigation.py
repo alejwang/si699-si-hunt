@@ -250,8 +250,8 @@ class NavLinkList(Resource):
 class NavFindPath(Resource):
     
     parser = api.parser()
-    parser.add_argument("start_node", type=int, default=1, location='args', required=False, help="start node id")
-    parser.add_argument("end_node", type=int, default=6, location='args', required=False, help="end node id")
+    parser.add_argument("start_node", type=int, location='args', required=False, help="start node id")
+    parser.add_argument("end_node", type=int, location='args', required=False, help="end node id")
     parser.add_argument("start_location", type=int, location='args', required=False, help="if start_node is blank, please fill in start location id")
     parser.add_argument("end_location", type=int, location='args', required=False, help="if end_node is blank, please fill in end location id")
 
