@@ -17,8 +17,11 @@ class EventTableViewController: UITableViewController {
     let APICLIENT_URL_profile = "https://alejwang.pythonanywhere.com/profile"
     
     //MARK: Properties
+    var indexPathforDetail: IndexPath?
     var events = [Event]()
     var recom_events = [Event]()
+    var user_name:String = ""
+    var user_tags = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +32,9 @@ class EventTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+//        user_tags = getUserTags(url:APICLIENT_URL_profile, username:"mark_newman")
         //Load the sample data
         getEventData(url:APICLIENT_URL)
-        
-        //getUserTags(url:APICLIENT_URL_profile, username:"mark_newman")
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
         
         //        filterEventsByTags(allEvents:events, userTags:getUserTags(url:APICLIENT_URL_profile, username:"mark_newman"))
@@ -68,7 +70,7 @@ class EventTableViewController: UITableViewController {
         Alamofire.request(url, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
-                print("Success!Get the data")
+                print("Success!Get the events")
                 let eventJSON : JSON = JSON(response.result.value!)
                 self.updateEventData(json:eventJSON)
             }
@@ -99,23 +101,11 @@ class EventTableViewController: UITableViewController {
         
     }
     
-    //    func getUserTags(url: String, username: String)->[String]? {
-    //        var userTags = [String]()
-    //        Alamofire.request(url + "/" + username, method: .get).responseJSON {
-    //            response in
-    //            if response.result.isSuccess{
-    //                print("Success!Get the data")
-    //                let profileJSON = JSON(response.result.value!)
-    ////                self.updateEventData(json:eventJSON)
-    //                userTags = profileJSON["tags"].arrayObject as! [String]
-    //
-    //            }
-    //            else{
-    //                print("Error")
-    //            }
-    //        }
-    //        return userTags
-    //    }
+    func checkExpire(){
+        let formatter = DateFormatter()
+        //formatter.dateFormat("yyyy-MM-dd HH:mm")
+        
+    }
     
     func getRecommEventData(url: String, username: String){
         var userTags = [String]()
@@ -124,9 +114,10 @@ class EventTableViewController: UITableViewController {
             if response.result.isSuccess{
                 print("Success!Get the data")
                 let profileJSON = JSON(response.result.value!)
-                //                self.updateEventData(json:eventJSON)
                 userTags = profileJSON["tags"].arrayObject as! [String]
+                self.user_name = profileJSON["user_name"].stringValue
                 self.updateRecommEventData(userTags: userTags)
+                self.updateUserTags(userTags: userTags)
             }
             else{
                 print("Error")
@@ -134,7 +125,14 @@ class EventTableViewController: UITableViewController {
         }
     }
     
+//    func getRecommEventData(url: String, username: String){
+//        let userTags = self.getUserTags(url:url, username:username)
+//        self.updateRecommEventData(userTags: userTags)
+//
+//    }
+    
     func updateRecommEventData(userTags:[String]){
+        //print(userTags)
         self.getEventData(url:APICLIENT_URL)
         for event in events{
             for tag in event.tags{
@@ -143,7 +141,10 @@ class EventTableViewController: UITableViewController {
                 }
             }
         }
-        self.tableView.reloadData()
+    }
+    
+    func updateUserTags(userTags:[String]){
+        user_tags = userTags
     }
     
     //    func filterEventsByTags(allEvents: [Event], userTags: [String]){
@@ -159,6 +160,8 @@ class EventTableViewController: UITableViewController {
     //        }
     //        self.tableView.reloadData()
     //    }
+    
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -195,15 +198,33 @@ class EventTableViewController: UITableViewController {
      }
      */
     
-    /*
+
      // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
+    @IBAction func detailsPressed(_ sender: UIButton) {
+        let button = sender
+        let cell = button.superview!.superview! as! EventTableViewCell
+        indexPathforDetail = tableView.indexPath(for: cell)
+        print(indexPathforDetail!)
+        performSegue(withIdentifier: "seeEventDetail", sender: button)
+    }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
+        if segue.identifier == "seeEventDetail" {
+            print(indexPathforDetail![1])
+            let detailVC = segue.destination as! EventDetailViewController
+            let event = events[indexPathforDetail![1]]
+            detailVC.eventDescription = event.description
+            detailVC.eventLocation = event.location_name
+            detailVC.eventTitle = event.name
+            detailVC.eventOrganizer = event.organizer_name
+        }
+        
      }
-     */
+
     
     //    private func loadSampleEvents(){
     //        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{
