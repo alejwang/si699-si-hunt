@@ -411,12 +411,11 @@
         <!--Profile-->
         <scene sceneID="tIN-97-Vlz">
             <objects>
-                <tableViewController id="Bgw-wS-vVy" customClass="ProfileTableViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rex-wd-62e">
+                <tableViewController extendedLayoutIncludesOpaqueBars="YES" id="Bgw-wS-vVy" customClass="ProfileTableViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Rex-wd-62e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection headerTitle="Hi, Mark" id="zMo-1f-rW1">
                                 <cells>
@@ -501,6 +500,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Profile" id="bFI-Ww-rfY"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="userInterestLabel" destination="ke6-h6-qeV" id="jLf-n7-xaG"/>
                         <outlet property="userUsernameLabel" destination="93y-pE-M8y" id="JQ2-cN-QUd"/>
