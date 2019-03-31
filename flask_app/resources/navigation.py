@@ -10,7 +10,7 @@ api = Namespace('Navigation', description='Links and nodes for path finding and 
 
 
 
-allowed_special_type = ['elevator', 'stair']
+allowed_special_type = ['elevator', 'stair', 'outdoor']
 vertical_move = ['elevator', 'stair']
 
 @api.route('nav/node/<string:building>/<string:level>/<string:pos_x>/<string:pos_y>')
@@ -22,8 +22,14 @@ class NavNode(Resource):
 
     parser = api.parser()
     parser.add_argument("default_exit_direction", type=int, required=True, help="Point needs a default exit direction.")
-    parser.add_argument("special_type", type=lambda s: s if s in allowed_special_type else None)
+    parser.add_argument("special_type", help="options: stair/elevator/outdoor", type=lambda s: s if s in allowed_special_type else None)
     parser.add_argument("location_name", type=lambda s: s if s else None)
+
+    # my_fields = api.model('NavNodeInput', {
+    #     'default_exit_direction': fields.Integer(description='the direction to exit the room/elevator/stair, use 0-359', required=True, example="0", min=0, max=359),
+    #     'special_type': fields.String(enum=['stair', 'elevator', 'outdoor']),
+    #     'location_name': fields.String(description='the room name if room exsits', example="NQ 2435")
+    # })
 
     @api.doc(security=None, responses={200:'OK', 404: 'Not found'})
     def get(self, building, level, pos_x, pos_y):
@@ -36,7 +42,7 @@ class NavNode(Resource):
                 'pos_y': int(pos_y)
             }
         except:
-            return {"message": "Please input valid number for level, pos_x, and pos_y.".format(level, pos_x, pos_y)}, 404
+            return {"message": "Please input valid number for level, pos_x, and pos_y."}, 404
 
         nav_node = NavNodeModel.find_nav_node_by_pos(**filters)
         if nav_node:
@@ -47,6 +53,7 @@ class NavNode(Resource):
     @api.doc(security='JWT', responses={201:'Created', 400: 'Bad request: item already exsits', 500: 'Database internal error', 401:'No authorization'})
     @jwt_required
     @api.expect(parser)
+    # @api.expect(my_fields)
     def post(self, building, level, pos_x, pos_y):
         """adds a new nav point"""
         data = NavNode.parser.parse_args()
