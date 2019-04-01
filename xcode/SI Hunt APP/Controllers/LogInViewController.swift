@@ -40,11 +40,14 @@ class LogInViewController: UIViewController {
         logInButton.titleLabel?.text = "Loging in..."
         
         APIClient.login(withUsername: usernameTextfield.text!, password: passwordTextfield.text!, completion: {
+            print("> Loging in \(String(describing: self.usernameTextfield.text!)) \(String(describing: self.passwordTextfield.text!)) ")
             if UserDefaults.standard.string(forKey: "access_token") != nil {
 //                var firstTab = self.tabBarController?.viewControllers?[0] as! EventTableViewController
 //                firstTab.username = self.usernameTextfield.text!
                 let vc = EventTableViewController(nibName: "EventTableViewController", bundle: nil)
-//                vc.username = self.usernameTextfield.text!
+                vc.user_name = String(describing: self.usernameTextfield.text!)
+                print("> vc.user_name: \(String(describing: vc.user_name!))")
+                ProfileTableViewController().getProfileData()
                 
                 self.performSegue(withIdentifier: "gotoProfile", sender: self)
 //

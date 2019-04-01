@@ -20,7 +20,7 @@ class EventTableViewController: UITableViewController {
     var indexPathforDetail: IndexPath?
     var events = [Event]()
     var recom_events = [Event]()
-    var user_name:String = ""
+    var user_name : String! = ""
     var user_tags = [String]()
     
     override func viewDidLoad() {

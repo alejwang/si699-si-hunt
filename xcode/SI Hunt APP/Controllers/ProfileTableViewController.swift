@@ -11,10 +11,6 @@ import SwiftyJSON
 
 class ProfileTableViewController: UITableViewController {
 
-    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
-    
-    var username = "mark_newman"
-    
     @IBOutlet weak var userUsernameLabel: UILabel!
     @IBOutlet weak var userHeadlineLabel: UILabel!
     @IBOutlet weak var userInterestLabel: UILabel!
@@ -29,8 +25,9 @@ class ProfileTableViewController: UITableViewController {
         logoutIncellButton.isUserInteractionEnabled = true
         logoutIncellButton.addGestureRecognizer(tap)
         
-        getProfileData(url: APICLIENT_URL, username: "mark_newman")
+        getProfileData()
     }
+    
     
     @objc func logoutFunction(sender:UITapGestureRecognizer) {
         
@@ -44,8 +41,12 @@ class ProfileTableViewController: UITableViewController {
     // MARK: - Table view data source
 
 
-    func getProfileData(url: String, username: String){
-        Alamofire.request(url + username, method: .get).responseJSON {
+    func getProfileData(){
+        let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
+        let vc = EventTableViewController(nibName: "EventTableViewController", bundle: nil)
+        let username = vc.user_name
+        print("> requesting \(APICLIENT_URL) \(String(describing: username))")
+        Alamofire.request(APICLIENT_URL + username!, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
                 print("Success!Get the data")
