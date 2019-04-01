@@ -28,6 +28,7 @@ class APIClient {
         Alamofire.request("https://alejwang.pythonanywhere.com/auth", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             if let json = response.result.value as? [String: AnyObject] {
                 print("> JSON: \(json)")
+                UserDefaults.standard.removeObject(forKey: "access_token")
                 if let access_token = json["access_token"] {
                     print("> Access token is: \(access_token)")
                     UserDefaults.standard.set(access_token, forKey: "access_token")
