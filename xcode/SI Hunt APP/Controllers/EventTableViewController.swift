@@ -20,6 +20,7 @@ class EventTableViewController: UITableViewController {
     var indexPathforDetail: IndexPath?
     var events = [Event]()
     var recom_events = [Event]()
+    var mandatory_events = [Event]()
     var user_name:String = ""
     var user_tags = [String]()
     
@@ -36,6 +37,7 @@ class EventTableViewController: UITableViewController {
         //Load the sample data
         getEventData(url:APICLIENT_URL)
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
+        //checkExpire(eventTime: "2019-03-31 18:00")
         
         //        filterEventsByTags(allEvents:events, userTags:getUserTags(url:APICLIENT_URL_profile, username:"mark_newman"))
         //loadSampleEvents()
@@ -83,28 +85,39 @@ class EventTableViewController: UITableViewController {
     func updateEventData(json:JSON) {
         let event_results = json["event_results"].arrayValue
         for event in event_results{
-            events.append(Event(name: event["name"].stringValue,
-                                description: event["description"].stringValue,
-                                capacity: event["capacity"].intValue,
-                                organizer_id: event["organizer_id"].intValue ,
-                                organizer_name: event["organizer_name"].stringValue,
-                                start_time: event["start_time"].stringValue,
-                                end_time: event["end_time"].stringValue,
-                                location_id: event["location_id"].intValue,
-                                location_name: event["location_name"].stringValue,
-                                location_is_armap_available: event["location_is_armap_available"].boolValue,
-                                is_published: event["is_published"].boolValue,
-                                pub_date: event["pub_date"].stringValue,
-                                tags: event["tags"].arrayObject as! [String])!)
+            let isExpired = self.checkExpire(eventTime: event["end_time"].stringValue)
+            
+            if isExpired == false{
+                events.append(Event(name: event["name"].stringValue,
+                                    description: event["description"].stringValue,
+                                    capacity: event["capacity"].intValue,
+                                    organizer_id: event["organizer_id"].intValue ,
+                                    organizer_name: event["organizer_name"].stringValue,
+                                    start_time: event["start_time"].stringValue,
+                                    end_time: event["end_time"].stringValue,
+                                    location_id: event["location_id"].intValue,
+                                    location_name: event["location_name"].stringValue,
+                                    location_is_armap_available: event["location_is_armap_available"].boolValue,
+                                    is_published: event["is_published"].boolValue,
+                                    pub_date: event["pub_date"].stringValue,
+                                    tags: event["tags"].arrayObject as! [String])!)
+                
+            }
         }
         self.tableView.reloadData()
         
     }
     
-    func checkExpire(){
+    func checkExpire(eventTime: String) -> Bool{
         let formatter = DateFormatter()
-        //formatter.dateFormat("yyyy-MM-dd HH:mm")
-        
+        formatter.dateFormat="yyyy-MM-dd HH:mm"
+        let now = Date()
+        if formatter.string(from: now)>eventTime{
+            return true
+        }
+        else{
+            return false
+        }
     }
     
     func getRecommEventData(url: String, username: String){
@@ -112,12 +125,12 @@ class EventTableViewController: UITableViewController {
         Alamofire.request(url + "/" + username, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
-                print("Success!Get the data")
+                print("Success!Get the profile")
                 let profileJSON = JSON(response.result.value!)
                 userTags = profileJSON["tags"].arrayObject as! [String]
-                self.user_name = profileJSON["user_name"].stringValue
+                self.user_name = profileJSON["username"].stringValue
+                self.user_tags = userTags
                 self.updateRecommEventData(userTags: userTags)
-                self.updateUserTags(userTags: userTags)
             }
             else{
                 print("Error")
@@ -125,15 +138,9 @@ class EventTableViewController: UITableViewController {
         }
     }
     
-//    func getRecommEventData(url: String, username: String){
-//        let userTags = self.getUserTags(url:url, username:username)
-//        self.updateRecommEventData(userTags: userTags)
-//
-//    }
-    
     func updateRecommEventData(userTags:[String]){
         //print(userTags)
-        self.getEventData(url:APICLIENT_URL)
+        getEventData(url:APICLIENT_URL)
         for event in events{
             for tag in event.tags{
                 if userTags.contains(tag){
@@ -143,24 +150,14 @@ class EventTableViewController: UITableViewController {
         }
     }
     
-    func updateUserTags(userTags:[String]){
-        user_tags = userTags
-    }
-    
-    //    func filterEventsByTags(allEvents: [Event], userTags: [String]){
-    //        //var filteredEvents = [Event]()
-    //        print(allEvents)
-    //        print(userTags)
-    //        for event in allEvents{
-    //            for tag in event.tags{
-    //                if userTags.contains(tag){
-    //                    recom_events.append(event)
-    //                }
-    //            }
-    //        }
-    //        self.tableView.reloadData()
-    //    }
-    
+//    func updateUserTags(userTags:[String]){
+//        user_tags = userTags
+//    }
+//
+//    func updateUserName(userName:String){
+//        user_name = userName
+//        print("name:" + userName)
+//    }
     
     
     /*
@@ -207,7 +204,7 @@ class EventTableViewController: UITableViewController {
         let cell = button.superview!.superview! as! EventTableViewCell
         indexPathforDetail = tableView.indexPath(for: cell)
         print(indexPathforDetail!)
-        performSegue(withIdentifier: "seeEventDetail", sender: button)
+        //performSegue(withIdentifier: "seeEventDetail", sender: button)
     }
     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
