@@ -21,7 +21,7 @@ class EventTableViewController: UITableViewController {
     var events = [Event]()
     var recom_events = [Event]()
     var mandatory_events = [Event]()
-    var user_name:String = ""
+    var user_name : String! = ""
     var user_tags = [String]()
     
     override func viewDidLoad() {

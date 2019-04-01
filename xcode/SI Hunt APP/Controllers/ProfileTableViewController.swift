@@ -11,41 +11,49 @@ import SwiftyJSON
 
 class ProfileTableViewController: UITableViewController {
 
-    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
-    
-    
-    @IBOutlet weak var userUsernameLabel: UILabel!
+    @IBOutlet weak var userHeadlineLabel: UILabel!
     @IBOutlet weak var userInterestLabel: UILabel!
+    @IBOutlet weak var userUsernameLabel: UILabel!
+    @IBOutlet weak var logoutIncellButton: UILabel!
+    
+    var receivedUsername: String = ""
+    var userTags = [String]()
+    var allTags = [Tag]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        // Sets the large title and transparent bar
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        self.navigationItem.hidesBackButton = true;
         
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = .clear
-        UINavigationBar.appearance().isTranslucent = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        getProfileData(url: APICLIENT_URL, username: "mark_newman")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.logoutFunction))
+        logoutIncellButton.isUserInteractionEnabled = true
+        logoutIncellButton.addGestureRecognizer(tap)
+        
+        getProfileData(username: receivedUsername)
+        getTagData()
+        
     }
-
+    
+    
+    @objc func logoutFunction(sender:UITapGestureRecognizer) {
+        
+        print("> Tapped Log out")
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
     // MARK: - Table view data source
 
 
-    func getProfileData(url: String, username: String){
-        Alamofire.request(url + username, method: .get).responseJSON {
+    func getProfileData(username: String){
+        let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
+        print("> requesting \(APICLIENT_URL) \(username)")
+        Alamofire.request(APICLIENT_URL + username, method: .get).responseJSON {
             response in
             if response.result.isSuccess{
                 print("Success!Get the data")
-                let profileJSON : JSON = JSON(response.result.value!)
-                self.updateProfileData(json:profileJSON)
+                let userProfileJSON : JSON = JSON(response.result.value!)
+                self.updateProfileData(json:userProfileJSON)
             }
             else{
                 print("Error")
@@ -56,22 +64,68 @@ class ProfileTableViewController: UITableViewController {
     func updateProfileData(json: JSON) {
         let username = json["username"].stringValue
         if username != "" {
+            print("> To print username: \(username)")
             userUsernameLabel.text = username
         } else {
             userUsernameLabel.text = "Please log in"
         }
-        var tags = [String]()
-        for tag in json["tags"].arrayValue {
-            tags.append(tag.stringValue)
+        let headline = json["description"].stringValue
+        if headline != "" {
+            userHeadlineLabel.text = headline
+        } else {
+            userHeadlineLabel.text = "..."
         }
-        print(tags)
-        if tags != [] {
-            userInterestLabel.text = tags.joined(separator: ", ")
+        userTags = []
+        for tag in json["tags"].arrayValue {
+            userTags.append(tag.stringValue)
+        }
+//        print(tags)
+        if userTags != [] {
+            userInterestLabel.text = userTags.joined(separator: ", ")
         } else {
             userInterestLabel.text = "0"
         }
-        
-        
+    }
+    
+    func getTagData(){
+        Alamofire.request("https://alejwang.pythonanywhere.com/tags", method: .get).responseJSON {
+            response in
+            if response.result.isSuccess{
+                print("Success!Get the data")
+                let tagsJSON : JSON = JSON(response.result.value!)
+                for tagJSON in tagsJSON["tag_results"].arrayValue {
+                    self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
+                }
+            }
+            else{
+                print("Error")
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoTagList" {
+            // get a reference to the second view controller
+            let destination = segue.destination as! ProfileInterestsTableViewController
+            
+            // set a variable in the second view controller with the String to pass
+            destination.userTags = userTags
+            destination.allTags = allTags
+        }
+    }
+    
+    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ProfileInterestsTableViewController {
+            if userTags != sourceViewController.userTags {
+                userTags = sourceViewController.userTags
+                if userTags != [] {
+                    userInterestLabel.text = userTags.joined(separator: ", ")
+                } else {
+                    userInterestLabel.text = "0"
+                }
+                print(userTags)
+            }
+        }
     }
     
     /*

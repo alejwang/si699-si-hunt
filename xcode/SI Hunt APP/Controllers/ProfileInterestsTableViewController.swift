@@ -12,20 +12,19 @@ import SwiftyJSON
 
 class ProfileInterestsTableViewController: UITableViewController {
 
-    let APICLIENT_URL = "https://alejwang.pythonanywhere.com/tags"
-    var myTags = ["UX", "Data"]
+
+    var userTags = [String]()
     var allTags = [Tag]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        getTagData(url: APICLIENT_URL)
     }
 
     
@@ -50,7 +49,7 @@ class ProfileInterestsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
         cell.textLabel!.text = allTags[indexPath.row].name
-        let isSelected = myTags.contains(allTags[indexPath.row].name)
+        let isSelected = userTags.contains(allTags[indexPath.row].name)
         cell.setSelected(isSelected, animated: false)
         cell.accessoryType = isSelected ? .checkmark : .none
         return cell
@@ -60,33 +59,43 @@ class ProfileInterestsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .checkmark
+        let item = allTags[indexPath.row]
+        if let index = userTags.index(of: item.name) {
+            userTags.remove(at: index)
+        }
+        userTags.append(allTags[indexPath.row].name)
+        print("> userTags: \(userTags)")
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.accessoryType = .none
-    }
-    
-    
-
-    func getTagData(url: String){
-        Alamofire.request(url, method: .get).responseJSON {
-            response in
-            if response.result.isSuccess{
-                print("Success!Get the data")
-                let tagsJSON : JSON = JSON(response.result.value!)
-                for tagJSON in tagsJSON["tag_results"].arrayValue {
-                    self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
-                }
-                self.tableView.reloadData()
-                
-            }
-            else{
-                print("Error")
-            }
+        let item = allTags[indexPath.row]
+        if let index = userTags.index(of: item.name) {
+            userTags.remove(at: index)
         }
+        print("> userTags: \(userTags)")
     }
     
+    
+//    func getTagData(url: String){
+//        Alamofire.request(url, method: .get).responseJSON {
+//            response in
+//            if response.result.isSuccess{
+//                print("Success!Get the data")
+//                let tagsJSON : JSON = JSON(response.result.value!)
+//                for tagJSON in tagsJSON["tag_results"].arrayValue {
+//                    self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
+//                }
+//                self.tableView.reloadData()
+//
+//            }
+//            else{
+//                print("Error")
+//            }
+//        }
+//    }
+//
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

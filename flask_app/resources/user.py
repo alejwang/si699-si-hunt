@@ -24,7 +24,7 @@ class UserLogIn(Resource):
         if user and user.password == data['password']:
             access_token = create_access_token(identity=user.username)
             print(access_token)
-            return {"messgae": "Welcome", "access_token":access_token, "tip": "copy the access_token, click on Authorize button on the top, then input 'BEARER <your_token>' as your JWT value." }, 200
+            return {"messgae": "Welcome", "access_token":access_token, "tip": "copy the access_token, click on Authorize button on the top, then input 'Bearer <your_token>' as your JWT value." }, 200
 
         else:
             return {"message": "Bad username and/or password"}, 401
@@ -60,8 +60,10 @@ class UserRegister(Resource):
 class UserProfile(Resource):
 
     parser = api.parser()
-    parser.add_argument('tags_list', action='append', required=False)
-
+    parser.add_argument('tags_list', action='append')
+    parser.add_argument('firstname', type=str)
+    parser.add_argument('lastname', type=str)
+    parser.add_argument('description', type=str)
 
     @api.doc(security=None, responses={200:'OK'})
     def get(self, username):
@@ -77,6 +79,6 @@ class UserProfile(Resource):
         user = UserModel.find_user_by_username(username)
         if not user:
             return {"message": "User not exists"}, 400
-        user.set_profile(tags_list = data['tags_list'])
-        user.update_to_db()
+        user.set_profile(**data)
+        # user.update_to_db()
         return user.json(), 200

@@ -250,8 +250,8 @@ class NavLinkList(Resource):
 class NavFindPath(Resource):
     
     parser = api.parser()
-    parser.add_argument("start_node", type=int, default=1, location='args', required=False, help="start node id")
-    parser.add_argument("end_node", type=int, default=6, location='args', required=False, help="end node id")
+    parser.add_argument("start_node", type=int, location='args', required=False, help="start node id")
+    parser.add_argument("end_node", type=int, location='args', required=False, help="end node id")
     parser.add_argument("start_location", type=int, location='args', required=False, help="if start_node is blank, please fill in start location id")
     parser.add_argument("end_location", type=int, location='args', required=False, help="if end_node is blank, please fill in end location id")
 
@@ -296,6 +296,7 @@ class NavFindPath(Resource):
             if link:
                 step_instruction = {
                     "node_to_id": link.node_to_id,
+                    "link_id": link.id,
                     "distance": link.distance,
                     "direction_2d": link.direction_2d,
                     "to_level": link.node_to.level,
@@ -318,6 +319,7 @@ class NavFindPath(Resource):
                 link = NavLinkModel.find_nav_link_by_nodes(**filters)
                 step_instruction = {
                     "node_to_id": link.node_from_id,
+                    "link_id": link.id,
                     "distance": link.distance,
                     "direction_2d": (link.direction_2d + 180)%360 if link.direction_2d > -1 else -1,
                     "to_level": link.node_from.level,
@@ -352,7 +354,7 @@ class NavFindPath(Resource):
                 if not each["node_to_special_type"] == fixed_instructions[-1]["node_to_special_type"]:
                     fixed_instructions.append(each)
                     continue
-            if ((fixed_instructions[-1]["direction_2d"] == -1) and (each["direction_2d"] == -1)):
+            if ((fixed_instructions[-1]["direction_2d"] == -1) and (each["direction_2d"] == -1)) or ((each["direction_2d"] < fixed_instructions[-1]["direction_2d"] + 10) and (each["direction_2d"] >= fixed_instructions[-1]["direction_2d"] - 10)):
                 fixed_instructions[-1]["node_to_id"] = each["node_to_id"]
                 fixed_instructions[-1]["distance"] += each["distance"]
                 if "node_to_location_name" in each:
@@ -363,26 +365,10 @@ class NavFindPath(Resource):
                     fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
                 else:
                     fixed_instructions[-1].pop("node_to_special_type", None)
-                if "to_floor" in each:
-                    fixed_instructions[-1]["to_floor"] = each["to_floor"]
+                if "to_level" in each:
+                    fixed_instructions[-1]["to_level"] = each["to_level"]
                 else:
-                    fixed_instructions[-1].pop("to_floor", None)
-                
-            elif (each["direction_2d"] < fixed_instructions[-1]["direction_2d"] + 10) and (each["direction_2d"] >= fixed_instructions[-1]["direction_2d"] - 10):
-                fixed_instructions[-1]["node_to_id"] = each["node_to_id"]
-                fixed_instructions[-1]["distance"] += each["distance"]
-                if "node_to_location_name" in each:
-                    fixed_instructions[-1]["node_to_location_name"] = each["node_to_location_name"]
-                else:
-                    fixed_instructions[-1].pop("node_to_location_name", None)
-                if "node_to_special_type" in each:
-                    fixed_instructions[-1]["node_to_special_type"] = each["node_to_special_type"]
-                else:
-                    fixed_instructions[-1].pop("node_to_special_type", None)
-                if "to_floor" in each:
-                    fixed_instructions[-1]["to_floor"] = each["to_floor"]
-                else:
-                    fixed_instructions[-1].pop("to_floor", None)
+                    fixed_instructions[-1].pop("to_level", None)
             else:
                 fixed_instructions.append(each)
 
