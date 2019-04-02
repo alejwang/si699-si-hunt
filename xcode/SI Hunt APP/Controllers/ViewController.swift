@@ -228,9 +228,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                        
                         // direction
-                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around"}
-                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right"}
-                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left"}
+                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around and Go "+String(nav_dis)+"mm"}
+                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right and Go "+String(nav_dis)+"mm"}
+                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left"+String(nav_dis)+"mm"}
                         
                         self.headDirection = nav_dir
                         
