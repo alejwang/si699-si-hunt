@@ -16,13 +16,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var blurView: UIVisualEffectView!
     @IBOutlet weak var currentLocation: UILabel!
+    @IBOutlet weak var destination: UILabel!
+    @IBOutlet weak var instruction_detail: UILabel!
     
+
     let fadeDuration: TimeInterval = 0.3
     let rotateDuration: TimeInterval = 3
     let waitDuration: TimeInterval = 0.5
     
     var NODE_URL = "http://alejwang.pythonanywhere.com/nav/node/"
+    var PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
     var Navnode = [Nodes]()
+    var eventLocation: String?
+    var eventId: Int?
+    var currentlocationId: Int?
+    var instruction = [String]()
+    var instruction_text = ""
+    var headDirection: Int?
+    var turn: String?
+    var elevator: String?
+    var level: Int?
+    var step_num: Int?
+    var turn_dir: Int?
     
     lazy var fadeAndSpinAction: SCNAction = {
         return .sequence([
@@ -68,6 +83,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
         }
+        destination.text = eventLocation
+        
     }
 
 	override func viewDidAppear(_ animated: Bool) {
@@ -118,11 +135,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         DispatchQueue.main.async {
             guard let imageAnchor = anchor as? ARImageAnchor,
                 let imageName = imageAnchor.referenceImage.name else { return }
-            
+            // print(imageName)
             // Requestion the details of the location: id and name
             let imageNameArr = imageName.characters.split{$0 == "a"}.map(String.init)
+            
             self.NODE_URL = self.NODE_URL + imageNameArr[0] + "/" + imageNameArr[1] + "/" + imageNameArr[2] + "/" + imageNameArr[3]
-            print(self.NODE_URL)
+            print(imageNameArr[5])
+            self.headDirection = Int(imageNameArr[5])
             
             Alamofire.request(self.NODE_URL, method: .get).responseJSON {
                 response in
@@ -142,12 +161,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func updateStartNode(json:JSON) {
         
         // Get the location id
-        let node_id = json["nav_node_result"]["id"]//.arrayValue
-        print(node_id)
-        
-        // Get the location name
+        currentlocationId = json["nav_node_result"]["location_id"].intValue
         let node_name = json["nav_node_result"]["location_name"]
-        print(node_name)
         currentLocation.text = node_name.stringValue
         
         // Show the location name on the User interfaces
@@ -163,6 +178,103 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //                                    location_id: node["location_id"].intValue,
 //                                    location_name: node["location_name"].stringValue)!)
 //        }
+    }
+    
+    @IBAction func goNavigation(_ sender: Any) {
+        //print(eventId)
+        //print(currentlocationId)
+
+        if currentlocationId != nil{
+            self.PATH_URL = self.PATH_URL + String(currentlocationId!) + "&end_location=" + String(eventId!)
+            print(self.PATH_URL)
+            
+            Alamofire.request(self.PATH_URL, method: .get).responseJSON {
+                response in
+                if response.result.isSuccess{
+                    print("Get the location!")
+                    let pathJSON : JSON = JSON(response.result.value!)
+                    
+                    for i in pathJSON["path"] {
+                        self.step_num = Int(i.0)
+                    }
+                    
+                    for i in pathJSON["path"] {
+                        print(i.0)
+                        print(i.1)
+                        
+                        let nav_text = i.1["node_to_id"].intValue
+                        let nav_dir = i.1["direction_2d"].intValue
+                        let nav_dis = i.1["distance"].intValue
+                        let nav_exit_dir = i.1["default_exit_direction"].intValue
+                        let nav_level = i.1["to_level"].intValue
+                        self.turn = ""
+                        
+                        // start
+                        if (Int(i.0) == 0){
+                            self.level = nav_level
+                            // start as an elevator
+                            if(i.1["node_to_special_type"] == "elevator") {
+                                self.turn_dir = nav_exit_dir-self.headDirection!
+                            }else{
+                                self.turn_dir = self.headDirection!-nav_dir
+                            }
+                        }else{
+                            // end
+                            if (Int(i.0) == self.step_num){
+                                self.turn_dir = nav_exit_dir - nav_dir
+                            }
+                            self.turn_dir = self.headDirection!-nav_dir
+                        }
+                       
+                        // direction
+                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around"}
+                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right"}
+                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left"}
+                        
+                        self.headDirection = nav_dir
+                        
+                        // for elevator
+                        if (i.1["node_to_special_type"] == "elevator") {
+                            if (nav_level == self.level){
+                                self.elevator = "Take the elevator!"
+                            }
+                            if (nav_level != self.level!)
+                            {
+                                // "distance": 1,
+                                // "direction_2d": -1
+                                self.level = nav_level
+                                self.elevator = "Go to the Level " + String(nav_level)
+                                self.headDirection = nav_exit_dir
+                                self.turn = "no"
+                            }
+                        }else{
+                            self.elevator = "no"
+                        }
+                        
+                        // instruction for navigation!
+                        self.instruction.append(self.turn!)
+                        self.instruction.append(self.elevator!)
+                    }
+                    for i in self.instruction {
+                        if (i != "no"){
+                            self.instruction_text += i
+                            self.instruction_text += "\n"
+                        }
+                    }
+                    self.instruction_detail.text = self.instruction_text
+                }
+                else{
+                    print("Error")
+                }
+            }
+            //print(self.instruction_text)
+            
+            self.PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
+            self.instruction = []
+            self.instruction_text = ""
+            self.level = 1
+        }
+       
     }
     
     var imageHighlightAction: SCNAction {

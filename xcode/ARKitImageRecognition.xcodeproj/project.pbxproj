@@ -63,9 +63,13 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+=======
+		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileTableViewController.swift; path = "/Users/Apple/si699-fapp-sprints/xcode/SI Hunt APP/Controllers/ProfileTableViewController.swift"; sourceTree = "<absolute>"; };
+>>>>>>> Stashed changes
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -265,7 +269,11 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
+<<<<<<< Updated upstream
 						DevelopmentTeam = R3STN86BB8;
+=======
+						DevelopmentTeam = 4Q8S8833ZU;
+>>>>>>> Stashed changes
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -519,10 +527,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< Updated upstream
 				DEVELOPMENT_TEAM = R3STN86BB8;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+=======
+				DEVELOPMENT_TEAM = 4Q8S8833ZU;
+				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qin.yu;
+>>>>>>> Stashed changes
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -538,10 +553,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< Updated upstream
 				DEVELOPMENT_TEAM = R3STN86BB8;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+=======
+				DEVELOPMENT_TEAM = 4Q8S8833ZU;
+				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = qin.yu;
+>>>>>>> Stashed changes
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

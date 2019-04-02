@@ -28,7 +28,6 @@ class EventTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        print("I want to go to" + locationLabel.text!)
     }
     
     
