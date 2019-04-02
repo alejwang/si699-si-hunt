@@ -15,6 +15,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var blurView: UIVisualEffectView!
+
     @IBOutlet weak var currentLocation: UILabel!
     @IBOutlet weak var destination: UILabel!
     @IBOutlet weak var instruction_detail: UILabel!
