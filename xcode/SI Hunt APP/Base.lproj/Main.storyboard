@@ -193,7 +193,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instruction_card" translatesAutoresizingMaskIntoConstraints="NO" id="5Gr-EN-j4w">
                                 <rect key="frame" x="20" y="722" width="374" height="154"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, follow me!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W1-Ba-yr8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, I need to know where you are                                  Find a sign and scan it" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3W1-Ba-yr8">
                                 <rect key="frame" x="20" y="722" width="374" height="154"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="154" id="MOW-ao-cCJ"/>
