@@ -56,6 +56,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>IBMPlexSans-Regular.otf</string>
+		<string>IBMPlexSans-Italic.otf</string>
+		<string>IBMPlexSans-Medium.otf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 </dict>

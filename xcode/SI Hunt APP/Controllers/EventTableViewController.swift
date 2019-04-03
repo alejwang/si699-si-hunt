@@ -18,11 +18,20 @@ class EventTableViewController: UITableViewController {
     
     //MARK: Properties
     var indexPathforDetail: IndexPath?
+//<<<<<<< Updated upstream
     var events = [Event]()
     var recom_events = [Event]()
     var mandatory_events = [Event]()
     var user_name : String! = ""
     var user_tags = [String]()
+//=======
+//    @IBAction func detailsPressed(_ sender: UIButton) {
+//        let button = sender
+//        let cell = button.superview!.superview! as! EventTableViewCell
+//        indexPathforDetail = tableView.indexPath(for: cell)
+//        //print(indexPathforDetail)
+//    }
+////>>>>>>> Stashed changes
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -206,12 +215,13 @@ class EventTableViewController: UITableViewController {
         print(indexPathforDetail!)
         //performSegue(withIdentifier: "seeEventDetail", sender: button)
     }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
         if segue.identifier == "seeEventDetail" {
-            print(indexPathforDetail![1])
+            //print(indexPathforDetail![1])
             let detailVC = segue.destination as! EventDetailViewController
             let event = events[indexPathforDetail![1]]
             detailVC.eventDescription = event.description
@@ -219,18 +229,41 @@ class EventTableViewController: UITableViewController {
             detailVC.eventTitle = event.name
             detailVC.eventOrganizer = event.organizer_name
         }
+        if segue.identifier == "startNavigation" {
+            //print(indexPathforDetail![1])
+            let navVC = segue.destination as! ViewController
+            let event = events[indexPathforDetail![1]]
+            navVC.eventLocation = event.location_name
+            navVC.eventId = event.location_id
+            
+        }
+    }
+//<<<<<<< Updated upstream
+//        private func loadSampleEvents(){
+//            guard let event1 = Event(name:"2019 Orientation", description: <#String#>, capacity: <#Int#>, start_time:"Mar.01.2019", location:"space2435") else{
+//                fatalError("Unable to instantiate event1")
+//            }
+//            guard let event2 = Event(name:"Information Expo", start_time:"Mar.03.2019", location:"space2435") else{
+//                fatalError("Unable to instantiate event2")
+//            }
+//
+//            events += [event1, event2]
+//        }
+//=======
         
-     }
+//
+//}
 
     
-    //    private func loadSampleEvents(){
-    //        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{
-    //            fatalError("Unable to instantiate event1")
-    //        }
-    //        guard let event2 = Event(name:"Information Expo", time:"Mar.03.2019", location:"space2435") else{
-    //            fatalError("Unable to instantiate event2")
-    //        }
-    //
-    //        events += [event1, event2]
-    //    }
+//    private func loadSampleEvents(){
+//        guard let event1 = Event(name:"2019 Orientation", time:"Mar.01.2019", location:"space2435") else{
+//            fatalError("Unable to instantiate event1")
+//        }
+//        guard let event2 = Event(name:"Information Expo", time:"Mar.03.2019", location:"space2435") else{
+//            fatalError("Unable to instantiate event2")
+//        }
+//
+//        events += [event1, event2]
+//    }
+// >>>>>>> Stashed changes
 }

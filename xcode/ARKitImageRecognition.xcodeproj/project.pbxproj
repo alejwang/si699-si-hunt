@@ -34,6 +34,11 @@
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		D96B2B20C3FBE18E15E4E9F6 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */; };
+		E777676E22546A8100D25A5D /* IBMPlexSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */; };
+		E777676F22546A8100D25A5D /* IBMPlexSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */; };
+		E777677022546A8100D25A5D /* IBMPlexSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */; };
+		E7776772225476B800D25A5D /* NavigationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7776771225476B800D25A5D /* NavigationTableViewController.swift */; };
+		E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */; };
 		E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CD22514A1C00562B5E /* LogInViewController.swift */; };
 		E77E46D0225157B200562B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CF225157B200562B5E /* APIClient.swift */; };
 		E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */; };
@@ -73,6 +78,11 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Medium.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
+		E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Regular.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Regular.otf"; sourceTree = "<group>"; };
+		E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Italic.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Italic.otf"; sourceTree = "<group>"; };
+		E7776771225476B800D25A5D /* NavigationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
+		E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStepTableViewCell.swift; sourceTree = "<group>"; };
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +177,8 @@
 				9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
 				E77E46CD22514A1C00562B5E /* LogInViewController.swift */,
+				E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */,
+				E7776771225476B800D25A5D /* NavigationTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +215,7 @@
 		3929C48A1E89EC2C00E00B60 /* SI Hunt APP */ = {
 			isa = PBXGroup;
 			children = (
+				E777676A22546A4000D25A5D /* Fonts */,
 				18477B6E223D7C1B00596E94 /* Controllers */,
 				183A6608221DC9A500DCC5AB /* 3D Models */,
 				9C16A328222463DB0028CEAC /* Model */,
@@ -246,6 +259,16 @@
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
+		E777676A22546A4000D25A5D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */,
+				E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */,
+				E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -280,7 +303,7 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-						DevelopmentTeam = R3STN86BB8;
+						DevelopmentTeam = V5J5T3A338;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -311,10 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18B127562240920600ED09A0 /* Pods-ARKitImageRecognition.release.xcconfig in Resources */,
+				E777676F22546A8100D25A5D /* IBMPlexSans-Regular.otf in Resources */,
+				E777677022546A8100D25A5D /* IBMPlexSans-Italic.otf in Resources */,
 				39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */,
 				183A6613221DC9A500DCC5AB /* tree.png in Resources */,
 				180F711422178AC500539296 /* Assets.xcassets in Resources */,
 				183A6617221DC9A500DCC5AB /* mountain.scn in Resources */,
+				E777676E22546A8100D25A5D /* IBMPlexSans-Medium.otf in Resources */,
 				183A6612221DC9A500DCC5AB /* tree.scn in Resources */,
 				183A6614221DC9A500DCC5AB /* 3D Models Credits.md in Resources */,
 				183A6616221DC9A500DCC5AB /* book.scn in Resources */,
@@ -400,6 +426,8 @@
 				9C0CB7D3225343920065AE30 /* AllEventsCollectionViewCell.swift in Sources */,
 				9C0CB7D52253521F0065AE30 /* EventDetailsViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
+				E7776772225476B800D25A5D /* NavigationTableViewController.swift in Sources */,
+				E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */,
 				E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 			);
@@ -539,10 +567,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = V5J5T3A338;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.alej;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -558,10 +586,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R3STN86BB8;
+				DEVELOPMENT_TEAM = V5J5T3A338;
 				INFOPLIST_FILE = "$(SRCROOT)/SI Hunt APP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = info.doraweng;
+				PRODUCT_BUNDLE_IDENTIFIER = wang.alej;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
