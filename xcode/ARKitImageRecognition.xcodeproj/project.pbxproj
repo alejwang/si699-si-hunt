@@ -23,6 +23,11 @@
 		3929C4911E89EC2C00E00B60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3929C48F1E89EC2C00E00B60 /* Main.storyboard */; };
 		39D8DC1B1E8ADAE600386B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39D8DC1A1E8ADAE600386B05 /* LaunchScreen.storyboard */; };
 		5B1E1B972246ABC200A5365B /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */; };
+		9C0CB7C52252F4800065AE30 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7C42252F4800065AE30 /* EventViewController.swift */; };
+		9C0CB7CB2252F9540065AE30 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7CA2252F9540065AE30 /* CollectionViewCell.swift */; };
+		9C0CB7D12253318A0065AE30 /* MandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7D02253318A0065AE30 /* MandCollectionViewCell.swift */; };
+		9C0CB7D3225343920065AE30 /* AllEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */; };
+		9C0CB7D52253521F0065AE30 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */; };
 		9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */; };
 		9C16A327222461100028CEAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A326222461100028CEAC /* Event.swift */; };
 		9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A329222465D40028CEAC /* EventTableViewController.swift */; };
@@ -56,6 +61,11 @@
 		573AA9A7AEED2D40C6947A39 /* Pods-ARKitImageRecognition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKitImageRecognition.debug.xcconfig"; path = "Target Support Files/Pods-ARKitImageRecognition/Pods-ARKitImageRecognition.debug.xcconfig"; sourceTree = "<group>"; };
 		5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKitImageRecognition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0CB7C42252F4800065AE30 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		9C0CB7CA2252F9540065AE30 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = ../../CollectionViewCell.swift; sourceTree = "<group>"; };
+		9C0CB7D02253318A0065AE30 /* MandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		9C16A326222461100028CEAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		9C16A329222465D40028CEAC /* EventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +160,11 @@
 				9C16A329222465D40028CEAC /* EventTableViewController.swift */,
 				9C16A3242223D1D60028CEAC /* EventTableViewCell.swift */,
 				5B1E1B962246ABC200A5365B /* EventDetailViewController.swift */,
+				9C0CB7C42252F4800065AE30 /* EventViewController.swift */,
+				9C0CB7CA2252F9540065AE30 /* CollectionViewCell.swift */,
+				9C0CB7D02253318A0065AE30 /* MandCollectionViewCell.swift */,
+				9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */,
+				9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */,
 				1488324B1EFC3EBF0043E0AB /* Additional View Controllers */,
 				E77E46CD22514A1C00562B5E /* LogInViewController.swift */,
 			);
@@ -369,9 +384,11 @@
 			files = (
 				E7833BD022499863005A5478 /* Tag.swift in Sources */,
 				3929C48E1E89EC2C00E00B60 /* ViewController.swift in Sources */,
+				9C0CB7CB2252F9540065AE30 /* CollectionViewCell.swift in Sources */,
 				E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */,
 				184D7C852243450A0059E964 /* Nodes.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
+				9C0CB7C52252F4800065AE30 /* EventViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
 				9C16A3252223D1D60028CEAC /* EventTableViewCell.swift in Sources */,
@@ -379,6 +396,9 @@
 				5B1E1B972246ABC200A5365B /* EventDetailViewController.swift in Sources */,
 				9C16A32A222465D40028CEAC /* EventTableViewController.swift in Sources */,
 				E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */,
+				9C0CB7D12253318A0065AE30 /* MandCollectionViewCell.swift in Sources */,
+				9C0CB7D3225343920065AE30 /* AllEventsCollectionViewCell.swift in Sources */,
+				9C0CB7D52253521F0065AE30 /* EventDetailsViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
