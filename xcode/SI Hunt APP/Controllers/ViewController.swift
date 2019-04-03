@@ -16,9 +16,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     @IBOutlet weak var blurView: UIVisualEffectView!
 
-    @IBOutlet weak var currentLocation: UILabel!
-    @IBOutlet weak var destination: UILabel!
-    @IBOutlet weak var instruction_detail: UILabel!
+//    @IBOutlet weak var currentLocation: UILabel!
+//    @IBOutlet weak var destination: UILabel!
+//    @IBOutlet weak var instruction_detail: UILabel!
+    @IBOutlet weak var exitButton: UIButton!
+    @IBOutlet weak var instructionTitleLabel: UILabel!
+//    @IBOutlet weak var stepInsturctionContainerView: UIView!
     
 
     let fadeDuration: TimeInterval = 0.3
@@ -76,15 +79,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sceneView.delegate = self
         sceneView.session.delegate = self
 
+        // Rewrite the style of close button
+        self.exitButton.setImage(UIImage(named: "exitButton"), for: .normal)
+        
+        
         // Hook up status view controller callback(s).
         statusViewController.restartExperienceHandler = { [unowned self] in
             self.restartExperience()
         }
-        destination.text = eventLocation
+//        destination.text = eventLocation
+
         
     }
 
@@ -147,7 +154,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             Alamofire.request(self.NODE_URL, method: .get).responseJSON {
                 response in
                 if response.result.isSuccess{
-                    print("Get the location!")
+                    print("> Got the location from recognition.")
                     let startJSON : JSON = JSON(response.result.value!)
                     self.updateStartNode(json: startJSON)
                 }
@@ -160,15 +167,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func updateStartNode(json:JSON) {
+        var firstTimeRecognition = true
         
-        // Get the location id
+        // Get the location id and current location/node name
         currentlocationId = json["nav_node_result"]["location_id"].intValue
-        let node_name = json["nav_node_result"]["location_name"]
-        currentLocation.text = node_name.stringValue
+        let userCurrentLocationName = json["nav_node_result"]["location_name"].stringValue
+        print("> userCurrentLocationName: \(userCurrentLocationName)")
         
-        // Show the location name on the User interfaces
+        // Show the location name on user interface
+//        currentLocation.text = userCurrentLocationName
+        instructionTitleLabel.text = "Taking You to \(eventLocation!) ..."
         self.statusViewController.cancelAllScheduledMessages()
-        self.statusViewController.showMessage("Detected image “\(node_name)”")
+        self.statusViewController.showMessage("Detected image “\(userCurrentLocationName)”")
 //        for node in node_results {
 //                self.Navnode.append(Nodes(id: node["id"].intValue,
 //                                    building: node["building"].stringValue,
@@ -179,9 +189,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //                                    location_id: node["location_id"].intValue,
 //                                    location_name: node["location_name"].stringValue)!)
 //        }
+        if firstTimeRecognition {
+            goNavigation()
+            firstTimeRecognition = false
+            print("> firstTimeRecognition: \(firstTimeRecognition)")
+        }
     }
     
-    @IBAction func goNavigation(_ sender: Any) {
+    func goNavigation() {
         //print(eventId)
         //print(currentlocationId)
 
@@ -262,13 +277,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                             self.instruction_text += "\n"
                         }
                     }
-                    self.instruction_detail.text = self.instruction_text
+//                    self.instruction_detail.text = self.instruction_text
                 }
                 else{
                     print("Error")
                 }
             }
-            //print(self.instruction_text)
+            print("> Instruction_text:" + self.instruction_text)
+            print("> instruction: \(self.instruction)")
+            
+//            performSegue(withIdentifier: "passToNavigationSteps", sender: self)
+            containerViewController?.steps = self.instruction
+            containerViewController?.tableView.reloadData()
+            
             
             self.PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
             self.instruction = []
@@ -288,4 +309,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             .removeFromParentNode()
         ])
     }
+    
+    
+    // Action to go back
+    @IBAction func exitButtonTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Connect with tableview
+    var containerViewController: NavigationTableViewController?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "passToNavigationSteps" {
+            containerViewController = segue.destination as? NavigationTableViewController
+//            containerViewController?.containerToMaster = self
+        }
+    }
+    
 }
