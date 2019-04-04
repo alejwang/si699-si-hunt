@@ -78,9 +78,9 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
-		E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Medium.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
-		E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Regular.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Regular.otf"; sourceTree = "<group>"; };
-		E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IBMPlexSans-Italic.otf"; path = "../../../../../Downloads/OpenType/IBM-Plex-Sans/IBMPlexSans-Italic.otf"; sourceTree = "<group>"; };
+		E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
+		E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.otf"; sourceTree = "<group>"; };
+		E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Italic.otf"; sourceTree = "<group>"; };
 		E7776771225476B800D25A5D /* NavigationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTableViewController.swift; sourceTree = "<group>"; };
 		E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStepTableViewCell.swift; sourceTree = "<group>"; };
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
