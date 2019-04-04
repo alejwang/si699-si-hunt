@@ -36,6 +36,7 @@ class EventTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -238,6 +239,8 @@ class EventTableViewController: UITableViewController {
             
         }
     }
+    
+    @IBAction func unwindToVC1(segue:UIStoryboardSegue) { }
 //<<<<<<< Updated upstream
 //        private func loadSampleEvents(){
 //            guard let event1 = Event(name:"2019 Orientation", description: <#String#>, capacity: <#Int#>, start_time:"Mar.01.2019", location:"space2435") else{

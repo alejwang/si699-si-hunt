@@ -22,9 +22,23 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true;
         
+        // rewrite nav bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.2403589189, green: 0.2626186907, blue: 0.8809275031, alpha: 1)
         
+        // rewrite nav bar back btn
+        let button: UIButton = UIButton (type: UIButtonType.custom)
+        button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        button.frame = CGRect(x: 32 , y: 10, width: 60, height: 32)
+        button.addTarget(self, action: Selector(("backButtonPressed:")), for: UIControlEvents.touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
+        
+        // rewrite log out btn
         let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.logoutFunction))
         logoutIncellButton.isUserInteractionEnabled = true
         logoutIncellButton.addGestureRecognizer(tap)
@@ -34,6 +48,9 @@ class ProfileTableViewController: UITableViewController {
         
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+    }
     
     @objc func logoutFunction(sender:UITapGestureRecognizer) {
         

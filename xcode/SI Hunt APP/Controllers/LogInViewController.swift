@@ -20,10 +20,25 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        logInButton.layer.masksToBounds = true
-        logInButton.layer.cornerRadius = 10
+        // rewrite nav bar
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1867006123, green: 0.1476626396, blue: 0.8859024048, alpha: 1)
+        
+        // rewrite nav bar back btn
+        let button: UIButton = UIButton (type: UIButtonType.custom)
+        button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        button.frame = CGRect(x: 32 , y: 10, width: 60, height: 32)
+        button.addTarget(self, action: Selector(("backButtonPressed:")), for: UIControlEvents.touchUpInside)
+        let barButton = UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem = barButton
 
-        // Do any additional setup after loading the view.
+    }
+    
+    @objc func backButtonPressed(_ sender : Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
