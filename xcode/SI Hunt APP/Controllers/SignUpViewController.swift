@@ -1,19 +1,21 @@
 //
-//  LogInViewController.swift
+//  SignUpViewController.swift
 //  ARKitImageRecognition
 //
-//  Created by Alejandro Wang on 3/31/19.
+//  Created by Alejandro Wang on 4/4/19.
 //  Copyright © 2019 Apple. All rights reserved.
 //
 
 import UIKit
-import QuartzCore
 
-class LogInViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var repeatPasswordTextfield: UITextField!
+    
+    @IBOutlet weak var logInButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,12 +38,6 @@ class LogInViewController: UIViewController {
         // rewrite the go button
         logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width, 0, logInButton.imageView!.frame.size.width);
         logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
-
-        // validate log in session, if logged in, push the profile vc
-        if UserDefaults.standard.string(forKey: "access_token") != nil {
-            let profileVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileTableViewController") as! ProfileTableViewController
-            self.navigationController?.pushViewController(profileVC, animated: false)
-        }
     }
     
     // rewrite the back button action
@@ -49,9 +45,9 @@ class LogInViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // rewrite exit keyboard interaction
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    // action for go back to log in from sign up
+    @IBAction func goBackToLogIn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // called when user failed to login
@@ -63,43 +59,46 @@ class LogInViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    // called when user clicked the login button
-    @IBAction func logIn(_ sender: UIButton) {
-        guard let username = usernameTextfield.text, let password = passwordTextfield.text else {
+    @IBAction func signUp(_ sender: UIButton) {
+        guard let username = usernameTextfield.text, let password = passwordTextfield.text, let repeatPassword = repeatPasswordTextfield.text else {
             loginFailed(message: "Please fill in the username and password")
             return
         }
-        guard username.count > 0, password.count > 0 else {
-            loginFailed(message: "Username or password is too short!")
+        guard username.count > 5, password.count > 5, repeatPassword.count > 5  else {
+            loginFailed(message: "Username or password is too short! Try a username/password with at least 6 characters")
+            return
+        }
+        guard repeatPassword == password else {
+            loginFailed(message: "Passwords not the same")
             return
         }
         logInButton.titleLabel?.text = "... "
+        
+        // TODO: check if the username is used!
+        // APIClient.getProfile()
+        
+        // register first
+        APIClient.register(withUsername: username, password: password, completion: {
+            print("> Signing up \(String(describing: self.usernameTextfield.text!)) \(String(describing: self.passwordTextfield.text!)) ")
+        })
+        
+        // log in then and perform segue
         APIClient.login(withUsername: usernameTextfield.text!, password: passwordTextfield.text!, completion: {
-                print("> Loging in \(String(describing: self.usernameTextfield.text!)) \(String(describing: self.passwordTextfield.text!)) ")
-                print("> Auth returned string: \(String(describing: UserDefaults.standard.string(forKey: "access_token"))))")
+            print("> Auth returned string: \(String(describing: UserDefaults.standard.string(forKey: "access_token"))))")
             
-                if UserDefaults.standard.string(forKey: "access_token") != nil {
-                    self.view.endEditing(true) // remove the keyboard
-                    let vc = EventTableViewController(nibName: "EventTableViewController", bundle: nil)
-                    vc.user_name = self.usernameTextfield.text!
-                    UserDefaults.standard.set(self.usernameTextfield.text!, forKey: "username")
-                    print("> vc.user_name + UD.username: \(vc.user_name ?? "no_name")")
-                    self.passwordTextfield.text = ""
-                    self.performSegue(withIdentifier: "gotoProfile", sender: self)
-                } else {
-                    self.loginFailed(message: "Wrong username or password!")
-                }
+            if UserDefaults.standard.string(forKey: "access_token") != nil {
+                self.view.endEditing(true) // remove the keyboard
+                let vc = EventTableViewController(nibName: "EventTableViewController", bundle: nil)
+                vc.user_name = self.usernameTextfield.text!
+                UserDefaults.standard.set(self.usernameTextfield.text!, forKey: "username")
+                print("> vc.user_name + UD.username: \(vc.user_name ?? "no_name")")
+                self.passwordTextfield.text = ""
+                self.performSegue(withIdentifier: "gotoProfile2", sender: self)
+            } else {
+                self.loginFailed(message: "Log in failed, please try to log in again")
+                self.navigationController?.popViewController(animated: true)
+            }
         })
     }
-    
-    // This function is called before the segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        // get a reference to the second view controller
-//        let profileTableViewController = segue.destination as! ProfileTableViewController
-//
-//        // set a variable in the second view controller with the String to pass
-//        profileTableViewController.receivedUsername = usernameTextfield.text!
-//    }
     
 }

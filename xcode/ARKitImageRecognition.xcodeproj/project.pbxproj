@@ -34,6 +34,7 @@
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		D96B2B20C3FBE18E15E4E9F6 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */; };
+		E741540822564E00004B89D1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741540722564E00004B89D1 /* SignUpViewController.swift */; };
 		E777676E22546A8100D25A5D /* IBMPlexSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */; };
 		E777676F22546A8100D25A5D /* IBMPlexSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */; };
 		E777677022546A8100D25A5D /* IBMPlexSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */; };
@@ -78,6 +79,7 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		E741540722564E00004B89D1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
 		E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.otf"; sourceTree = "<group>"; };
 		E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Italic.otf"; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		18477B6E223D7C1B00596E94 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E741540722564E00004B89D1 /* SignUpViewController.swift */,
 				E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */,
 				E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
@@ -414,6 +417,7 @@
 				E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */,
 				184D7C852243450A0059E964 /* Nodes.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
+				E741540822564E00004B89D1 /* SignUpViewController.swift in Sources */,
 				9C0CB7C52252F4800065AE30 /* EventViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,

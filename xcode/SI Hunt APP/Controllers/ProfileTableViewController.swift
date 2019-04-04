@@ -34,7 +34,7 @@ class ProfileTableViewController: UITableViewController {
         let button: UIButton = UIButton (type: UIButtonType.custom)
         button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
         button.frame = CGRect(x: 32 , y: 10, width: 60, height: 32)
-        button.addTarget(self, action: Selector(("backButtonPressed:")), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(ProfileTableViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
         
