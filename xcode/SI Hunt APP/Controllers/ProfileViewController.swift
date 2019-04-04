@@ -9,14 +9,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ProfileTableViewController: UITableViewController {
-
-    @IBOutlet weak var userHeadlineLabel: UILabel!
-    @IBOutlet weak var userInterestLabel: UILabel!
+class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var userFullnameLabel: UILabel!
     @IBOutlet weak var userUsernameLabel: UILabel!
-    @IBOutlet weak var logoutIncellButton: UILabel!
+    @IBOutlet weak var userHeadlineAndInterestLabel: UILabel!
     
     var receivedUsername: String = ""
+    var headlineString : String = ""
     var userTags = [String]()
     var allTags = [Tag]()
     
@@ -34,15 +34,11 @@ class ProfileTableViewController: UITableViewController {
         let button: UIButton = UIButton (type: UIButtonType.custom)
         button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
         button.frame = CGRect(x: 32 , y: 10, width: 60, height: 32)
-        button.addTarget(self, action: #selector(ProfileTableViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        button.addTarget(self, action: #selector(ProfileViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
-        
-        // rewrite log out btn
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.logoutFunction))
-        logoutIncellButton.isUserInteractionEnabled = true
-        logoutIncellButton.addGestureRecognizer(tap)
-        
+
+        // get data
         getProfileData(username: receivedUsername)
         getTagData()
         
@@ -52,15 +48,13 @@ class ProfileTableViewController: UITableViewController {
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
     
-    @objc func logoutFunction(sender:UITapGestureRecognizer) {
-        
+    @IBAction func logoutFunction(_ sender: UIButton) {
         print("> Tapped Log out")
         navigationController?.popViewController(animated: true)
-        
+        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
     
     // MARK: - Table view data source
-
 
     func getProfileData(username: String){
         let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
@@ -88,9 +82,9 @@ class ProfileTableViewController: UITableViewController {
         }
         let headline = json["description"].stringValue
         if headline != "" {
-            userHeadlineLabel.text = headline
+            headlineString = headline
         } else {
-            userHeadlineLabel.text = "..."
+            headlineString = "I'm lazy and I don't want to introduce myself."
         }
         userTags = []
         for tag in json["tags"].arrayValue {
@@ -98,9 +92,9 @@ class ProfileTableViewController: UITableViewController {
         }
 //        print(tags)
         if userTags != [] {
-            userInterestLabel.text = userTags.joined(separator: ", ")
+            userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nI am interested in \n\(userTags.joined(separator: ", "))"
         } else {
-            userInterestLabel.text = "0"
+            userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nNo interests for now..."
         }
     }
     
@@ -136,11 +130,10 @@ class ProfileTableViewController: UITableViewController {
             if userTags != sourceViewController.userTags {
                 userTags = sourceViewController.userTags
                 if userTags != [] {
-                    userInterestLabel.text = userTags.joined(separator: ", ")
+                    userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nI am interested in \n\(userTags.joined(separator: ", "))"
                 } else {
-                    userInterestLabel.text = "0"
+                    userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nNo interests for now..."
                 }
-                print(userTags)
             }
         }
     }

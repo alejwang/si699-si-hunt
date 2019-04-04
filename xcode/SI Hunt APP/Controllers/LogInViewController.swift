@@ -12,9 +12,10 @@ import QuartzCore
 class LogInViewController: UIViewController {
 
     @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var logInButton: UIButton!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,12 +38,18 @@ class LogInViewController: UIViewController {
         logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width, 0, logInButton.imageView!.frame.size.width);
         logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         // validate log in session, if logged in, push the profile vc
-        if UserDefaults.standard.string(forKey: "access_token") != nil {
-            let profileVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileTableViewController") as! ProfileTableViewController
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") {
+            let profileVC = self.storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             self.navigationController?.pushViewController(profileVC, animated: false)
         }
     }
+    
     
     // rewrite the back button action
     @objc func backButtonPressed(_ sender : Any) {
@@ -65,6 +72,7 @@ class LogInViewController: UIViewController {
     
     // called when user clicked the login button
     @IBAction func logIn(_ sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "isLoggedIn")
         guard let username = usernameTextfield.text, let password = passwordTextfield.text else {
             loginFailed(message: "Please fill in the username and password")
             return
@@ -85,21 +93,12 @@ class LogInViewController: UIViewController {
                     UserDefaults.standard.set(self.usernameTextfield.text!, forKey: "username")
                     print("> vc.user_name + UD.username: \(vc.user_name ?? "no_name")")
                     self.passwordTextfield.text = ""
+                    UserDefaults.standard.set(true, forKey: "isLoggedIn")
                     self.performSegue(withIdentifier: "gotoProfile", sender: self)
                 } else {
                     self.loginFailed(message: "Wrong username or password!")
                 }
         })
     }
-    
-    // This function is called before the segue
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        // get a reference to the second view controller
-//        let profileTableViewController = segue.destination as! ProfileTableViewController
-//
-//        // set a variable in the second view controller with the String to pass
-//        profileTableViewController.receivedUsername = usernameTextfield.text!
-//    }
     
 }

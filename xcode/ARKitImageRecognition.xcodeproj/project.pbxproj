@@ -42,7 +42,7 @@
 		E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */; };
 		E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CD22514A1C00562B5E /* LogInViewController.swift */; };
 		E77E46D0225157B200562B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CF225157B200562B5E /* APIClient.swift */; };
-		E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */; };
+		E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
 		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +87,7 @@
 		E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStepTableViewCell.swift; sourceTree = "<group>"; };
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		E7833BCD2249974C005A5478 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,7 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				E741540722564E00004B89D1 /* SignUpViewController.swift */,
-				E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */,
+				E7833BCD2249974C005A5478 /* ProfileViewController.swift */,
 				E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
@@ -432,7 +432,7 @@
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				E7776772225476B800D25A5D /* NavigationTableViewController.swift in Sources */,
 				E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */,
-				E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */,
+				E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
