@@ -111,9 +111,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9h-Vm-ZUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4126" y="1211"/>
+            <point key="canvasLocation" x="4951" y="1193"/>
         </scene>
-        <!--Events-->
+        <!-- -->
         <scene sceneID="XcA-pb-mHY">
             <objects>
                 <viewController id="gAn-WK-JGk" customClass="EventViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
@@ -314,7 +314,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0tQ-pD-0Ck"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Events" id="2yp-8l-2nl"/>
+                    <navigationItem key="navigationItem" title=" " largeTitleDisplayMode="never" id="2yp-8l-2nl">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="KRK-4f-Djn">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ej8-5S-fjb">
+                                <rect key="frame" x="267" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Profile"/>
+                            </button>
+                            <connections>
+                                <segue destination="cnK-Sy-w7B" kind="show" id="gyY-kN-GzN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="allEventsCollectionView" destination="MiT-vx-9YZ" id="9es-sX-SB9"/>
                         <outlet property="mandCollectionView" destination="lR3-ie-flv" id="dr9-gZ-uOu"/>
@@ -324,9 +335,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvU-yk-WFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1956" y="667.91604197901052"/>
+            <point key="canvasLocation" x="3301" y="625"/>
         </scene>
-        <!--Event Details View Controller-->
+        <!--Detail-->
         <scene sceneID="Kmk-zp-3Vn">
             <objects>
                 <viewController storyboardIdentifier="EventDetailsViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DYC-GX-qeE" customClass="EventDetailsViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
@@ -389,17 +400,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="J4a-Fg-jYR"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Detail" largeTitleDisplayMode="never" id="BjU-Jd-1GY"/>
                     <connections>
                         <outlet property="eventDescription" destination="GMU-Zn-ZD1" id="Bff-AJ-vLO"/>
                         <outlet property="eventImage" destination="gLb-Yc-T3e" id="53z-0i-CeX"/>
                         <outlet property="eventLocation" destination="3LF-0B-ftY" id="HxD-oX-wGE"/>
                         <outlet property="eventName" destination="lnm-mf-dpm" id="QXj-sx-grv"/>
                         <outlet property="eventTime" destination="HKL-Um-xSE" id="BMn-Ef-Pb1"/>
+                        <segue destination="BV1-FR-VrT" kind="presentation" identifier="startNavigation" id="0ij-tu-dMz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auV-rs-qcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1956" y="1432.5337331334333"/>
+            <point key="canvasLocation" x="4128" y="625"/>
         </scene>
         <!-- -->
         <scene sceneID="tXr-a1-R10">
@@ -528,11 +541,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3272.8000000000002" y="1614.5320197044337"/>
+            <point key="canvasLocation" x="4126" y="1558"/>
         </scene>
         <!--Events-->
         <scene sceneID="Ifg-D6-Wx5">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qm7-fa-FK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="lhu-Ur-1vm" customClass="EventTableViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="utn-cj-gbZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -566,7 +580,6 @@
                                             </state>
                                             <connections>
                                                 <action selector="detailsPressed:" destination="lhu-Ur-1vm" eventType="touchUpInside" id="aWC-2G-7uR"/>
-                                                <segue destination="BV1-FR-VrT" kind="presentation" identifier="startNavigation" id="igW-V8-c9l"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcF-rQ-H2A">
@@ -636,48 +649,45 @@
                     <navigationItem key="navigationItem" title="Events" id="67j-ic-Feg">
                         <barButtonItem key="rightBarButtonItem" title="profile" style="plain" id="ViJ-3l-X0G">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KBs-eP-s9H">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <rect key="frame" x="311" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Profile"/>
-                                <connections>
-                                    <segue destination="cnK-Sy-w7B" kind="show" id="AQu-T8-QzM"/>
-                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qm7-fa-FK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3275" y="625"/>
+            <point key="canvasLocation" x="4981" y="625"/>
         </scene>
         <!--Event Detail-->
         <scene sceneID="Uji-W5-1Ip">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YKO-hK-hvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController hidesBottomBarWhenPushed="YES" id="Oy0-8G-PPb" customClass="EventDetailViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yRU-gj-7Dv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-Aa-ZEx">
-                                <rect key="frame" x="147" y="111" width="81" height="21"/>
+                                <rect key="frame" x="147" y="67" width="81" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKn-JA-YrK">
-                                <rect key="frame" x="16" y="150" width="71" height="21"/>
+                                <rect key="frame" x="16" y="106" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpe-4U-BBH">
-                                <rect key="frame" x="16" y="187" width="84" height="21"/>
+                                <rect key="frame" x="16" y="143" width="84" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Description" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqq-Qv-rBf">
-                                <rect key="frame" x="16" y="224" width="343" height="20.333333333333343"/>
+                                <rect key="frame" x="16" y="180" width="343" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -706,9 +716,8 @@
                         <outlet property="eventTitleLabel" destination="ucM-Aa-ZEx" id="kEe-0Y-fZe"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YKO-hK-hvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4129" y="625"/>
+            <point key="canvasLocation" x="5838" y="625"/>
         </scene>
         <!--Event-->
         <scene sceneID="UO7-xq-Cf7">
@@ -716,7 +725,7 @@
                 <navigationController id="5lZ-I4-r9u" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Event" image="database" id="n7P-td-Hmn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Kgi-gZ-vEx">
-                        <rect key="frame" x="0.0" y="44" width="375" height="128.33333333333331"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -733,7 +742,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="lhu-Ur-1vm" kind="relationship" relationship="rootViewController" id="cI5-Gr-yOV"/>
+                        <segue destination="gAn-WK-JGk" kind="relationship" relationship="rootViewController" id="t1u-mx-Yqz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="elO-Ov-hjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -777,7 +786,7 @@
                                 <rect key="frame" x="0.0" y="274" width="375" height="538"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HK-rV-zPW">
-                                        <rect key="frame" x="24" y="31.999999999999993" width="174" height="112.33333333333331"/>
+                                        <rect key="frame" x="24" y="31.999999999999993" width="164.33333333333334" height="106.33333333333331"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Cool boy, it’s me!
@@ -785,21 +794,21 @@
 I am interested in 
 UX, Data, Academic…</string>
                                                 <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" size="18" name="IBMPlexSans"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
+                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="17" name="IBMPlexSans"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-vF-e8N">
-                                        <rect key="frame" x="266" y="434" width="85" height="32"/>
+                                        <rect key="frame" x="258" y="434" width="93" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="jCy-K5-fi1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Log out" image="signOutButton">
+                                        <state key="normal" title="Log out  " image="signOutButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -808,12 +817,12 @@ UX, Data, Academic…</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liu-mF-6b6">
-                                        <rect key="frame" x="169" y="354" width="182" height="32"/>
+                                        <rect key="frame" x="165" y="354" width="186" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="vXY-uQ-X14"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Choose my interests " image="editButton">
+                                        <state key="normal" title="Choose my interests  " image="editButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -850,6 +859,8 @@ UX, Data, Academic…</string>
                         <viewLayoutGuide key="safeArea" id="c0A-bR-zte"/>
                     </view>
                     <connections>
+                        <outlet property="chooseInterestButton" destination="liu-mF-6b6" id="HKp-zJ-fG8"/>
+                        <outlet property="logoutButton" destination="Uqh-vF-e8N" id="DGc-oU-rVN"/>
                         <outlet property="userFullnameLabel" destination="k0g-J3-Azo" id="DP8-e5-ywg"/>
                         <outlet property="userHeadlineAndInterestLabel" destination="5HK-rV-zPW" id="uCO-Jr-2Tq"/>
                         <outlet property="userUsernameLabel" destination="bF2-KJ-gQO" id="iW0-6c-t6h"/>
@@ -868,7 +879,7 @@ UX, Data, Academic…</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="uGY-ws-Rrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="checklistCell" id="6LP-TF-cho" customClass="ProfileInterestsTableViewCell" customModule="ARKitImageRecognition" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
@@ -876,8 +887,19 @@ UX, Data, Academic…</string>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6LP-TF-cho" id="OFB-3z-QcZ">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjp-za-e7C">
+                                            <rect key="frame" x="29" y="12.000000000000028" width="42" height="23"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -888,9 +910,9 @@ UX, Data, Academic…</string>
                     <navigationItem key="navigationItem" title="My interests" largeTitleDisplayMode="never" id="gIz-iX-dfz">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="fhr-5F-VFg">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OH0-6G-yMN">
-                                <rect key="frame" x="267" y="5.6666666666666679" width="92" height="33"/>
+                                <rect key="frame" x="267" y="4.6666666666666679" width="92" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="17"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <segue destination="zp8-Vk-eiF" kind="unwind" unwindAction="unwindToThisViewWithSender:" id="wbx-dT-11b"/>
@@ -913,7 +935,7 @@ UX, Data, Academic…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-LZ-sDa">
-                                <rect key="frame" x="16" y="203" width="343" height="32"/>
+                                <rect key="frame" x="16" y="118.66666666666669" width="343" height="32"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -924,7 +946,7 @@ UX, Data, Academic…</string>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VDb-Vm-IBm">
-                                <rect key="frame" x="16" y="256" width="343" height="32"/>
+                                <rect key="frame" x="16" y="171.66666666666666" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -935,15 +957,18 @@ UX, Data, Academic…</string>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDN-ue-OHD">
-                                <rect key="frame" x="16" y="239" width="343" height="1"/>
+                                <rect key="frame" x="16" y="154.66666666666666" width="343" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="fDt-Ji-i2W"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="453-LS-fSj">
-                                <rect key="frame" x="16" y="292" width="343" height="1"/>
+                                <rect key="frame" x="16" y="207.66666666666666" width="343" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="j3g-dW-8uQ"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-Jn-fwC">
                                 <rect key="frame" x="16" y="706" width="188" height="36"/>
@@ -956,9 +981,12 @@ UX, Data, Academic…</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-ys-dMc">
-                                <rect key="frame" x="289" y="325" width="70" height="40"/>
+                                <rect key="frame" x="284" y="240.66666666666663" width="75" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SRb-hW-bvq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
-                                <state key="normal" title="Go " image="goButton">
+                                <state key="normal" title="Go  " image="goButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -982,8 +1010,6 @@ UX, Data, Academic…</string>
                             <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="v8K-Sy-NvN" secondAttribute="leadingMargin" id="W2v-nt-y0I"/>
                             <constraint firstItem="453-LS-fSj" firstAttribute="leading" secondItem="xX6-Jn-fwC" secondAttribute="leading" id="Y35-AT-oL1"/>
                             <constraint firstItem="453-LS-fSj" firstAttribute="trailing" secondItem="Dsb-ys-dMc" secondAttribute="trailing" id="dAr-Gr-vbQ"/>
-                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="top" secondItem="v8K-Sy-NvN" secondAttribute="top" constant="256" id="dBC-vw-Xmp"/>
-                            <constraint firstItem="ctC-RN-kjv" firstAttribute="bottom" secondItem="Dsb-ys-dMc" secondAttribute="bottom" constant="413" id="k94-hJ-hYq"/>
                             <constraint firstItem="bDN-ue-OHD" firstAttribute="trailing" secondItem="VDb-Vm-IBm" secondAttribute="trailing" id="nK6-E5-WJL"/>
                             <constraint firstItem="VDb-Vm-IBm" firstAttribute="top" secondItem="bDN-ue-OHD" secondAttribute="bottom" constant="16" id="p6K-7Y-lLS"/>
                             <constraint firstItem="ctC-RN-kjv" firstAttribute="bottom" secondItem="xX6-Jn-fwC" secondAttribute="bottom" constant="36" id="wVW-Nu-lFu"/>
@@ -1067,7 +1093,7 @@ UX, Data, Academic…</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jrC-cB-pMB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4129" y="1548"/>
+            <point key="canvasLocation" x="4950" y="1497"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="XeJ-qk-2xP">
@@ -1078,7 +1104,7 @@ UX, Data, Academic…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AKs-BG-eeT">
-                                <rect key="frame" x="16" y="203" width="343" height="32"/>
+                                <rect key="frame" x="16" y="118.66666666666666" width="343" height="32"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1089,7 +1115,7 @@ UX, Data, Academic…</string>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-a1-qVR">
-                                <rect key="frame" x="16" y="256" width="343" height="32"/>
+                                <rect key="frame" x="16" y="171.66666666666666" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1100,21 +1126,21 @@ UX, Data, Academic…</string>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyR-hy-Vx5">
-                                <rect key="frame" x="16" y="239" width="343" height="1"/>
+                                <rect key="frame" x="16" y="154.66666666666666" width="343" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="iie-5N-aHX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8l-M9-bj1">
-                                <rect key="frame" x="16" y="292" width="343" height="1"/>
+                                <rect key="frame" x="16" y="207.66666666666666" width="343" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="n0N-dv-t5m"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOz-fk-P5K">
-                                <rect key="frame" x="16" y="706" width="206" height="36"/>
+                                <rect key="frame" x="16" y="621.66666666666663" width="206" height="36"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="18"/>
                                 <state key="normal" title="Already have an account?">
                                     <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1124,7 +1150,7 @@ UX, Data, Academic…</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb0-Fi-50h">
-                                <rect key="frame" x="291" y="378" width="68" height="40"/>
+                                <rect key="frame" x="291" y="293.66666666666669" width="68" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1po-eO-E7g"/>
                                 </constraints>
@@ -1137,7 +1163,7 @@ UX, Data, Academic…</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat your password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-K7-GoF">
-                                <rect key="frame" x="16" y="309" width="343" height="32"/>
+                                <rect key="frame" x="16" y="224.66666666666666" width="343" height="31.999999999999972"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1148,7 +1174,7 @@ UX, Data, Academic…</string>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epr-BF-WSy">
-                                <rect key="frame" x="16" y="345" width="343" height="1"/>
+                                <rect key="frame" x="16" y="260.66666666666669" width="343" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lyl-UK-KAC"/>
@@ -1159,7 +1185,6 @@ UX, Data, Academic…</string>
                         <color key="tintColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jwa-a1-qVR" firstAttribute="leading" secondItem="L8l-M9-bj1" secondAttribute="leading" id="1Nj-g7-MY5"/>
-                            <constraint firstItem="jwa-a1-qVR" firstAttribute="top" secondItem="DrW-gS-F1r" secondAttribute="top" constant="256" id="1tb-qj-xS6"/>
                             <constraint firstItem="L8l-M9-bj1" firstAttribute="top" secondItem="jwa-a1-qVR" secondAttribute="bottom" constant="4" id="7aX-WK-gBb"/>
                             <constraint firstItem="Epr-BF-WSy" firstAttribute="top" secondItem="u6F-K7-GoF" secondAttribute="bottom" constant="4" id="97O-d0-Z8G"/>
                             <constraint firstItem="AKs-BG-eeT" firstAttribute="leading" secondItem="OyR-hy-Vx5" secondAttribute="leading" id="PIp-mp-9ah"/>
@@ -1174,7 +1199,6 @@ UX, Data, Academic…</string>
                             <constraint firstItem="jwa-a1-qVR" firstAttribute="trailing" secondItem="L8l-M9-bj1" secondAttribute="trailing" id="iTb-IV-ekg"/>
                             <constraint firstItem="AKs-BG-eeT" firstAttribute="leading" secondItem="DrW-gS-F1r" secondAttribute="leadingMargin" id="isJ-61-oD4"/>
                             <constraint firstItem="u6F-K7-GoF" firstAttribute="trailing" secondItem="Epr-BF-WSy" secondAttribute="trailing" id="j5N-9K-a2N"/>
-                            <constraint firstItem="u6F-K7-GoF" firstAttribute="top" secondItem="DrW-gS-F1r" secondAttribute="top" constant="309" id="jZB-Xa-2hE"/>
                             <constraint firstItem="UuA-QJ-1xB" firstAttribute="bottom" secondItem="eb0-Fi-50h" secondAttribute="bottom" constant="360" id="laR-CD-9q9"/>
                             <constraint firstItem="AKs-BG-eeT" firstAttribute="trailing" secondItem="OyR-hy-Vx5" secondAttribute="trailing" id="m0X-5i-b0J"/>
                             <constraint firstItem="UuA-QJ-1xB" firstAttribute="bottom" secondItem="sOz-fk-P5K" secondAttribute="bottom" constant="36" id="mXn-YT-x0U"/>

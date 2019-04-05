@@ -15,6 +15,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userUsernameLabel: UILabel!
     @IBOutlet weak var userHeadlineAndInterestLabel: UILabel!
     
+    @IBOutlet weak var chooseInterestButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
     var receivedUsername: String = ""
     var headlineString : String = ""
     var userTags = [String]()
@@ -38,6 +41,12 @@ class ProfileViewController: UIViewController {
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
 
+        // rewrite the action buttons
+        chooseInterestButton.titleEdgeInsets = UIEdgeInsetsMake(0, -chooseInterestButton.imageView!.frame.size.width, 0, chooseInterestButton.imageView!.frame.size.width);
+        chooseInterestButton.imageEdgeInsets = UIEdgeInsetsMake(0, chooseInterestButton.titleLabel!.frame.size.width, 0, -chooseInterestButton.titleLabel!.frame.size.width);
+        logoutButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logoutButton.imageView!.frame.size.width, 0, logoutButton.imageView!.frame.size.width);
+        logoutButton.imageEdgeInsets = UIEdgeInsetsMake(0, logoutButton.titleLabel!.frame.size.width, 0, -logoutButton.titleLabel!.frame.size.width);
+        
         // get data
         getProfileData(username: receivedUsername)
         getTagData()
@@ -50,6 +59,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutFunction(_ sender: UIButton) {
         print("> Tapped Log out")
+        UserDefaults.standard.removeObject(forKey: "isLoggedIn")
         navigationController?.popViewController(animated: true)
         performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
     }
