@@ -40,18 +40,34 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // rewrite nav bar
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1867006123, green: 0.1476626396, blue: 0.8859024048, alpha: 1)
+        
         
         
         // Do any additional setup after loading the view.
         getEventData(url:APICLIENT_URL)
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // rewrite (hide) the nb
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // rewrite (show) the nb
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @IBAction func profileButtonTapped(_ sender: UIBarButtonItem) {
+        if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
+            performSegue(withIdentifier: "gotoProfile3", sender: self)
+        } else {
+            performSegue(withIdentifier: "gotoLogin", sender: self)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return testEventNames.count
@@ -259,5 +275,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         self.navigationController?.pushViewController(DvC, animated: true)
     }
+    
+    @IBAction func unwindToHomepage(segue:UIStoryboardSegue) { }
     
 }

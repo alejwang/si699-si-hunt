@@ -40,12 +40,14 @@ class SignUpViewController: UIViewController {
     
     // rewrite the back button action
     @objc func backButtonPressed(_ sender : Any) {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "unwindSegueToHomepage3", sender: self)
     }
+    
     
     // action for go back to log in from sign up
     @IBAction func goBackToLogIn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: false)
     }
     
     // called when user failed to login
