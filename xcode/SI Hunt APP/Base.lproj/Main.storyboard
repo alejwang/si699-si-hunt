@@ -185,7 +185,7 @@
                                 <rect key="frame" x="16" y="190" width="230" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="34"/>
-                                <color key="textColor" red="1" green="0.80784313730000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2o-Uz-8RY">
@@ -322,7 +322,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="h2c-XW-Pni" secondAttribute="trailing" constant="24" id="CbE-HC-Trr"/>
                             <constraint firstItem="h2c-XW-Pni" firstAttribute="top" secondItem="3Ag-vK-KOK" secondAttribute="top" constant="50" id="IB1-5s-GJc"/>
@@ -478,7 +478,7 @@
                                             <constraint firstItem="5gd-JO-Bva" firstAttribute="top" secondItem="2wI-GJ-Bpc" secondAttribute="top" constant="461" id="1E8-MZ-rvJ"/>
                                             <constraint firstItem="5gd-JO-Bva" firstAttribute="leading" secondItem="2wI-GJ-Bpc" secondAttribute="leading" constant="20" id="Aeb-2H-rNX"/>
                                             <constraint firstItem="QSV-gp-iVj" firstAttribute="centerX" secondItem="2wI-GJ-Bpc" secondAttribute="centerX" id="COL-J5-LgY"/>
-                                            <constraint firstAttribute="height" constant="1200" id="Jiu-M6-RbQ"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1200" id="Jiu-M6-RbQ"/>
                                             <constraint firstAttribute="trailing" secondItem="QSV-gp-iVj" secondAttribute="trailing" id="OeQ-bw-yh2"/>
                                             <constraint firstItem="QSV-gp-iVj" firstAttribute="top" secondItem="5gd-JO-Bva" secondAttribute="bottom" constant="16" id="PJX-x8-kxv"/>
                                             <constraint firstAttribute="trailing" secondItem="5gd-JO-Bva" secondAttribute="trailing" constant="20" id="iO8-Uo-Y6A"/>
@@ -738,12 +738,12 @@
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="1" green="0.80784313730000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="34"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="1" green="0.80784313730000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="40"/>
                         </textAttributes>
@@ -810,12 +810,12 @@ UX, Data, Academic…</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-vF-e8N">
-                                        <rect key="frame" x="258" y="434" width="93" height="32"/>
+                                        <rect key="frame" x="262" y="434" width="89" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="jCy-K5-fi1"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Log out  " image="signOutButton">
+                                        <state key="normal" title="Log out " image="signOutButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -824,12 +824,12 @@ UX, Data, Academic…</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liu-mF-6b6">
-                                        <rect key="frame" x="165" y="354" width="186" height="32"/>
+                                        <rect key="frame" x="169" y="354" width="182" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="vXY-uQ-X14"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Choose my interests  " image="editButton">
+                                        <state key="normal" title="Choose my interests " image="editButton">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -878,7 +878,7 @@ UX, Data, Academic…</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgN-LK-dvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Qyn-Qm-HHI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4982" y="-92"/>
+            <point key="canvasLocation" x="5838" y="-92"/>
         </scene>
         <!--My interests-->
         <scene sceneID="jMg-8f-FzI">
@@ -932,7 +932,7 @@ UX, Data, Academic…</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z0I-G9-9Sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zp8-Vk-eiF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5839" y="-91"/>
+            <point key="canvasLocation" x="6615" y="-92"/>
         </scene>
         <!--Log In-->
         <scene sceneID="cRx-0I-nWH">
@@ -943,43 +943,46 @@ UX, Data, Academic…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-LZ-sDa">
-                                <rect key="frame" x="16" y="203" width="343" height="32"/>
+                                <rect key="frame" x="16" y="202" width="343" height="32"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="M9V-Eg-cFg"/>
+                                    <constraint firstAttribute="height" constant="32" id="6vY-Hy-wU5"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VDb-Vm-IBm">
-                                <rect key="frame" x="16" y="256" width="343" height="32"/>
+                                <rect key="frame" x="16" y="255" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="nD5-Bk-iQl"/>
+                                    <constraint firstAttribute="height" constant="32" id="Z1I-K2-wfd"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDN-ue-OHD">
-                                <rect key="frame" x="16" y="239" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="238" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="fDt-Ji-i2W"/>
+                                    <constraint firstAttribute="height" constant="1" id="dwq-Hi-Omi"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="453-LS-fSj">
-                                <rect key="frame" x="16" y="292" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="291" width="343" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="j3g-dW-8uQ"/>
+                                    <constraint firstAttribute="height" constant="1" id="tYJ-3m-4dR"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-Jn-fwC">
                                 <rect key="frame" x="16" y="706" width="188" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="crg-da-T7b"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="18"/>
                                 <state key="normal" title="Don’t have an account?">
                                     <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -988,13 +991,10 @@ UX, Data, Academic…</string>
                                     <segue destination="iOS-jx-ik3" kind="show" animates="NO" id="KNd-PC-YNM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-ys-dMc">
-                                <rect key="frame" x="284" y="325" width="75" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SRb-hW-bvq"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-ys-dMc">
+                                <rect key="frame" x="16" y="324" width="343" height="40"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
-                                <state key="normal" title="Go  " image="goButton">
+                                <state key="normal" title="Go" image="goButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1005,22 +1005,24 @@ UX, Data, Academic…</string>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="top" secondItem="ctC-RN-kjv" secondAttribute="top" constant="30.666666666666686" id="3oz-u0-yQA"/>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="trailing" secondItem="v8K-Sy-NvN" secondAttribute="trailingMargin" id="4tI-FR-8AK"/>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="bDN-ue-OHD" secondAttribute="leading" id="AM3-q9-ZsI"/>
-                            <constraint firstItem="Dsb-ys-dMc" firstAttribute="top" secondItem="453-LS-fSj" secondAttribute="bottom" constant="32" id="AN4-zF-mMV"/>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="trailing" secondItem="bDN-ue-OHD" secondAttribute="trailing" id="Ewi-vR-o4q"/>
-                            <constraint firstItem="453-LS-fSj" firstAttribute="top" secondItem="VDb-Vm-IBm" secondAttribute="bottom" constant="4" id="FkN-Zu-zdE"/>
-                            <constraint firstItem="bDN-ue-OHD" firstAttribute="leading" secondItem="VDb-Vm-IBm" secondAttribute="leading" id="JGa-n1-c5O"/>
-                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="leading" secondItem="453-LS-fSj" secondAttribute="leading" id="OK3-Re-pZl"/>
-                            <constraint firstItem="bDN-ue-OHD" firstAttribute="top" secondItem="6Tk-LZ-sDa" secondAttribute="bottom" constant="4" id="SUF-LC-IdA"/>
-                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="trailing" secondItem="453-LS-fSj" secondAttribute="trailing" id="Tcw-3a-IS0"/>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="v8K-Sy-NvN" secondAttribute="leadingMargin" id="W2v-nt-y0I"/>
-                            <constraint firstItem="453-LS-fSj" firstAttribute="leading" secondItem="xX6-Jn-fwC" secondAttribute="leading" id="Y35-AT-oL1"/>
-                            <constraint firstItem="453-LS-fSj" firstAttribute="trailing" secondItem="Dsb-ys-dMc" secondAttribute="trailing" id="dAr-Gr-vbQ"/>
-                            <constraint firstItem="bDN-ue-OHD" firstAttribute="trailing" secondItem="VDb-Vm-IBm" secondAttribute="trailing" id="nK6-E5-WJL"/>
-                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="top" secondItem="bDN-ue-OHD" secondAttribute="bottom" constant="16" id="p6K-7Y-lLS"/>
+                            <constraint firstItem="bDN-ue-OHD" firstAttribute="top" secondItem="6Tk-LZ-sDa" secondAttribute="bottom" constant="4" id="AfL-5k-BYe"/>
+                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="trailing" secondItem="453-LS-fSj" secondAttribute="trailing" id="BcH-23-OSH"/>
+                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="top" secondItem="ctC-RN-kjv" secondAttribute="top" constant="29.666666666666686" id="DpM-dD-82r"/>
+                            <constraint firstItem="453-LS-fSj" firstAttribute="leading" secondItem="Dsb-ys-dMc" secondAttribute="leading" id="Htq-k1-LHu"/>
+                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="v8K-Sy-NvN" secondAttribute="leadingMargin" id="JhD-BQ-XAy"/>
+                            <constraint firstItem="453-LS-fSj" firstAttribute="trailing" secondItem="Dsb-ys-dMc" secondAttribute="trailing" id="Uud-U6-rge"/>
+                            <constraint firstItem="bDN-ue-OHD" firstAttribute="trailing" secondItem="VDb-Vm-IBm" secondAttribute="trailing" id="WaN-e6-Voo"/>
+                            <constraint firstItem="ctC-RN-kjv" firstAttribute="trailing" secondItem="6Tk-LZ-sDa" secondAttribute="trailing" constant="16" id="X5M-of-eds"/>
+                            <constraint firstItem="bDN-ue-OHD" firstAttribute="leading" secondItem="VDb-Vm-IBm" secondAttribute="leading" id="bN0-gW-EGT"/>
+                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="bDN-ue-OHD" secondAttribute="leading" id="fCy-vR-G0O"/>
+                            <constraint firstItem="453-LS-fSj" firstAttribute="top" secondItem="VDb-Vm-IBm" secondAttribute="bottom" constant="4" id="j69-Ld-Plv"/>
+                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="trailing" secondItem="bDN-ue-OHD" secondAttribute="trailing" id="ofw-3N-wu7"/>
+                            <constraint firstItem="Dsb-ys-dMc" firstAttribute="top" secondItem="453-LS-fSj" secondAttribute="bottom" constant="32" id="uDd-Wf-9W3"/>
+                            <constraint firstItem="Dsb-ys-dMc" firstAttribute="top" secondItem="v8K-Sy-NvN" secondAttribute="top" constant="324" id="wJZ-Hj-QaR"/>
+                            <constraint firstItem="xX6-Jn-fwC" firstAttribute="leading" secondItem="ctC-RN-kjv" secondAttribute="leading" constant="16" id="wPW-TA-9lC"/>
                             <constraint firstItem="ctC-RN-kjv" firstAttribute="bottom" secondItem="xX6-Jn-fwC" secondAttribute="bottom" constant="36" id="wVW-Nu-lFu"/>
+                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="top" secondItem="bDN-ue-OHD" secondAttribute="bottom" constant="16" id="xyr-UY-nnI"/>
+                            <constraint firstItem="VDb-Vm-IBm" firstAttribute="leading" secondItem="453-LS-fSj" secondAttribute="leading" id="zGA-Ka-PZ8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ctC-RN-kjv"/>
                     </view>
@@ -1160,11 +1162,12 @@ UX, Data, Academic…</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb0-Fi-50h">
-                                <rect key="frame" x="291" y="378" width="68" height="40"/>
+                                <rect key="frame" x="293" y="378" width="66" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1po-eO-E7g"/>
                                 </constraints>
-                                <state key="normal" title="Go " image="goButton">
+                                <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
+                                <state key="normal" title="Go" image="goButton">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -1232,7 +1235,7 @@ UX, Data, Academic…</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGV-3B-H62" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="p75-EN-PTa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4982" y="-854"/>
+            <point key="canvasLocation" x="4980" y="-92"/>
         </scene>
     </scenes>
     <resources>
@@ -1245,7 +1248,7 @@ UX, Data, Academic…</string>
         <image name="signOutButton" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="56R-2v-tFH"/>
+        <segue reference="jZa-26-wGY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.24608917390000001" green="0.75249078589999996" blue="0.99601580909999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

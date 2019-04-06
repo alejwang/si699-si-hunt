@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var chooseInterestButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    var receivedUsername: String = ""
+    var username: String = ""
     var headlineString : String = ""
     var userTags = [String]()
     var allTags = [Tag]()
@@ -36,19 +36,20 @@ class ProfileViewController: UIViewController {
         // rewrite nav bar back btn
         let button: UIButton = UIButton (type: UIButtonType.custom)
         button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
-        button.frame = CGRect(x: 24 , y: 10, width: 60, height: 32)
+        button.frame = CGRect(x: 24 , y: 10, width: 24, height: 32)
         button.addTarget(self, action: #selector(ProfileViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
 
         // rewrite the action buttons
-        chooseInterestButton.titleEdgeInsets = UIEdgeInsetsMake(0, -chooseInterestButton.imageView!.frame.size.width, 0, chooseInterestButton.imageView!.frame.size.width);
+        chooseInterestButton.titleEdgeInsets = UIEdgeInsetsMake(0, -chooseInterestButton.imageView!.frame.size.width-8, 0, chooseInterestButton.imageView!.frame.size.width+8);
         chooseInterestButton.imageEdgeInsets = UIEdgeInsetsMake(0, chooseInterestButton.titleLabel!.frame.size.width, 0, -chooseInterestButton.titleLabel!.frame.size.width);
-        logoutButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logoutButton.imageView!.frame.size.width, 0, logoutButton.imageView!.frame.size.width);
+        logoutButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logoutButton.imageView!.frame.size.width-8, 0, logoutButton.imageView!.frame.size.width+8);
         logoutButton.imageEdgeInsets = UIEdgeInsetsMake(0, logoutButton.titleLabel!.frame.size.width, 0, -logoutButton.titleLabel!.frame.size.width);
         
         // get data
-        getProfileData(username: receivedUsername)
+        username = UserDefaults.standard.string(forKey: "username")!
+        getProfileData(username: username)
         getTagData()
         
     }
@@ -59,9 +60,9 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutFunction(_ sender: UIButton) {
         print("> Tapped Log out")
-        UserDefaults.standard.removeObject(forKey: "isLoggedIn")
+        UserDefaults.standard.removeObject(forKey: "username")
         navigationController?.popViewController(animated: true)
-        performSegue(withIdentifier: "unwindSegueToVC1", sender: self)
+        performSegue(withIdentifier: "unwindSegueToHomepage1", sender: self)
     }
     
     // MARK: - Table view data source

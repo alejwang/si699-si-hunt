@@ -28,13 +28,13 @@ class SignUpViewController: UIViewController {
         // rewrite nav bar back btn
         let button: UIButton = UIButton (type: UIButtonType.custom)
         button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
-        button.frame = CGRect(x: 32 , y: 10, width: 60, height: 32)
+        button.frame = CGRect(x: 24 , y: 10, width: 32, height: 32)
         button.addTarget(self, action: #selector(LogInViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem = barButton
         
         // rewrite the go button
-        logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width, 0, logInButton.imageView!.frame.size.width);
+        logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width-12, 0, logInButton.imageView!.frame.size.width+12);
         logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
     }
     

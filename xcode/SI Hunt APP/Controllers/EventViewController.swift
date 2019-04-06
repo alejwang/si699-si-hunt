@@ -61,7 +61,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     @IBAction func profileButtonTapped(_ sender: UIBarButtonItem) {
-        if UserDefaults.standard.bool(forKey: "isLoggedIn") == true {
+        if UserDefaults.standard.string(forKey: "username") != nil {
             performSegue(withIdentifier: "gotoProfile3", sender: self)
         } else {
             performSegue(withIdentifier: "gotoLogin", sender: self)
