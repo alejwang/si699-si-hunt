@@ -33,9 +33,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-7y-dTM">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="31.333333333333332"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d6V-vA-DSm">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6b-bh-aZK" userLabel="Messages label">
@@ -321,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BvU-yk-WFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1956" y="667.91604197901052"/>
+            <point key="canvasLocation" x="-1956" y="667.24137931034488"/>
         </scene>
         <!--Event Details View Controller-->
         <scene sceneID="Kmk-zp-3Vn">
@@ -434,7 +434,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scan a sign or a room door to start navigation" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gd-JO-Bva">
-                                                <rect key="frame" x="20" y="461" width="335" height="56"/>
+                                                <rect key="frame" x="20" y="461" width="335" height="62.666666666666629"/>
                                                 <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -442,7 +442,7 @@
                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                             </label>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSV-gp-iVj">
-                                                <rect key="frame" x="0.0" y="533" width="375" height="500"/>
+                                                <rect key="frame" x="0.0" y="539.66666666666663" width="375" height="499.99999999999989"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="500" id="Gqw-46-v25"/>
                                                 </constraints>
@@ -464,7 +464,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="458-h3-Uqr">
-                                        <rect key="frame" x="160.66666666666666" y="1080.3333333333333" width="54" height="30"/>
+                                        <rect key="frame" x="160.66666666666666" y="1087" width="54" height="30"/>
                                         <state key="normal" title="I'm Lost"/>
                                     </button>
                                 </subviews>
