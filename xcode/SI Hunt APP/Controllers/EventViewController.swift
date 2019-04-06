@@ -40,10 +40,34 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
         // Do any additional setup after loading the view.
         getEventData(url:APICLIENT_URL)
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // rewrite (hide) the nb
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        // rewrite (show) the nb
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @IBAction func profileButtonTapped(_ sender: UIBarButtonItem) {
+        if UserDefaults.standard.string(forKey: "username") != nil {
+            performSegue(withIdentifier: "gotoProfile3", sender: self)
+        } else {
+            performSegue(withIdentifier: "gotoLogin", sender: self)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return testEventNames.count
@@ -251,5 +275,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         self.navigationController?.pushViewController(DvC, animated: true)
     }
+    
+    @IBAction func unwindToHomepage(segue:UIStoryboardSegue) { }
     
 }

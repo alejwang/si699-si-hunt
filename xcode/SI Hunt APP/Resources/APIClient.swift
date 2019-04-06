@@ -12,7 +12,7 @@ import Alamofire
 
 
 class APIClient {
-    static func register(withUsername username: String, password: String) {
+    static func register(withUsername username: String, password: String, completion: @escaping () -> Void) {
         print("Sending request")
         let parameters: Parameters = ["username": username, "password": password]
         Alamofire.request("https://alejwang.pythonanywhere.com/register", method: .post, parameters: parameters).responseJSON { response in
@@ -20,6 +20,7 @@ class APIClient {
                 print("JSON: \(json)")
             }
         }
+        completion()
     }
     
     static func login(withUsername username: String, password: String, completion: @escaping () -> Void) {

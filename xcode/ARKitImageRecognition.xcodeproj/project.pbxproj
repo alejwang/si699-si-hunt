@@ -34,6 +34,7 @@
 		C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* StatusViewController.swift */; };
 		C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */; };
 		D96B2B20C3FBE18E15E4E9F6 /* Pods_ARKitImageRecognition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9499202BBE11D0B7BA86302C /* Pods_ARKitImageRecognition.framework */; };
+		E741540822564E00004B89D1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741540722564E00004B89D1 /* SignUpViewController.swift */; };
 		E777676E22546A8100D25A5D /* IBMPlexSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */; };
 		E777676F22546A8100D25A5D /* IBMPlexSans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */; };
 		E777677022546A8100D25A5D /* IBMPlexSans-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */; };
@@ -41,7 +42,7 @@
 		E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */; };
 		E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CD22514A1C00562B5E /* LogInViewController.swift */; };
 		E77E46D0225157B200562B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CF225157B200562B5E /* APIClient.swift */; };
-		E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */; };
+		E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
 		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,6 +79,7 @@
 		C16CC420C16CC45000000001 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		C8C12A701F29277B00B011FE /* ViewController+ARSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSessionDelegate.swift"; sourceTree = "<group>"; };
+		E741540722564E00004B89D1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Medium.otf"; sourceTree = "<group>"; };
 		E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Regular.otf"; sourceTree = "<group>"; };
 		E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IBMPlexSans-Italic.otf"; sourceTree = "<group>"; };
@@ -85,7 +87,7 @@
 		E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStepTableViewCell.swift; sourceTree = "<group>"; };
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		E7833BCD2249974C005A5478 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +164,8 @@
 		18477B6E223D7C1B00596E94 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E7833BCD2249974C005A5478 /* ProfileTableViewController.swift */,
+				E741540722564E00004B89D1 /* SignUpViewController.swift */,
+				E7833BCD2249974C005A5478 /* ProfileViewController.swift */,
 				E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */,
 				3929C48B1E89EC2C00E00B60 /* AppDelegate.swift */,
 				3929C48D1E89EC2C00E00B60 /* ViewController.swift */,
@@ -414,6 +417,7 @@
 				E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */,
 				184D7C852243450A0059E964 /* Nodes.swift in Sources */,
 				C41366B91EB80DD400EC054A /* StatusViewController.swift in Sources */,
+				E741540822564E00004B89D1 /* SignUpViewController.swift in Sources */,
 				9C0CB7C52252F4800065AE30 /* EventViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
@@ -428,7 +432,7 @@
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				E7776772225476B800D25A5D /* NavigationTableViewController.swift in Sources */,
 				E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */,
-				E7833BCE2249974C005A5478 /* ProfileTableViewController.swift in Sources */,
+				E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
