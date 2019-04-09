@@ -31,20 +31,16 @@ class LogInViewController: UIViewController {
         backButton.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
         backButton.frame = CGRect(x: 0 , y: 0, width: 33, height: 32)
         backButton.addTarget(self, action: #selector(LogInViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
-        
-        
         let barButton = UIBarButtonItem(customView: backButton)
         self.navigationItem.leftBarButtonItem = barButton
         
         // rewrite the placeholder text
         // ref: https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
-        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username",
-                                                               attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
-        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
         
         // rewrite the go button
-        logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width-12, 0, logInButton.imageView!.frame.size.width+12);
+        logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width-10, 0, logInButton.imageView!.frame.size.width+10);
         logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
     }
     
@@ -67,7 +63,7 @@ class LogInViewController: UIViewController {
     // ref: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
     func loginFailed(message: String){
         self.logInButton.titleLabel?.text = "Go"
-        let alertController = UIAlertController(title: "emm...", message:
+        let alertController = UIAlertController(title: "😐 Nice Try", message:
             message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "🆗", style: .default))
         self.present(alertController, animated: true, completion: nil)
@@ -78,12 +74,16 @@ class LogInViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "username")
         self.view.endEditing(true) // remove the keyboard
         
-        guard let username = usernameTextfield.text, let password = passwordTextfield.text else {
-            loginFailed(message: "Please fill in the username and password")
+        guard let username = usernameTextfield.text else {
+            loginFailed(message: "So what is your username?")
+            return
+        }
+        guard let password = passwordTextfield.text else {
+            loginFailed(message: "So what is your password?")
             return
         }
         guard username.count > 0, password.count > 0 else {
-            loginFailed(message: "Username or password is too short!")
+            loginFailed(message: "Try another longer username or password!")
             return
         }
         logInButton.titleLabel?.text = "..."
@@ -97,7 +97,7 @@ class LogInViewController: UIViewController {
                 self.passwordTextfield.text = ""
                 self.performSegue(withIdentifier: "gotoProfile", sender: self)
             } else {
-                self.loginFailed(message: "Wrong username or password")
+                self.loginFailed(message: "However your  username or password is wrong")
             }
         })
     }

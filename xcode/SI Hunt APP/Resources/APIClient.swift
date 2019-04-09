@@ -9,22 +9,24 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 
 class APIClient {
+    
     static func register(withUsername username: String, password: String, completion: @escaping () -> Void) {
-        print("Sending request")
+        print("> Sending register request from API Client")
         let parameters: Parameters = ["username": username, "password": password]
         Alamofire.request("https://alejwang.pythonanywhere.com/register", method: .post, parameters: parameters).responseJSON { response in
             if let json = response.result.value {
-                print("JSON: \(json)")
+                print("> JSON: \(json)")
             }
         }
         completion()
     }
     
     static func login(withUsername username: String, password: String, completion: @escaping () -> Void) {
-        print("> Sending login request")
+        print("> Sending login request  from API Client")
         let parameters: Parameters = ["username": username, "password": password]
         Alamofire.request("https://alejwang.pythonanywhere.com/auth", method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             if let json = response.result.value as? [String: AnyObject] {
@@ -36,6 +38,39 @@ class APIClient {
                 }
             }
             completion()
+        }
+    }
+    
+    static func getProfile(withUsername username: String,completion: @escaping (JSON?) -> Void) {
+        print("> Sending getProfile request")
+        Alamofire.request("https://alejwang.pythonanywhere.com/profile/\(username)", method: .get,  encoding: JSONEncoding.default).responseJSON { response in
+                if response.result.isSuccess{
+                    let json : JSON = JSON(response.result.value!)
+                    if json["message"].string != nil {
+                        completion(nil)
+                    }
+                    print("> JSON: \(json)")
+                    completion(json)
+                }
+                else{
+                    print("Error")
+                    completion(nil)
+                }
+        }
+    }
+    
+    static func getTagList(completion: @escaping (JSON?) -> Void) {
+        print("> Sending getTagList request")
+        Alamofire.request("https://alejwang.pythonanywhere.com/tags", method: .get,  encoding: JSONEncoding.default).responseJSON { response in
+            if response.result.isSuccess{
+                let json : JSON = JSON(response.result.value!)
+                print("> JSON: \(json)")
+                completion(json)
+            }
+            else{
+                print("Error")
+                completion(nil)
+            }
         }
     }
 //
