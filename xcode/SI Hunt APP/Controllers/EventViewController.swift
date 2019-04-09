@@ -230,6 +230,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             for tag in event.tags{
                 if userTags.contains(tag){
                     recom_events.append(event)
+                    break
                 }
             }
         }
