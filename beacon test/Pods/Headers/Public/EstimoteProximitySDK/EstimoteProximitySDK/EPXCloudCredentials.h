@@ -1,0 +1,1 @@
+../../../../EstimoteProximitySDK/EstimoteProximitySDK/EstimoteProximitySDK.framework/Headers/EPXCloudCredentials.h
