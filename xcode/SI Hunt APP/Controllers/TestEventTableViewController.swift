@@ -318,6 +318,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         DvC.getLocation = event.location_name
         DvC.getDescription = event.description
         DvC.eventId = event.location_id
+        DvC.eventlocationName = event.location_name
         
         
         self.navigationController?.pushViewController(DvC, animated: true)

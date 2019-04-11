@@ -20,7 +20,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //    @IBOutlet weak var destination: UILabel!
 //    @IBOutlet weak var instruction_detail: UILabel!
     @IBOutlet weak var exitButton: UIButton!
-    @IBOutlet weak var instructionTitleLabel: UILabel!
+    @IBOutlet weak var instructionTitleLable: UILabel!
+    
 //    @IBOutlet weak var stepInsturctionContainerView: UIView!
     
 
@@ -36,6 +37,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var eventId: Int?
     
     var currentlocationId: Int?
+    var userCurrentLocationName: String?
     var instruction = [String]()
     var instruction_text = ""
     var headDirection: Int?
@@ -44,6 +46,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var level: Int?
     var step_num: Int?
     var turn_dir: Int?
+    //var startpoint: String?
     
     lazy var fadeAndSpinAction: SCNAction = {
         return .sequence([
@@ -173,14 +176,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Get the location id and current location/node name
         currentlocationId = json["nav_node_result"]["location_id"].intValue
-        let userCurrentLocationName = json["nav_node_result"]["location_name"].stringValue
-        print("> userCurrentLocationName: \(userCurrentLocationName)")
+        userCurrentLocationName = json["nav_node_result"]["location_name"].stringValue
+        print("> userCurrentLocationName: \(String(userCurrentLocationName!))")
         
         // Show the location name on user interface
 //        currentLocation.text = userCurrentLocationName
-        instructionTitleLabel.text = "Taking You to \(eventlocationName!) ..."
+        instructionTitleLable.text = "Taking You to \(String(eventlocationName!)) ..."
+        
+        if userCurrentLocationName == eventlocationName {
+            instructionTitleLable.text = "You have arrived the location!"
+        }
         self.statusViewController.cancelAllScheduledMessages()
-        self.statusViewController.showMessage("Detected image “\(userCurrentLocationName)”")
+        self.statusViewController.showMessage("Detected Location “\(String(userCurrentLocationName!))”")
+        
 //        for node in node_results {
 //                self.Navnode.append(Nodes(id: node["id"].intValue,
 //                                    building: node["building"].stringValue,
@@ -201,7 +209,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func goNavigation() {
         //print(eventId)
         //print(currentlocationId)
-
+        
         if currentlocationId != nil{
             self.PATH_URL = self.PATH_URL + String(currentlocationId!) + "&end_location=" + String(eventId!)
             print(self.PATH_URL)
@@ -215,6 +223,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     for i in pathJSON["path"] {
                         self.step_num = Int(i.0)
                     }
+                    let startpoint = "Start from " + String(self.userCurrentLocationName!)
+                    self.instruction.append(startpoint)
                     
                     for i in pathJSON["path"] {
 //                        print(i.0)
@@ -245,9 +255,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                        
                         // direction
-                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around and Go "+String(nav_dis/100)+"m"}
-                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right and Go "+String(nav_dis/100)+"m"}
-                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left and Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around then Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right then Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left then Go "+String(nav_dis/100)+"m"}
                         
                         self.headDirection = nav_dir
                         
@@ -270,6 +280,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                         
                         // instruction for navigation!
+                        // userCurrentLocationName
+                        
                         if self.turn != "no"{
                             self.instruction.append(self.turn!)
                         }
@@ -283,12 +295,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     print("Error")
                 }
                 print("> instruction: \(self.instruction)")
+                
+                if self.userCurrentLocationName == self.eventlocationName {
+                    self.instruction = []
+                    self.containerViewController?.steps = self.instruction
+                }
+                print("> instruction: \(self.eventlocationName)")
                 self.containerViewController?.steps = self.instruction
                 self.containerViewController?.tableView.reloadData()
             }
-            //print("> Instruction_text:" + self.instruction_text)
-            
-            
+
 //            performSegue(withIdentifier: "passToNavigationSteps", sender: self)
             
             self.PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
