@@ -317,7 +317,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         DvC.getTime = event.start_time + " - " + event.end_time
         DvC.getLocation = event.location_name
         DvC.getDescription = event.description
-        DvC.locationId = event.location_id
+        DvC.eventId = event.location_id
         
         
         self.navigationController?.pushViewController(DvC, animated: true)

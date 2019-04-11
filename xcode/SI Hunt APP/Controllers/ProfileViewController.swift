@@ -18,7 +18,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var chooseInterestButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    var username: String = ""
+    var fullname: String = ""
+    var username: String = "John Doe"
     var headlineString : String = ""
     var userTags = [String]()
     var allTags = [Tag]()
@@ -48,16 +49,23 @@ class ProfileViewController: UIViewController {
         logoutButton.imageEdgeInsets = UIEdgeInsetsMake(0, logoutButton.titleLabel!.frame.size.width, 0, -logoutButton.titleLabel!.frame.size.width);
         
         // get data
-        username = UserDefaults.standard.string(forKey: "username")!
-        getProfileData(username: username)
-        getTagData()
-        
+        if username != UserDefaults.standard.string(forKey: "username") {
+            username = UserDefaults.standard.string(forKey: "username")!
+            getProfileData(username: username)
+        }
+        if allTags.count == 0 {
+            getTagData()
+        }
     }
     
+    
+    // called when back button is pressed, always go back to homepage
     @IBAction func backButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "unwindSegueToHomepage1", sender: self)
     }
     
+    
+    // log out to clean UD standard and go back to homepage
     @IBAction func logoutFunction(_ sender: UIButton) {
         print("> Tapped Log out")
         UserDefaults.standard.removeObject(forKey: "username")
@@ -65,43 +73,39 @@ class ProfileViewController: UIViewController {
         performSegue(withIdentifier: "unwindSegueToHomepage1", sender: self)
     }
     
-    // MARK: - Table view data source
-
+    
+    // pull profile data from API client
     func getProfileData(username: String){
-        let APICLIENT_URL = "https://alejwang.pythonanywhere.com/profile/"
-        print("> requesting \(APICLIENT_URL) \(username)")
-        Alamofire.request(APICLIENT_URL + username, method: .get).responseJSON {
-            response in
-            if response.result.isSuccess{
-                print("Success!Get the data")
-                let userProfileJSON : JSON = JSON(response.result.value!)
-                self.updateProfileData(json:userProfileJSON)
+        APIClient.getProfile(withUsername: username, completion: { json in
+            if json != nil {
+                self.fullname = "\(json!["fistname"].stringValue) \(json!["lastname"].stringValue)"
+                self.headlineString = json!["description"].stringValue
+                self.userTags = []
+                for tag in json!["tags"].arrayValue {
+                    self.userTags.append(tag.stringValue)
+                }
+                self.updateProfileData()
+            } else {
+                let alertController = UIAlertController(title: "😐 404", message:
+                    "Can't get your profile right now. You can try it later. ", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "🆗", style: .default))
+                self.present(alertController, animated: true, completion: nil)
             }
-            else{
-                print("Error")
-            }
-        }
+        })
     }
     
-    func updateProfileData(json: JSON) {
-        let username = json["username"].stringValue
-        if username != "" {
-            print("> To print username: \(username)")
-            userUsernameLabel.text = username
+    
+    // update view by current vars
+    func updateProfileData() {
+        if userFullnameLabel.text == "" {
+            userFullnameLabel.text = "John Doe"
         } else {
-            userUsernameLabel.text = "Please log in"
+            userFullnameLabel.text = fullname
         }
-        let headline = json["description"].stringValue
-        if headline != "" {
-            headlineString = headline
-        } else {
+        userUsernameLabel.text = "@\(username)"
+        if headlineString == "" {
             headlineString = "I'm lazy and I don't want to introduce myself."
         }
-        userTags = []
-        for tag in json["tags"].arrayValue {
-            userTags.append(tag.stringValue)
-        }
-//        print(tags)
         if userTags != [] {
             userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nI am interested in \n\(userTags.joined(separator: ", "))"
         } else {
@@ -109,22 +113,18 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    
+    // get all_tags by API Client
     func getTagData(){
-        Alamofire.request("https://alejwang.pythonanywhere.com/tags", method: .get).responseJSON {
-            response in
-            if response.result.isSuccess{
-                print("Success!Get the data")
-                let tagsJSON : JSON = JSON(response.result.value!)
-                for tagJSON in tagsJSON["tag_results"].arrayValue {
-                    self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
-                }
-            }
-            else{
-                print("Error")
+        APIClient.getTagList { json in
+            for tagJSON in json!["tag_results"].arrayValue {
+                self.allTags.append(Tag(id: tagJSON["id"].intValue, name: tagJSON["name"].stringValue, priority: tagJSON["priority"].intValue)!)
             }
         }
     }
 
+    
+    // prepare for changing tags view
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoTagList" {
             // get a reference to the second view controller
@@ -136,74 +136,17 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+    
+    // prepare for unwind with new tags information
+    @IBAction func unwindToProfile(sender: UIStoryboardSegue) {
+        print("> unwind called")
         if let sourceViewController = sender.source as? ProfileInterestsTableViewController {
+            print("> userTags unwind: \(sourceViewController.userTags)")
             if userTags != sourceViewController.userTags {
                 userTags = sourceViewController.userTags
-                if userTags != [] {
-                    userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nI am interested in \n\(userTags.joined(separator: ", "))"
-                } else {
-                    userHeadlineAndInterestLabel.text = "\(headlineString) \n- \nNo interests for now..."
-                }
+                updateProfileData()
             }
         }
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
 
 }

@@ -1,0 +1,1 @@
+../../../../EstimoteBluetoothScanning/EstimoteBluetoothScanning/EstimoteBluetoothScanning.framework/Headers/EBSScanInfoProximityConnectivity.h

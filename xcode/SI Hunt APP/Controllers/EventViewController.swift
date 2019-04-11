@@ -30,8 +30,6 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
 //    let testEventTimes = ["time1", "time2"]
 //    let testEventLocations = ["location1", "location2"]
 
- 
-    
     @IBOutlet weak var recomCollectionView: UICollectionView!
     //@IBOutlet weak var mandCollectionView: UICollectionView!
     @IBOutlet weak var allEventsCollectionView: UICollectionView!
@@ -39,9 +37,6 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        
         
         // Do any additional setup after loading the view.
         getEventData(url:APICLIENT_URL)
@@ -118,8 +113,6 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allEventsCell", for: indexPath) as! AllEventsCollectionViewCell
             
             let event = events[indexPath.row]
-            
-            
             cell.eventName.text = event.name
             cell.eventTime.text = event.start_time + " - " + event.end_time
             cell.eventLocaiton.text = event.location_name
@@ -187,9 +180,13 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
             }
         }
+<<<<<<< HEAD
     
        
        //mandCollectionView.reloadData()
+=======
+       mandCollectionView.reloadData()
+>>>>>>> ee5525fb47df070222a39ad221389c9e1a2a884a
        recomCollectionView.reloadData()
        allEventsCollectionView.reloadData()
         //recomCollectionView.reloadData()
@@ -262,7 +259,8 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             DvC.getTime = event.start_time + " - " + event.end_time
             DvC.getLocation = event.location_name
             DvC.getDescription = event.description
-            
+            DvC.eventId = event.location_id
+            DvC.eventlocationName = event.location_name
             
         } else if collectionView == self.recomCollectionView{
             let event = recom_events[indexPath.row]
@@ -270,6 +268,8 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             DvC.getTime = event.start_time + " - " + event.end_time
             DvC.getLocation = event.location_name
             DvC.getDescription = event.description
+            DvC.eventId = event.location_id
+            DvC.eventlocationName = event.location_name
             
         } else {
             let event = events[indexPath.row]
@@ -277,8 +277,24 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             DvC.getTime = event.start_time + " - " + event.end_time
             DvC.getLocation = event.location_name
             DvC.getDescription = event.description
+            DvC.eventId = event.location_id
+            DvC.eventlocationName = event.location_name
         }
         self.navigationController?.pushViewController(DvC, animated: true)
     }
     
+<<<<<<< HEAD
+=======
+    @IBAction func unwindToHomepage(segue:UIStoryboardSegue) { }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "startNavigation" {
+//            //print(indexPathforDetail![1])
+//            let navVC = segue.destination as! ViewController
+//            navVC.eventlocationName = eventlocationName
+//            navVC.eventId = eventId
+//        }
+//    }
+    
+>>>>>>> ee5525fb47df070222a39ad221389c9e1a2a884a
 }

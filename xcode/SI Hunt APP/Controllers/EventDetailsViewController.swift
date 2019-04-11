@@ -15,7 +15,10 @@ class EventDetailsViewController: UIViewController {
     var getTime = String()
     var getLocation = String()
     var getDescription = String()
-    var locationId = Int()
+
+    var eventId = Int()
+    var eventlocationName = String()
+
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventName: UILabel!
@@ -35,7 +38,15 @@ class EventDetailsViewController: UIViewController {
         eventLocation.text = getLocation
         eventDescription.text = getDescription
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "startNavigation" {
+            //print(indexPathforDetail![1])
+            let navVC = segue.destination as! ViewController
+            navVC.eventlocationName = eventlocationName
+            navVC.eventId = eventId
+        }
+    }
 
     /*
     // MARK: - Navigation
