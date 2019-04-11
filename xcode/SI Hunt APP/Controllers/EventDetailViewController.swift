@@ -14,6 +14,8 @@ class EventDetailViewController: UIViewController {
     var eventTitle: String?
     var eventLocation: String?
     var eventOrganizer: String?
+    var eventlocationName: String?
+    var eventId: Int?
 
     @IBOutlet weak var eventDetail: UILabel!
     
@@ -25,15 +27,21 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         eventDetail.text = "Event Details: " + eventDescription!
         eventTitleLabel.text = eventTitle!
         eventOrganizerLabel.text = "Organizer: " + eventOrganizer!
         eventLocationLabel.text = "Location: " + eventLocation!
         // Do any additional setup after loading the view.
     }
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "startNavigation" {
+            //print(indexPathforDetail![1])
+            let navVC = segue.destination as! ViewController
+            navVC.eventlocationName = eventlocationName
+            navVC.eventId = eventId
+        }
+    }
 
     /*
     // MARK: - Navigation

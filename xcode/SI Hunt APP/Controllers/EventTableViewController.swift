@@ -234,9 +234,9 @@ class EventTableViewController: UITableViewController {
             //print(indexPathforDetail![1])
             let navVC = segue.destination as! ViewController
             let event = events[indexPathforDetail![1]]
-            navVC.eventLocation = event.location_name
+            navVC.eventlocationName = event.location_name
             navVC.eventId = event.location_id
-            
+
         }
     }
     

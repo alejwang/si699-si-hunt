@@ -97,7 +97,7 @@ class ProfileViewController: UIViewController {
     
     // update view by current vars
     func updateProfileData() {
-        if userFullnameLabel == "" {
+        if userFullnameLabel.text == "" {
             userFullnameLabel.text = "John Doe"
         } else {
             userFullnameLabel.text = fullname

@@ -31,8 +31,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var NODE_URL = "http://alejwang.pythonanywhere.com/nav/node/"
     var PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
     var Navnode = [Nodes]()
-    var eventLocation: String?
+    
+    var eventlocationName: String?
     var eventId: Int?
+    
     var currentlocationId: Int?
     var instruction = [String]()
     var instruction_text = ""
@@ -176,7 +178,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show the location name on user interface
 //        currentLocation.text = userCurrentLocationName
-        instructionTitleLabel.text = "Taking You to \(eventLocation!) ..."
+        instructionTitleLabel.text = "Taking You to \(eventlocationName!) ..."
         self.statusViewController.cancelAllScheduledMessages()
         self.statusViewController.showMessage("Detected image “\(userCurrentLocationName)”")
 //        for node in node_results {
@@ -215,8 +217,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                     }
                     
                     for i in pathJSON["path"] {
-                        print(i.0)
-                        print(i.1)
+//                        print(i.0)
+//                        print(i.1)
                         
                         let nav_text = i.1["node_to_id"].intValue
                         let nav_dir = i.1["direction_2d"].intValue
@@ -243,9 +245,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                        
                         // direction
-                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around and Go "+String(nav_dis)+"mm"}
-                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right and Go "+String(nav_dis)+"mm"}
-                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left"+String(nav_dis)+"mm"}
+                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around and Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right and Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left and Go "+String(nav_dis/100)+"m"}
                         
                         self.headDirection = nav_dir
                         
@@ -268,13 +270,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                         
                         // instruction for navigation!
-                        self.instruction.append(self.turn!)
-                        self.instruction.append(self.elevator!)
-                    }
-                    for i in self.instruction {
-                        if (i != "no"){
-                            self.instruction_text += i
-                            self.instruction_text += "\n"
+                        if self.turn != "no"{
+                            self.instruction.append(self.turn!)
+                        }
+                        if self.elevator != "no"{
+                            self.instruction.append(self.elevator!)
                         }
                     }
 //                    self.instruction_detail.text = self.instruction_text
@@ -282,14 +282,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 else{
                     print("Error")
                 }
+                print("> instruction: \(self.instruction)")
+                self.containerViewController?.steps = self.instruction
+                self.containerViewController?.tableView.reloadData()
             }
-            print("> Instruction_text:" + self.instruction_text)
-            print("> instruction: \(self.instruction)")
+            //print("> Instruction_text:" + self.instruction_text)
+            
             
 //            performSegue(withIdentifier: "passToNavigationSteps", sender: self)
-            containerViewController?.steps = self.instruction
-            containerViewController?.tableView.reloadData()
-            
             
             self.PATH_URL = "http://alejwang.pythonanywhere.com/nav/path?start_location="
             self.instruction = []
