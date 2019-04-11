@@ -33,9 +33,9 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
  
     
     @IBOutlet weak var recomCollectionView: UICollectionView!
-    @IBOutlet weak var mandCollectionView: UICollectionView!
+    //@IBOutlet weak var mandCollectionView: UICollectionView!
     @IBOutlet weak var allEventsCollectionView: UICollectionView!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,10 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         // Do any additional setup after loading the view.
         getEventData(url:APICLIENT_URL)
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +75,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //return testEventNames.count
-        if collectionView == self.mandCollectionView{
+        if collectionView == self.allEventsCollectionView{
             return events.count
         }
         else if collectionView == self.recomCollectionView{
@@ -84,7 +88,44 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == self.mandCollectionView{
+        if collectionView == self.recomCollectionView{
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recomEventCell", for: indexPath) as! CollectionViewCell
+            
+            let event = recom_events[indexPath.row]
+            
+            
+            cell.eventName.text = event.name
+            cell.eventTime.text = event.start_time + " - " + event.end_time
+            //cell.eventLocation.text = event.location_name
+            cell.eventImage.image = UIImage(named: "recommEvent")
+            
+            
+            cell.contentView.layer.cornerRadius = 5.0
+            cell.contentView.layer.borderWidth = 1.0
+            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+            cell.layer.shadowColor = UIColor.gray.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+            cell.layer.shadowRadius = 4.0
+            cell.layer.shadowOpacity = 1.0
+            cell.layer.masksToBounds = false
+            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+            
+           
+           return cell
+            
+        }else if collectionView == self.allEventsCollectionView{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allEventsCell", for: indexPath) as! AllEventsCollectionViewCell
+            
+            let event = events[indexPath.row]
+            
+            
+            cell.eventName.text = event.name
+            cell.eventTime.text = event.start_time + " - " + event.end_time
+            cell.eventLocaiton.text = event.location_name
+            
+            return cell
+        }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mandEventCell", for: indexPath) as! MandCollectionViewCell
             
             let event = events[indexPath.row]
@@ -106,43 +147,6 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
             
             return cell
             
-        }else if collectionView == self.recomCollectionView{
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recomEventCell", for: indexPath) as! CollectionViewCell
-            
-            let event = recom_events[indexPath.row]
-            
-            
-            cell.eventName.text = event.name
-            cell.eventTime.text = event.start_time + " - " + event.end_time
-            cell.eventLocation.text = event.location_name
-            cell.eventImage.image = UIImage(named: "recommEvent")
-            
-            
-            cell.contentView.layer.cornerRadius = 5.0
-            cell.contentView.layer.borderWidth = 1.0
-            cell.contentView.layer.borderColor = UIColor.clear.cgColor
-            cell.layer.shadowColor = UIColor.gray.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-            cell.layer.shadowRadius = 4.0
-            cell.layer.shadowOpacity = 1.0
-            cell.layer.masksToBounds = false
-            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-            
-           
-           return cell
-            
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "allEventsCell", for: indexPath) as! AllEventsCollectionViewCell
-            
-            let event = events[indexPath.row]
-            
-            
-            cell.eventName.text = event.name
-            cell.eventTime.text = event.start_time + " - " + event.end_time
-            cell.eventLocaiton.text = event.location_name
-            
-            return cell
         }
     }
     
@@ -185,7 +189,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     
        
-       mandCollectionView.reloadData()
+       //mandCollectionView.reloadData()
        recomCollectionView.reloadData()
        allEventsCollectionView.reloadData()
         //recomCollectionView.reloadData()
@@ -252,7 +256,7 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         
          DvC.getImage = UIImage(named: "recommEvent")!
         
-        if collectionView == self.mandCollectionView{
+        if collectionView == self.allEventsCollectionView{
             let event = events[indexPath.row]
             DvC.getName = event.name
             DvC.getTime = event.start_time + " - " + event.end_time
@@ -276,7 +280,5 @@ class EventViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         self.navigationController?.pushViewController(DvC, animated: true)
     }
-    
-    @IBAction func unwindToHomepage(segue:UIStoryboardSegue) { }
     
 }

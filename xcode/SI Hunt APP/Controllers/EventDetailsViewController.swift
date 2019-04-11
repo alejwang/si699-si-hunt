@@ -15,6 +15,7 @@ class EventDetailsViewController: UIViewController {
     var getTime = String()
     var getLocation = String()
     var getDescription = String()
+    var locationId = Int()
     
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventName: UILabel!

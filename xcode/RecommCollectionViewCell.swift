@@ -10,4 +10,7 @@ import UIKit
 
 class RecommCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventTime: UILabel!
 }

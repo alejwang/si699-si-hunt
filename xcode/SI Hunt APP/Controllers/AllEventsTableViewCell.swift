@@ -10,6 +10,8 @@ import UIKit
 
 class AlleventsTableViewCell: UITableViewCell {
 
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

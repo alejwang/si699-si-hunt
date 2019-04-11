@@ -88,7 +88,7 @@ class SignUpViewController: UIViewController {
             
             if UserDefaults.standard.string(forKey: "access_token") != nil {
                 self.view.endEditing(true) // remove the keyboard
-                let vc = EventTableViewController(nibName: "EventTableViewController", bundle: nil)
+                let vc = TestEventTableViewController(nibName: "TestEventTableViewController", bundle: nil)
                 vc.user_name = self.usernameTextfield.text!
                 UserDefaults.standard.set(self.usernameTextfield.text!, forKey: "username")
                 print("> vc.user_name + UD.username: \(vc.user_name ?? "no_name")")
