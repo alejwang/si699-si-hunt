@@ -1,14 +1,14 @@
 //
-//  AlleventsTableViewCell.swift
+//  ProfileBtnTableViewCell.swift
 //  ARKitImageRecognition
 //
-//  Created by Yi-Chen Weng on 4/7/19.
+//  Created by Yi-Chen Weng on 4/8/19.
 //  Copyright © 2019 Apple. All rights reserved.
 //
 
 import UIKit
 
-class AlleventsTableViewCell: UITableViewCell {
+class ProfileBtnTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

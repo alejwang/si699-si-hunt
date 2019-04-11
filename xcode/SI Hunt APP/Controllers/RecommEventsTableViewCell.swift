@@ -1,5 +1,5 @@
 //
-//  AlleventsTableViewCell.swift
+//  EventsTableViewCell.swift
 //  ARKitImageRecognition
 //
 //  Created by Yi-Chen Weng on 4/7/19.
@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AlleventsTableViewCell: UITableViewCell {
+class EventsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var recommCollectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
