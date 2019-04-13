@@ -41,6 +41,7 @@
 		E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */; };
 		E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CD22514A1C00562B5E /* LogInViewController.swift */; };
 		E77E46D0225157B200562B5E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77E46CF225157B200562B5E /* APIClient.swift */; };
+		E7812E0E2262691000E60261 /* Univers-Condensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7812E0D226268D000E60261 /* Univers-Condensed-Medium.ttf */; };
 		E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
 		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
@@ -85,6 +86,7 @@
 		E77767732255029900D25A5D /* NavigationStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStepTableViewCell.swift; sourceTree = "<group>"; };
 		E77E46CD22514A1C00562B5E /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E77E46CF225157B200562B5E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		E7812E0D226268D000E60261 /* Univers-Condensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers-Condensed-Medium.ttf"; sourceTree = "<group>"; };
 		E7833BCD2249974C005A5478 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		E777676A22546A4000D25A5D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E7812E0D226268D000E60261 /* Univers-Condensed-Medium.ttf */,
 				E777676D22546A8100D25A5D /* IBMPlexSans-Italic.otf */,
 				E777676B22546A8100D25A5D /* IBMPlexSans-Medium.otf */,
 				E777676C22546A8100D25A5D /* IBMPlexSans-Regular.otf */,
@@ -303,7 +306,6 @@
 				TargetAttributes = {
 					3929C4871E89EC2C00E00B60 = {
 						CreatedOnToolsVersion = 9.0;
-
 						DevelopmentTeam = R3STN86BB8;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
@@ -334,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7812E0E2262691000E60261 /* Univers-Condensed-Medium.ttf in Resources */,
 				18B127562240920600ED09A0 /* Pods-ARKitImageRecognition.release.xcconfig in Resources */,
 				E777676F22546A8100D25A5D /* IBMPlexSans-Regular.otf in Resources */,
 				E777677022546A8100D25A5D /* IBMPlexSans-Italic.otf in Resources */,

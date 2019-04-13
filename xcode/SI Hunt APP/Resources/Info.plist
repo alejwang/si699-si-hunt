@@ -37,6 +37,7 @@
 	<string>The location is used for augmenting reality</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Univers-Condensed-Medium.ttf</string>
 		<string>IBMPlexSans-Regular.otf</string>
 		<string>IBMPlexSans-Italic.otf</string>
 		<string>IBMPlexSans-Medium.otf</string>
