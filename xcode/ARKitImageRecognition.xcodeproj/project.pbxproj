@@ -25,6 +25,7 @@
 		9C0CB7D3225343920065AE30 /* AllEventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */; };
 		9C0CB7D52253521F0065AE30 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */; };
 		9C16A327222461100028CEAC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16A326222461100028CEAC /* Event.swift */; };
+		9C231D922263FCDB00172A54 /* ImgContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C231D912263FCDB00172A54 /* ImgContainer.swift */; };
 		9C556FBC225ABEEF005FC1C4 /* TestEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C556FBB225ABEEE005FC1C4 /* TestEventTableViewController.swift */; };
 		9C556FBE225AC197005FC1C4 /* RecommEventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C556FBD225AC197005FC1C4 /* RecommEventsTableViewCell.swift */; };
 		9C556FC2225AC2EB005FC1C4 /* RecommCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C556FC1225AC2EB005FC1C4 /* RecommCollectionViewCell.swift */; };
@@ -69,6 +70,7 @@
 		9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		9C16A326222461100028CEAC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		9C231D912263FCDB00172A54 /* ImgContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgContainer.swift; sourceTree = "<group>"; };
 		9C556FBB225ABEEE005FC1C4 /* TestEventTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEventTableViewController.swift; sourceTree = "<group>"; };
 		9C556FBD225AC197005FC1C4 /* RecommEventsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommEventsTableViewCell.swift; sourceTree = "<group>"; };
 		9C556FC1225AC2EB005FC1C4 /* RecommCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecommCollectionViewCell.swift; path = ../../RecommCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				9C556FBB225ABEEE005FC1C4 /* TestEventTableViewController.swift */,
 				9C556FBD225AC197005FC1C4 /* RecommEventsTableViewCell.swift */,
 				9C556FC1225AC2EB005FC1C4 /* RecommCollectionViewCell.swift */,
+				9C231D912263FCDB00172A54 /* ImgContainer.swift */,
 				9C556FC5225AEC6B005FC1C4 /* AllEventsTableViewCell.swift */,
 				9C0CB7D2225343920065AE30 /* AllEventsCollectionViewCell.swift */,
 				9C0CB7D42253521F0065AE30 /* EventDetailsViewController.swift */,
@@ -423,6 +426,7 @@
 				E741540822564E00004B89D1 /* SignUpViewController.swift in Sources */,
 				C8C12A711F29277B00B011FE /* ViewController+ARSessionDelegate.swift in Sources */,
 				184D7C8322433E750059E964 /* Navnode.swift in Sources */,
+				9C231D922263FCDB00172A54 /* ImgContainer.swift in Sources */,
 				E77E46D0225157B200562B5E /* APIClient.swift in Sources */,
 				E77E46CE22514A1C00562B5E /* LogInViewController.swift in Sources */,
 				9C0CB7D3225343920065AE30 /* AllEventsCollectionViewCell.swift in Sources */,

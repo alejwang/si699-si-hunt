@@ -25,6 +25,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
+    @IBOutlet weak var navigationBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -37,6 +38,13 @@ class EventDetailsViewController: UIViewController {
         eventTime.text = getTime
         eventLocation.text = getLocation
         eventDescription.text = getDescription
+        
+        navigationBtn.layer.cornerRadius = 16
+        navigationBtn.layer.shadowColor = UIColor.gray.cgColor
+        navigationBtn.layer.shadowOffset = CGSize(width: 0, height: 0)
+        navigationBtn.layer.shadowOpacity = 0.5
+        navigationBtn.layer.shadowRadius = 50
+        navigationBtn.layer.shadowPath = UIBezierPath(roundedRect: navigationBtn.bounds, cornerRadius: 16).cgPath
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -57,5 +65,15 @@ class EventDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
+    
 }

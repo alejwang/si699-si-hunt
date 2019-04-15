@@ -111,7 +111,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
-            return tableView.bounds.width
+            return tableView.bounds.width + 30
         } else if indexPath.row == 3{
             return CGFloat(events.count*90)
         }
@@ -144,15 +144,15 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
             cell.eventImage.image = UIImage(named: "recommEvent")
             
             
-            cell.contentView.layer.cornerRadius = 5.0
-            cell.contentView.layer.borderWidth = 1.0
-            cell.contentView.layer.borderColor = UIColor.clear.cgColor
-            cell.layer.shadowColor = UIColor.gray.cgColor
-            cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-            cell.layer.shadowRadius = 4.0
-            cell.layer.shadowOpacity = 1.0
-            cell.layer.masksToBounds = false
-            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+//            cell.contentView.layer.cornerRadius = 5.0
+//            cell.contentView.layer.borderWidth = 1.0
+//            cell.contentView.layer.borderColor = UIColor.clear.cgColor
+//            cell.layer.shadowColor = UIColor.gray.cgColor
+//            cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+//            cell.layer.shadowRadius = 4.0
+//            cell.layer.shadowOpacity = 1.0
+//            cell.layer.masksToBounds = false
+//            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
             
             return cell
         }else if datasourceIndex == 3{
