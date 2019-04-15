@@ -23,7 +23,7 @@ class RecommCollectionViewCell: UICollectionViewCell {
         
         imgContainer.layer.backgroundColor = UIColor.clear.cgColor
         imgContainer.layer.shadowColor = UIColor.gray.cgColor
-        imgContainer.layer.shadowOffset = CGSize(width: 0, height: 9)
+        imgContainer.layer.shadowOffset = CGSize(width: 2, height: 9)
         imgContainer.layer.shadowOpacity = 0.5
         imgContainer.layer.shadowRadius = 4
         imgContainer.layer.shadowPath = UIBezierPath(roundedRect: imgContainer.bounds, cornerRadius: 20).cgPath

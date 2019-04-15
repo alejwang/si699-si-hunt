@@ -312,7 +312,15 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         
         DvC.getImage = UIImage(named: "recommEvent")!
         
-        let event = events[indexPath.row]
+        let datasourceIndex = collectionView.tag
+        let event: Event
+        
+        if datasourceIndex == 2{
+            event = recom_events[indexPath.row]
+        }else{
+            event = events[indexPath.row]
+        }
+        
         DvC.getName = event.name
         DvC.getTime = event.start_time + " - " + event.end_time
         DvC.getLocation = event.location_name
