@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController {
         // rewrite nav bar back btn
         // ref: https://medium.com/simple-swift-programming-tips/how-to-make-custom-uinavigationcontroller-back-button-image-without-title-swift-7ea5673d7e03
         let backButton: UIButton = UIButton (type: UIButtonType.custom)
-        backButton.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        backButton.setImage(UIImage(named: "backButtonBlack"), for: UIControlState.normal)
         backButton.frame = CGRect(x: 0 , y: 0, width: 33, height: 32)
         backButton.addTarget(self, action: #selector(SignUpViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: backButton)
@@ -36,13 +36,18 @@ class SignUpViewController: UIViewController {
         
         // rewrite the placeholder text
         // ref: https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
-        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
-        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
-        repeatPasswordTextfield.attributedPlaceholder = NSAttributedString(string: "Repeat your password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+//        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+//        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+//        repeatPasswordTextfield.attributedPlaceholder = NSAttributedString(string: "Repeat your password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
         
         // rewrite the go button
         logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width-10, 0, logInButton.imageView!.frame.size.width+10);
-        logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
+        logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width+10, 0, -logInButton.titleLabel!.frame.size.width-10);
+        logInButton.layer.cornerRadius = 16
+        logInButton.layer.shadowColor = #colorLiteral(red: 0.1865167618, green: 0.1482946575, blue: 0.8844041228, alpha: 1)
+        logInButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        logInButton.layer.shadowOpacity = 0.1
+        logInButton.layer.shadowRadius = 5
     }
     
     
@@ -70,7 +75,7 @@ class SignUpViewController: UIViewController {
     // ref: https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
     func loginFailed(message: String){
         self.logInButton.titleLabel?.text = "Join"
-        let alertController = UIAlertController(title: "😐 Nice Try", message:
+        let alertController = UIAlertController(title: "😐 NO NO NO", message:
             message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "🆗", style: .default))
         self.present(alertController, animated: true, completion: nil)
@@ -100,7 +105,12 @@ class SignUpViewController: UIViewController {
         }
         logInButton.titleLabel?.text = "..."
         
-        
+        APIClient.getProfile(withUsername: username) { (JSON) in
+            if JSON != nil {
+                self.loginFailed(message: "Some user has used this username. Please try another one.")
+                return
+            }
+        }
         // TODO: check if the username is used!
         // APIClient.getProfile()
         

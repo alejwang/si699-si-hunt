@@ -39,9 +39,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-7y-dTM">
-                                            <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d6V-vA-DSm">
-                                                <rect key="frame" x="0.0" y="0.0" width="125" height="31.666666666666668"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="250" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6b-bh-aZK" userLabel="Messages label">
@@ -132,15 +132,42 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUj-cZ-kjb">
-                                            <rect key="frame" x="293" y="6" width="66" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Profile"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DUj-cZ-kjb">
+                                            <rect key="frame" x="319" y="4" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="V75-nq-i2C"/>
+                                                <constraint firstAttribute="height" constant="32" id="d0q-8w-GfP"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="14"/>
+                                            <state key="normal" image="avatarDefault">
+                                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="profileBtnPressed:" destination="jt5-DJ-sBu" eventType="touchUpInside" id="2wi-11-3gD"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIT-la-7tH">
+                                            <rect key="frame" x="267" y="4" width="44" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="Dqt-eo-GJ6"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="14"/>
+                                            <state key="normal" title="Profile">
+                                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="profileBtnPressed:" destination="jt5-DJ-sBu" eventType="touchUpInside" id="tSo-I6-eLz"/>
+                                                <action selector="profileTextPressed:" destination="jt5-DJ-sBu" eventType="touchUpInside" id="xK5-9C-MEX"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="DUj-cZ-kjb" firstAttribute="leading" secondItem="BIT-la-7tH" secondAttribute="trailing" constant="8" symbolic="YES" id="9z3-Ai-GSk"/>
+                                        <constraint firstItem="DUj-cZ-kjb" firstAttribute="top" secondItem="1Ea-Dm-6mh" secondAttribute="top" constant="4" id="hEe-lA-gAR"/>
+                                        <constraint firstAttribute="trailing" secondItem="DUj-cZ-kjb" secondAttribute="trailing" constant="24" id="q1Y-N6-iug"/>
+                                        <constraint firstItem="BIT-la-7tH" firstAttribute="bottom" secondItem="DUj-cZ-kjb" secondAttribute="bottom" id="qN4-fy-SgE"/>
+                                        <constraint firstItem="BIT-la-7tH" firstAttribute="top" secondItem="DUj-cZ-kjb" secondAttribute="top" id="sdR-rD-IhZ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecommEventsTableCell" rowHeight="434" id="jpR-Ru-YaN" customClass="RecommEventsTableViewCell" customModule="ARKitImageRecognition" customModuleProvider="target">
@@ -151,7 +178,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jIP-19-8Lu">
-                                            <rect key="frame" x="0.0" y="61" width="375" height="340"/>
+                                            <rect key="frame" x="0.0" y="88.666666666666686" width="375" height="340"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="340" id="C88-Hd-eRE"/>
@@ -229,7 +256,7 @@
                                             </cells>
                                         </collectionView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS FOR YOU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="129-mL-2q8">
-                                            <rect key="frame" x="27" y="14.999999999999996" width="222" height="42.666666666666657"/>
+                                            <rect key="frame" x="27" y="43" width="222" height="42.666666666666657"/>
                                             <fontDescription key="fontDescription" name="Univers-Condensed-Medium" family="Univers Condensed" pointSize="36"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -240,7 +267,7 @@
                                         <constraint firstItem="jIP-19-8Lu" firstAttribute="leading" secondItem="i3j-BY-7bT" secondAttribute="leading" id="LsQ-8v-O4z"/>
                                         <constraint firstItem="jIP-19-8Lu" firstAttribute="top" secondItem="129-mL-2q8" secondAttribute="bottom" constant="3" id="dYU-5T-tvE"/>
                                         <constraint firstItem="129-mL-2q8" firstAttribute="leading" secondItem="i3j-BY-7bT" secondAttribute="leadingMargin" constant="11" id="ePS-11-o22"/>
-                                        <constraint firstItem="129-mL-2q8" firstAttribute="top" secondItem="i3j-BY-7bT" secondAttribute="topMargin" constant="4" id="mc2-8b-Vv0"/>
+                                        <constraint firstItem="129-mL-2q8" firstAttribute="top" secondItem="i3j-BY-7bT" secondAttribute="topMargin" constant="32" id="mc2-8b-Vv0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -390,7 +417,6 @@
                                     <constraint firstAttribute="height" constant="1000" id="LvY-4d-Mci"/>
                                     <constraint firstAttribute="trailing" secondItem="gLb-Yc-T3e" secondAttribute="trailing" id="UEd-mk-ek4"/>
                                     <constraint firstItem="gLb-Yc-T3e" firstAttribute="top" secondItem="aqe-5Q-hDI" secondAttribute="top" id="X2R-jV-mLH"/>
-                                    <constraint firstAttribute="width" constant="375" id="eSd-dM-XHW"/>
                                     <constraint firstItem="gLb-Yc-T3e" firstAttribute="leading" secondItem="aqe-5Q-hDI" secondAttribute="leading" id="gfi-ah-e6a"/>
                                 </constraints>
                             </scrollView>
@@ -432,6 +458,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aqe-5Q-hDI" firstAttribute="width" secondItem="RSq-yZ-seb" secondAttribute="width" id="4vW-nz-8PK"/>
                             <constraint firstAttribute="trailing" secondItem="oa6-hR-aET" secondAttribute="trailing" id="DMo-Sh-kQq"/>
                             <constraint firstItem="aqe-5Q-hDI" firstAttribute="top" secondItem="J4a-Fg-jYR" secondAttribute="top" id="OXI-a0-wac"/>
                             <constraint firstItem="aqe-5Q-hDI" firstAttribute="trailing" secondItem="J4a-Fg-jYR" secondAttribute="trailing" id="PBJ-or-bC2"/>
@@ -606,7 +633,7 @@
                                     <constraint firstAttribute="height" constant="32" id="8jr-7E-CGp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="24"/>
-                                <color key="textColor" red="1" green="0.80784313725490198" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@mark_newman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF2-KJ-gQO">
@@ -615,14 +642,14 @@
                                     <constraint firstAttribute="height" constant="21" id="SFY-V8-cMD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                <color key="textColor" red="1" green="0.80784313725490198" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STF-nC-a6M">
                                 <rect key="frame" x="0.0" y="242" width="375" height="570"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HK-rV-zPW">
-                                        <rect key="frame" x="16" y="32.000000000000007" width="343" height="97.666666666666686"/>
+                                        <rect key="frame" x="16" y="31.999999999999993" width="343" height="106.33333333333331"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">Cool boy, it’s me!
@@ -630,8 +657,8 @@
 I am interested in 
 UX, Data, Academic…</string>
                                                 <attributes>
-                                                    <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                    <color key="NSColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="17" name="IBMPlexSans"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -639,38 +666,54 @@ UX, Data, Academic…</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liu-mF-6b6">
-                                        <rect key="frame" x="16" y="466" width="167.66666666666666" height="32"/>
+                                        <rect key="frame" x="16" y="454" width="163.66666666666666" height="44"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Change interests " image="editButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="CBD-rO-2du"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="16"/>
+                                        <state key="normal" title="  Interests " image="editButton">
                                             <color key="titleColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="logIn:" destination="cnK-Sy-w7B" eventType="touchUpInside" id="UZ7-8d-tRi"/>
                                             <segue destination="4VP-d3-gla" kind="show" identifier="gotoTagList" id="QMi-FX-rvU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqh-vF-e8N">
-                                        <rect key="frame" x="191.66666666666663" y="466" width="167.33333333333337" height="32"/>
+                                        <rect key="frame" x="195.66666666666663" y="454" width="163.33333333333337" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="16"/>
-                                        <state key="normal" title="Log out  " image="signOutButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="LO6-9x-hFT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="16"/>
+                                        <state key="normal" title="  Log out  " image="signOutButton">
                                             <color key="titleColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="16"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="logIn:" destination="cnK-Sy-w7B" eventType="touchUpInside" id="Hco-Se-wZ8"/>
                                             <action selector="logoutFunction:" destination="5xd-8j-8J0" eventType="touchUpInside" id="uyJ-sI-rhf"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="liu-mF-6b6" firstAttribute="baseline" secondItem="Uqh-vF-e8N" secondAttribute="baseline" id="4lp-9P-OQT"/>
                                     <constraint firstItem="liu-mF-6b6" firstAttribute="leading" secondItem="5HK-rV-zPW" secondAttribute="leading" id="FSM-tE-1LK"/>
                                     <constraint firstAttribute="trailing" secondItem="Uqh-vF-e8N" secondAttribute="trailing" constant="16" id="ILU-EZ-hAo"/>
                                     <constraint firstAttribute="bottom" secondItem="liu-mF-6b6" secondAttribute="bottom" constant="72" id="RCJ-Fi-m0F"/>
                                     <constraint firstItem="liu-mF-6b6" firstAttribute="width" secondItem="Uqh-vF-e8N" secondAttribute="width" id="a5v-wT-2uk"/>
-                                    <constraint firstItem="Uqh-vF-e8N" firstAttribute="leading" secondItem="liu-mF-6b6" secondAttribute="trailing" constant="8" id="bFM-5A-0zO"/>
+                                    <constraint firstItem="Uqh-vF-e8N" firstAttribute="leading" secondItem="liu-mF-6b6" secondAttribute="trailing" constant="16" id="bFM-5A-0zO"/>
                                     <constraint firstItem="liu-mF-6b6" firstAttribute="leading" secondItem="STF-nC-a6M" secondAttribute="leading" constant="16" id="pl3-Cz-fyy"/>
                                     <constraint firstItem="5HK-rV-zPW" firstAttribute="top" secondItem="STF-nC-a6M" secondAttribute="top" constant="32" id="t8u-0R-F7y"/>
                                     <constraint firstItem="5HK-rV-zPW" firstAttribute="leading" secondItem="STF-nC-a6M" secondAttribute="leading" constant="16" id="vdg-VP-Fbm"/>
@@ -678,7 +721,7 @@ UX, Data, Academic…</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="yU1-NT-fhT" firstAttribute="top" secondItem="Bz3-T3-khc" secondAttribute="top" constant="130" id="5om-wn-iqq"/>
                             <constraint firstItem="bF2-KJ-gQO" firstAttribute="leading" secondItem="yU1-NT-fhT" secondAttribute="trailing" constant="16" id="7NX-ie-IIC"/>
@@ -718,7 +761,7 @@ UX, Data, Academic…</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="uGY-ws-Rrk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="CGe-gi-cYN">
                             <rect key="frame" x="0.0" y="117.33333333333337" width="375" height="300"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -730,10 +773,10 @@ UX, Data, Academic…</string>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6LP-TF-cho" id="OFB-3z-QcZ">
                                     <rect key="frame" x="0.0" y="0.0" width="335" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" red="0.18651676180000001" green="0.14829465750000001" blue="0.88440412280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.18651676180000001" green="0.14829465750000001" blue="0.88440412280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -743,14 +786,17 @@ UX, Data, Academic…</string>
                     </tableView>
                     <navigationItem key="navigationItem" title="My interests" largeTitleDisplayMode="never" id="gIz-iX-dfz">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="w5o-5e-0Sb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zs4-bY-bQe">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zs4-bY-bQe">
+                                <rect key="frame" x="276" y="4.6666666666666679" width="83" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
+                                <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="17"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.18651676180000001" green="0.14829465750000001" blue="0.88440412280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zp8-Vk-eiF" kind="unwind" unwindAction="unwindToProfileWithSender:" id="dIq-a4-jmw"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="zp8-Vk-eiF" kind="unwind" unwindAction="unwindToProfileWithSender:" id="69O-wK-Ct6"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -759,7 +805,7 @@ UX, Data, Academic…</string>
             </objects>
             <point key="canvasLocation" x="6615" y="-92"/>
         </scene>
-        <!--Log In-->
+        <!--LOG IN-->
         <scene sceneID="cRx-0I-nWH">
             <objects>
                 <viewController id="cnK-Sy-w7B" customClass="LogInViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
@@ -768,37 +814,37 @@ UX, Data, Academic…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6Tk-LZ-sDa">
-                                <rect key="frame" x="16" y="184.66666666666666" width="343" height="32"/>
+                                <rect key="frame" x="16" y="194.66666666666666" width="343" height="32"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.14901960784313725" blue="0.85098039215686272" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="6vY-Hy-wU5"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VDb-Vm-IBm">
-                                <rect key="frame" x="16" y="237.66666666666666" width="343" height="31.999999999999972"/>
+                                <rect key="frame" x="16" y="247.66666666666663" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Z1I-K2-wfd"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDN-ue-OHD">
-                                <rect key="frame" x="16" y="220.66666666666666" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="230.66666666666666" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="dwq-Hi-Omi"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="453-LS-fSj">
-                                <rect key="frame" x="16" y="273.66666666666669" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="283.66666666666669" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="tYJ-3m-4dR"/>
                                 </constraints>
@@ -810,30 +856,41 @@ UX, Data, Academic…</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="18"/>
                                 <state key="normal" title="Not a member yet?">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <segue destination="iOS-jx-ik3" kind="show" animates="NO" id="KNd-PC-YNM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-ys-dMc">
-                                <rect key="frame" x="16" y="306.66666666666669" width="343" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsb-ys-dMc">
+                                <rect key="frame" x="231" y="316.66666666666669" width="128" height="44"/>
+                                <color key="backgroundColor" red="0.18651676177978516" green="0.14829465746879578" blue="0.88440412282943726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="P25-ZJ-xPr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
-                                <state key="normal" title="Go" image="goButton">
+                                <size key="titleShadowOffset" width="0.0" height="10"/>
+                                <state key="normal" title="Go" image="goArrow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.18651676180000001" green="0.14829465750000001" blue="0.88440412280000003" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="logIn:" destination="cnK-Sy-w7B" eventType="touchUpInside" id="60n-Qx-Dt1"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="bDN-ue-OHD" firstAttribute="top" secondItem="6Tk-LZ-sDa" secondAttribute="bottom" constant="4" id="AfL-5k-BYe"/>
                             <constraint firstItem="VDb-Vm-IBm" firstAttribute="trailing" secondItem="453-LS-fSj" secondAttribute="trailing" id="BcH-23-OSH"/>
-                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="top" secondItem="ctC-RN-kjv" secondAttribute="top" constant="29.666666666666686" id="DpM-dD-82r"/>
-                            <constraint firstItem="453-LS-fSj" firstAttribute="leading" secondItem="Dsb-ys-dMc" secondAttribute="leading" id="Htq-k1-LHu"/>
+                            <constraint firstItem="6Tk-LZ-sDa" firstAttribute="top" secondItem="ctC-RN-kjv" secondAttribute="top" constant="32" id="DpM-dD-82r"/>
+                            <constraint firstItem="453-LS-fSj" firstAttribute="leading" secondItem="Dsb-ys-dMc" secondAttribute="leading" constant="-215" id="Htq-k1-LHu"/>
                             <constraint firstItem="6Tk-LZ-sDa" firstAttribute="leading" secondItem="v8K-Sy-NvN" secondAttribute="leadingMargin" id="JhD-BQ-XAy"/>
                             <constraint firstItem="453-LS-fSj" firstAttribute="trailing" secondItem="Dsb-ys-dMc" secondAttribute="trailing" id="Uud-U6-rge"/>
                             <constraint firstItem="bDN-ue-OHD" firstAttribute="trailing" secondItem="VDb-Vm-IBm" secondAttribute="trailing" id="WaN-e6-Voo"/>
@@ -851,7 +908,7 @@ UX, Data, Academic…</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ctC-RN-kjv"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Log In" largeTitleDisplayMode="always" id="KWd-3O-yzx"/>
+                    <navigationItem key="navigationItem" title="LOG IN" largeTitleDisplayMode="always" id="KWd-3O-yzx"/>
                     <connections>
                         <outlet property="logInButton" destination="Dsb-ys-dMc" id="EtB-ZY-32Z"/>
                         <outlet property="passwordTextfield" destination="VDb-Vm-IBm" id="kVt-5z-hGx"/>
@@ -863,7 +920,7 @@ UX, Data, Academic…</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="138-9q-CrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7W9-dz-jlr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4130" y="-91"/>
+            <point key="canvasLocation" x="4128.8000000000002" y="-91.625615763546804"/>
         </scene>
         <!--Navigation Table View Controller-->
         <scene sceneID="HDt-UI-9iA">
@@ -930,7 +987,7 @@ UX, Data, Academic…</string>
             </objects>
             <point key="canvasLocation" x="5892" y="1496.305418719212"/>
         </scene>
-        <!--Sign Up-->
+        <!--SIGN UP-->
         <scene sceneID="XeJ-qk-2xP">
             <objects>
                 <viewController id="iOS-jx-ik3" customClass="SignUpViewController" customModule="ARKitImageRecognition" customModuleProvider="target" sceneMemberID="viewController">
@@ -939,37 +996,37 @@ UX, Data, Academic…</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AKs-BG-eeT">
-                                <rect key="frame" x="16" y="185.66666666666666" width="343" height="32"/>
+                                <rect key="frame" x="16" y="194.66666666666666" width="343" height="32"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="oZ3-hd-GyU"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jwa-a1-qVR">
-                                <rect key="frame" x="16" y="238.66666666666666" width="343" height="31.999999999999972"/>
+                                <rect key="frame" x="16" y="247.66666666666663" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="rRb-U7-TXL"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OyR-hy-Vx5">
-                                <rect key="frame" x="16" y="221.66666666666666" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="230.66666666666666" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="iie-5N-aHX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8l-M9-bj1">
-                                <rect key="frame" x="16" y="274.66666666666669" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="283.66666666666669" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="n0N-dv-t5m"/>
                                 </constraints>
@@ -978,19 +1035,22 @@ UX, Data, Academic…</string>
                                 <rect key="frame" x="16" y="706" width="343" height="36"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="18"/>
                                 <state key="normal" title="Already a member?">
-                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </state>
                                 <connections>
                                     <action selector="goBackToLogIn:" destination="iOS-jx-ik3" eventType="touchUpInside" id="8GY-4K-471"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb0-Fi-50h">
-                                <rect key="frame" x="16" y="360.66666666666669" width="343" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb0-Fi-50h">
+                                <rect key="frame" x="231" y="369.66666666666669" width="128" height="44"/>
+                                <color key="backgroundColor" red="0.18651676180000001" green="0.14829465750000001" blue="0.88440412280000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="1po-eO-E7g"/>
+                                    <constraint firstAttribute="height" constant="44" id="1po-eO-E7g"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="8oO-Bg-mdG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="lWq-Ac-imK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="20"/>
-                                <state key="normal" title="Join" image="goButton">
+                                <state key="normal" title="Join" image="goArrow">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -998,40 +1058,40 @@ UX, Data, Academic…</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat your password" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="u6F-K7-GoF">
-                                <rect key="frame" x="16" y="291.66666666666669" width="343" height="32"/>
+                                <rect key="frame" x="16" y="300.66666666666669" width="343" height="32"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="O8B-kI-9Rt"/>
                                 </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="IBMPlexSans-Italic" family="IBM Plex Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Epr-BF-WSy">
-                                <rect key="frame" x="16" y="327.66666666666669" width="343" height="1"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="16" y="336.66666666666669" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="lyl-UK-KAC"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.14901960780000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="jwa-a1-qVR" firstAttribute="leading" secondItem="L8l-M9-bj1" secondAttribute="leading" id="1Nj-g7-MY5"/>
                             <constraint firstItem="L8l-M9-bj1" firstAttribute="top" secondItem="jwa-a1-qVR" secondAttribute="bottom" constant="4" id="7aX-WK-gBb"/>
                             <constraint firstItem="Epr-BF-WSy" firstAttribute="top" secondItem="u6F-K7-GoF" secondAttribute="bottom" constant="4" id="97O-d0-Z8G"/>
-                            <constraint firstItem="eb0-Fi-50h" firstAttribute="leading" secondItem="UuA-QJ-1xB" secondAttribute="leading" constant="16" id="APX-cK-YV4"/>
                             <constraint firstItem="AKs-BG-eeT" firstAttribute="leading" secondItem="OyR-hy-Vx5" secondAttribute="leading" id="PIp-mp-9ah"/>
-                            <constraint firstItem="AKs-BG-eeT" firstAttribute="top" secondItem="UuA-QJ-1xB" secondAttribute="top" constant="30.666666666666686" id="Tbc-oi-SbW"/>
+                            <constraint firstItem="AKs-BG-eeT" firstAttribute="top" secondItem="UuA-QJ-1xB" secondAttribute="top" constant="32" id="Tbc-oi-SbW"/>
                             <constraint firstItem="OyR-hy-Vx5" firstAttribute="leading" secondItem="jwa-a1-qVR" secondAttribute="leading" id="WO6-SE-TU1"/>
                             <constraint firstItem="UuA-QJ-1xB" firstAttribute="trailing" secondItem="sOz-fk-P5K" secondAttribute="trailing" constant="16" id="WSl-Uw-2qQ"/>
                             <constraint firstItem="u6F-K7-GoF" firstAttribute="leading" secondItem="Epr-BF-WSy" secondAttribute="leading" id="WwZ-nO-M2E"/>
                             <constraint firstItem="OyR-hy-Vx5" firstAttribute="top" secondItem="AKs-BG-eeT" secondAttribute="bottom" constant="4" id="Z7c-Kb-XcW"/>
                             <constraint firstItem="u6F-K7-GoF" firstAttribute="leading" secondItem="L8l-M9-bj1" secondAttribute="leading" id="bSe-ib-FVP"/>
-                            <constraint firstItem="Epr-BF-WSy" firstAttribute="trailing" secondItem="eb0-Fi-50h" secondAttribute="trailing" id="d1d-qU-SxU"/>
+                            <constraint firstItem="UuA-QJ-1xB" firstAttribute="trailing" secondItem="eb0-Fi-50h" secondAttribute="trailing" constant="16" id="cVy-8k-xsp"/>
                             <constraint firstItem="eb0-Fi-50h" firstAttribute="top" secondItem="Epr-BF-WSy" secondAttribute="bottom" constant="32" id="d2t-Oe-3F4"/>
+                            <constraint firstItem="Epr-BF-WSy" firstAttribute="leading" secondItem="eb0-Fi-50h" secondAttribute="leading" constant="-215" id="dMx-kS-1FG"/>
                             <constraint firstItem="OyR-hy-Vx5" firstAttribute="trailing" secondItem="jwa-a1-qVR" secondAttribute="trailing" id="eQ7-OT-4D9"/>
                             <constraint firstItem="jwa-a1-qVR" firstAttribute="trailing" secondItem="L8l-M9-bj1" secondAttribute="trailing" id="iTb-IV-ekg"/>
                             <constraint firstItem="AKs-BG-eeT" firstAttribute="leading" secondItem="DrW-gS-F1r" secondAttribute="leadingMargin" id="isJ-61-oD4"/>
@@ -1046,7 +1106,7 @@ UX, Data, Academic…</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UuA-QJ-1xB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="ETy-nr-dAv"/>
+                    <navigationItem key="navigationItem" title="SIGN UP" id="ETy-nr-dAv"/>
                     <connections>
                         <outlet property="logInButton" destination="eb0-Fi-50h" id="92A-MR-GWZ"/>
                         <outlet property="passwordTextfield" destination="jwa-a1-qVR" id="2AZ-cg-JGY"/>
@@ -1059,7 +1119,7 @@ UX, Data, Academic…</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGV-3B-H62" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="p75-EN-PTa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4980" y="-92"/>
+            <point key="canvasLocation" x="4980" y="-92.364532019704441"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Afo-KL-oog">
@@ -1072,13 +1132,14 @@ UX, Data, Academic…</string>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="IBMPlexSans" family="IBM Plex Sans" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
-                            <fontDescription key="fontDescription" name="IBMPlexSans-Medium" family="IBM Plex Sans" pointSize="36"/>
+                            <fontDescription key="fontDescription" name="Univers-Condensed-Medium" family="Univers Condensed" pointSize="36"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="20"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="32"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1093,12 +1154,13 @@ UX, Data, Academic…</string>
     </scenes>
     <resources>
         <image name="avatar" width="64" height="64"/>
-        <image name="editButton" width="32" height="32"/>
-        <image name="goButton" width="40" height="40"/>
+        <image name="avatarDefault" width="32" height="32"/>
+        <image name="editButton" width="16" height="17"/>
+        <image name="goArrow" width="17" height="14"/>
         <image name="restart" width="20" height="23"/>
         <image name="restartPressed" width="20" height="23"/>
         <image name="separator" width="630" height="18"/>
-        <image name="signOutButton" width="32" height="32"/>
+        <image name="signOutButton" width="15" height="17"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hkV-PT-RQH"/>

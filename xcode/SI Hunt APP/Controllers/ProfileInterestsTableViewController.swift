@@ -28,7 +28,7 @@ class ProfileInterestsTableViewController: UITableViewController {
         
         // rewrite nav bar back btn
         let button: UIButton = UIButton (type: UIButtonType.custom)
-        button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        button.setImage(UIImage(named: "backButtonBlack"), for: UIControlState.normal)
         button.frame = CGRect(x: 24 , y: 10, width: 24, height: 32)
         button.addTarget(self, action: #selector(ProfileViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
@@ -60,7 +60,7 @@ class ProfileInterestsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
         cell.textLabel!.text = allTags[indexPath.row].name
-        cell.textLabel!.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        cell.textLabel!.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         let isSelected = userTags.contains(allTags[indexPath.row].name)
         cell.setSelected(isSelected, animated: false)
         cell.accessoryType = isSelected ? .checkmark : .none

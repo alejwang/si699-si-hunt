@@ -28,7 +28,7 @@ class LogInViewController: UIViewController {
         // rewrite nav bar back btn
         // ref: https://medium.com/simple-swift-programming-tips/how-to-make-custom-uinavigationcontroller-back-button-image-without-title-swift-7ea5673d7e03
         let backButton: UIButton = UIButton (type: UIButtonType.custom)
-        backButton.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        backButton.setImage(UIImage(named: "backButtonBlack"), for: UIControlState.normal)
         backButton.frame = CGRect(x: 0 , y: 0, width: 33, height: 32)
         backButton.addTarget(self, action: #selector(LogInViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: backButton)
@@ -36,12 +36,17 @@ class LogInViewController: UIViewController {
         
         // rewrite the placeholder text
         // ref: https://stackoverflow.com/questions/26076054/changing-placeholder-text-color-with-swift
-        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
-        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+//        usernameTextfield.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
+//        passwordTextfield.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.3)])
         
         // rewrite the go button
         logInButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logInButton.imageView!.frame.size.width-10, 0, logInButton.imageView!.frame.size.width+10);
-        logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width, 0, -logInButton.titleLabel!.frame.size.width);
+        logInButton.imageEdgeInsets = UIEdgeInsetsMake(0, logInButton.titleLabel!.frame.size.width+10, 0, -logInButton.titleLabel!.frame.size.width-10);
+        logInButton.layer.cornerRadius = 16
+        logInButton.layer.shadowColor = #colorLiteral(red: 0.1865167618, green: 0.1482946575, blue: 0.8844041228, alpha: 1)
+        logInButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        logInButton.layer.shadowOpacity = 0.1
+        logInButton.layer.shadowRadius = 5
     }
     
     
@@ -97,7 +102,7 @@ class LogInViewController: UIViewController {
                 self.passwordTextfield.text = ""
                 self.performSegue(withIdentifier: "gotoProfile", sender: self)
             } else {
-                self.loginFailed(message: "However your  username or password is wrong")
+                self.loginFailed(message: "However your username or password is wrong")
             }
         })
     }
