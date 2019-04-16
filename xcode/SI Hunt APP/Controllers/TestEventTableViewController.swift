@@ -24,6 +24,12 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     var user_name : String! = ""
     var user_tags = [String]()
     
+    
+    //@IBOutlet weak var recomEventCount: UILabel!
+    //@IBOutlet weak var totalEventCount: UILabel!
+    
+    
+    
     @IBAction func profileBtnPressed(_ sender: UIButton) {
         if UserDefaults.standard.string(forKey: "username") != nil {
             performSegue(withIdentifier: "gotoProfile3", sender: self)
@@ -95,7 +101,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 cell.recommCollectionView.dataSource = self
                 cell.recommCollectionView.delegate = self
                 cell.recommCollectionView.tag = indexPath.row
-                //cell.events = recom_events
+                cell.recomEventCount.text = String(recom_events.count)
                 cell.recommCollectionView.reloadData()
             }
         } else if indexPath.row == 3 {
@@ -103,6 +109,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 cell.allEventsCollectionView.dataSource = self
                 cell.allEventsCollectionView.delegate = self
                 cell.allEventsCollectionView.tag = indexPath.row
+                cell.totalEventCount.text = String(events.count)
                 cell.allEventsCollectionView.reloadData()
                 cell.allEventsCollectionView.isScrollEnabled = false
             }
@@ -113,7 +120,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         if indexPath.row == 2 {
             return tableView.bounds.width + 30
         } else if indexPath.row == 3{
-            return CGFloat(events.count*90)
+            return CGFloat(events.count*100+30)
         }
         else {
             return UITableViewAutomaticDimension
@@ -175,6 +182,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 print("Success!Get the events")
                 let eventJSON : JSON = JSON(response.result.value!)
                 self.updateEventData(json:eventJSON)
+                //self.totalEventCount.text = String(self.events.count)
             }
             else{
                 print("Error")
@@ -239,6 +247,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 self.user_name = profileJSON["username"].stringValue
                 self.user_tags = userTags
                 self.updateRecommEventData(userTags: userTags)
+                //self.recomEventCount.text = String(self.recom_events.count)
             }
             else{
                 print("Error")

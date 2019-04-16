@@ -13,7 +13,8 @@ class AllEventsTableViewCell: UITableViewCell {
 //    var events = [Event]()
     
     @IBOutlet weak var allEventsCollectionView: UICollectionView!
-//    {
+    @IBOutlet weak var totalEventCount: UILabel!
+    //    {
 //        didSet {
 //            allEventsCollectionView.dataSource = self
 //            allEventsCollectionView.delegate = self

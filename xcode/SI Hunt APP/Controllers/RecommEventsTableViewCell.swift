@@ -13,7 +13,8 @@ class RecommEventsTableViewCell: UITableViewCell {
 //    var events = [Event]()
     
     @IBOutlet weak var recommCollectionView: UICollectionView!
-//    {
+    @IBOutlet weak var recomEventCount: UILabel!
+    //    {
 //        didSet {
 //            recommCollectionView.dataSource = self
 //        }
