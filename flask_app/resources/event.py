@@ -73,5 +73,5 @@ class EventList(Resource):
     @api.doc(security=None, responses={200:'OK'})
     def get(self, period="all"):
         """returns a list of events"""
-        return {"event_results": list(map(lambda x: x.json(), EventModel.query.all()))}
+        return {"event_results": list(map(lambda x: x.json(), EventModel.query.order_by(EventModel.start_time).all()))}
         # To-do?: period is ongoing_and_coming / history / all?

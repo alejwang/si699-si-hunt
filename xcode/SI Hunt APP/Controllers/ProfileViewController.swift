@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
         
         // rewrite nav bar back btn
         let button: UIButton = UIButton (type: UIButtonType.custom)
-        button.setImage(UIImage(named: "backButton"), for: UIControlState.normal)
+        button.setImage(UIImage(named: "backButtonBlack"), for: UIControlState.normal)
         button.frame = CGRect(x: 24 , y: 10, width: 24, height: 32)
         button.addTarget(self, action: #selector(ProfileViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let barButton = UIBarButtonItem(customView: button)
@@ -47,6 +47,15 @@ class ProfileViewController: UIViewController {
         chooseInterestButton.imageEdgeInsets = UIEdgeInsetsMake(0, chooseInterestButton.titleLabel!.frame.size.width, 0, -chooseInterestButton.titleLabel!.frame.size.width);
         logoutButton.titleEdgeInsets = UIEdgeInsetsMake(0, -logoutButton.imageView!.frame.size.width-8, 0, logoutButton.imageView!.frame.size.width+8);
         logoutButton.imageEdgeInsets = UIEdgeInsetsMake(0, logoutButton.titleLabel!.frame.size.width, 0, -logoutButton.titleLabel!.frame.size.width);
+        chooseInterestButton.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        chooseInterestButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        chooseInterestButton.layer.shadowOpacity = 0.1
+        chooseInterestButton.layer.shadowRadius = 5
+        logoutButton.layer.shadowColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        logoutButton.layer.shadowOffset = CGSize(width: 0, height: 8)
+        logoutButton.layer.shadowOpacity = 0.1
+        logoutButton.layer.shadowRadius = 5
+        
         
         // get data
         if username != UserDefaults.standard.string(forKey: "username") {
@@ -68,9 +77,14 @@ class ProfileViewController: UIViewController {
     // log out to clean UD standard and go back to homepage
     @IBAction func logoutFunction(_ sender: UIButton) {
         print("> Tapped Log out")
-        UserDefaults.standard.removeObject(forKey: "username")
-        navigationController?.popViewController(animated: true)
-        performSegue(withIdentifier: "unwindSegueToHomepage1", sender: self)
+        let alert = UIAlertController(title: "Do you want to log out? ", message: "😭😭😭😭😭😭", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { action in
+            UserDefaults.standard.removeObject(forKey: "username")
+            self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "unwindSegueToHomepage1", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     

@@ -24,11 +24,19 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     var user_name : String! = ""
     var user_tags = [String]()
     
-    
-    //@IBOutlet weak var recomEventCount: UILabel!
-    //@IBOutlet weak var totalEventCount: UILabel!
-    
-    
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        getEventData(url:APICLIENT_URL)
+        getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
+    }
+
     
     @IBAction func profileBtnPressed(_ sender: UIButton) {
         if UserDefaults.standard.string(forKey: "username") != nil {
@@ -39,17 +47,14 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        getEventData(url:APICLIENT_URL)
-        getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
+    @IBAction func profileTextPressed(_ sender: UIButton) {
+        if UserDefaults.standard.string(forKey: "username") != nil {
+            performSegue(withIdentifier: "gotoProfile3", sender: self)
+        } else {
+            performSegue(withIdentifier: "gotoLogin", sender: self)
+        }
     }
+    
 
     // MARK: - Table view data source
     
@@ -118,7 +123,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
-            return tableView.bounds.width + 30
+            return tableView.bounds.width + 65
         } else if indexPath.row == 3{
             return CGFloat(events.count*100+30)
         }

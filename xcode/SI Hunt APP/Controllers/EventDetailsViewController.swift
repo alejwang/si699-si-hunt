@@ -31,6 +31,16 @@ class EventDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // rewrite nav bar back btn
+        // ref: https://medium.com/simple-swift-programming-tips/how-to-make-custom-uinavigationcontroller-back-button-image-without-title-swift-7ea5673d7e03
+        let backButton: UIButton = UIButton (type: UIButtonType.custom)
+        backButton.setImage(UIImage(named: "backButtonBlack"), for: UIControlState.normal)
+        backButton.frame = CGRect(x: 0 , y: 0, width: 33, height: 32)
+        backButton.addTarget(self, action: #selector(EventDetailsViewController.backButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        let barButton = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = barButton
+        
 
         // Do any additional setup after loading the view.
         
@@ -61,7 +71,10 @@ class EventDetailsViewController: UIViewController {
         //navPanel.layer.shouldRasterize = true
     }
     
-    
+    // rewrite the back button action
+    @objc func backButtonPressed(_ sender : Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
