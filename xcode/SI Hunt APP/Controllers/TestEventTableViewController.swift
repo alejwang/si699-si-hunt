@@ -200,20 +200,25 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         for event in event_results{
             let isExpired = self.checkExpire(eventTime: event["end_time"].stringValue)
             
+            
             if isExpired == false{
-                events.append(Event(name: event["name"].stringValue,
-                                    description: event["description"].stringValue,
-                                    capacity: event["capacity"].intValue,
-                                    organizer_id: event["organizer_id"].intValue ,
-                                    organizer_name: event["organizer_name"].stringValue,
-                                    start_time: event["start_time"].stringValue,
-                                    end_time: event["end_time"].stringValue,
-                                    location_id: event["location_id"].intValue,
-                                    location_name: event["location_name"].stringValue,
-                                    location_is_armap_available: event["location_is_armap_available"].boolValue,
-                                    is_published: event["is_published"].boolValue,
-                                    pub_date: event["pub_date"].stringValue,
-                                    tags: event["tags"].arrayObject as! [String])!)
+                let event = Event(name: event["name"].stringValue,
+                                  description: event["description"].stringValue,
+                                  capacity: event["capacity"].intValue,
+                                  organizer_id: event["organizer_id"].intValue ,
+                                  organizer_name: event["organizer_name"].stringValue,
+                                  start_time: event["start_time"].stringValue,
+                                  end_time: event["end_time"].stringValue,
+                                  location_id: event["location_id"].intValue,
+                                  location_name: event["location_name"].stringValue,
+                                  location_is_armap_available: event["location_is_armap_available"].boolValue,
+                                  is_published: event["is_published"].boolValue,
+                                  pub_date: event["pub_date"].stringValue,
+                                  tags: event["tags"].arrayObject as! [String])!
+                let isInList = events.contains { $0.name == event.name }
+                if isInList == false {
+                    events.append(event)
+                }
                 
             }
         }
