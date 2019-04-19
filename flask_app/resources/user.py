@@ -94,7 +94,7 @@ class UserReward(Resource):
     @api.doc(security=None, responses={200:'Updated', 400: 'Bad request: user not exsits'})
     @api.expect(parser)
     def put(self, username):
-        data = UserProfile.parser.parse_args()
+        data = UserReward.parser.parse_args()
         user = UserModel.find_user_by_username(username)
         if not user:
             return {"message": "User not exists"}, 400

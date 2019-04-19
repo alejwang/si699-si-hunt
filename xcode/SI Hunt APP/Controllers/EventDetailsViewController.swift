@@ -64,7 +64,7 @@ class EventDetailsViewController: UIViewController {
         
         navPanel.layer.cornerRadius = 16
         navPanel.layer.shadowColor = UIColor.black.cgColor
-        navPanel.layer.shadowOpacity = 0.6
+        navPanel.layer.shadowOpacity = 0.1
         navPanel.layer.shadowOffset = CGSize.zero
         navPanel.layer.shadowRadius = 8
         navPanel.layer.shadowPath = UIBezierPath(rect: navPanel.bounds).cgPath

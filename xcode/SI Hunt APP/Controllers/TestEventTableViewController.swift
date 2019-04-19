@@ -25,7 +25,6 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     var user_tags = [String]()
     
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -33,6 +32,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
         getEventData(url:APICLIENT_URL)
         getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
     }
@@ -45,14 +45,6 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
             performSegue(withIdentifier: "gotoLogin", sender: self)
         }
         
-    }
-    
-    @IBAction func profileTextPressed(_ sender: UIButton) {
-        if UserDefaults.standard.string(forKey: "username") != nil {
-            performSegue(withIdentifier: "gotoProfile3", sender: self)
-        } else {
-            performSegue(withIdentifier: "gotoLogin", sender: self)
-        }
     }
     
 
