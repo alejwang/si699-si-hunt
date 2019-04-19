@@ -58,9 +58,9 @@ class Event(Resource):
 
     @api.doc(security='JWT', responses={204:'OK - No content returned', 404: 'Not found', 401:'No authorization'})
     @jwt_required
-    def delete(self, id):
+    def delete(self, name):
         """deletes an event by name"""
-        event = EventModel.find_event_by_id(id)
+        event = EventModel.find_event_by_name(name)
         if event:
             event.delete_from_db()
             return {"message": "Event deleted"}

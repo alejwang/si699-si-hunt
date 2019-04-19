@@ -72,7 +72,7 @@ class UserProfile(Resource):
             return {"message": "User not exists"}, 400
         return user.json(), 200
     
-    @api.doc(security=None, responses={201:'Created', 400: 'Bad request: item already exsits'})
+    @api.doc(security=None, responses={200:'Updated', 400: 'Bad request: user not exsits'})
     @api.expect(parser)
     def put(self, username):
         data = UserProfile.parser.parse_args()
@@ -82,3 +82,29 @@ class UserProfile(Resource):
         user.set_profile(**data)
         # user.update_to_db()
         return user.json(), 200
+
+
+@api.route("reward/<username>")
+@api.param("username")
+class UserReward(Resource):
+
+    parser = api.parser()
+    parser.add_argument('addon', type=int, default=0, help="add how many points?")
+    
+    @api.doc(security=None, responses={200:'Updated', 400: 'Bad request: user not exsits'})
+    @api.expect(parser)
+    def put(self, username):
+        data = UserProfile.parser.parse_args()
+        user = UserModel.find_user_by_username(username)
+        if not user:
+            return {"message": "User not exists"}, 400
+        user.add_points(**data)
+        # user.update_to_db()
+        return user.json(), 200
+
+
+@api.route('leaderboard')
+class UserList(Resource):
+    @api.doc(security=None, responses={200:'OK'})
+    def get(self):
+        return {"leaderboard_results": list(map(lambda x: x.json(), UserModel.query.order_by(UserModel.points).all()))}

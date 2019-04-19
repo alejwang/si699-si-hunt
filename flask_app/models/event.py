@@ -39,10 +39,12 @@ class EventModel(db.Model):
         self.is_published = is_published
         self.pub_date = pub_date
         self.tags = []
-        for tag_name in tags_list:
-            tag = TagModel.find_tag_by_name(tag_name)
-            if tag :
-                self.tags.append(tag)
+        if tags_list:
+            for tag_name in tags_list:
+                tag = TagModel.find_tag_by_name(tag_name)
+                if tag :
+                    self.tags.append(tag)
+                
 
     def json(self):
         json = {

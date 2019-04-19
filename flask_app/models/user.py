@@ -16,6 +16,7 @@ class UserModel(db.Model):
     lastname = db.Column(db.String(80))
     fullname = db.Column(db.String(80))
     description = db.Column(db.String(80))
+    points = db.Column(db.Integer)
 
     tags = db.relationship('TagModel', secondary=tags_users, lazy='subquery',
         backref=db.backref('UserModel', lazy=True))
@@ -29,7 +30,8 @@ class UserModel(db.Model):
         self.password = password
         self.fullname = "Hunter"
         self.description = ""
-        self.is_administrator = 0
+        # self.is_administrator = 0
+        self.points = 0
 
     def json(self):
         json = {
@@ -37,7 +39,8 @@ class UserModel(db.Model):
             'fistname': self.firstname if self.firstname else "",
             'lastname': self.lastname if self.lastname else "",
             'description': self.description,
-            'tags': [tag.name for tag in self.tags]
+            'tags': [tag.name for tag in self.tags],
+            'points': self.points if self.points else 0
         }
         return json
 
@@ -54,6 +57,13 @@ class UserModel(db.Model):
             self.lastname = lastname
         if description:
             self.description = description
+        db.session.commit()
+    
+    def add_points(self, addon):
+        if self.points:
+            self.points += addon
+        else:
+            self.points = addon
         db.session.commit()
 
     def set_as_administrator(self, is_administrator):
