@@ -45,6 +45,7 @@
 		E7812E0E2262691000E60261 /* Univers-Condensed-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7812E0D226268D000E60261 /* Univers-Condensed-Medium.ttf */; };
 		E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCD2249974C005A5478 /* ProfileViewController.swift */; };
 		E7833BD022499863005A5478 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7833BCF22499863005A5478 /* Tag.swift */; };
+		E799972E226CD26B002E3426 /* leaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E799972D226CD26B002E3426 /* leaderboardTableViewController.swift */; };
 		E7D2158D2249AC6500400D4F /* ProfileInterestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		E7812E0D226268D000E60261 /* Univers-Condensed-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers-Condensed-Medium.ttf"; sourceTree = "<group>"; };
 		E7833BCD2249974C005A5478 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E7833BCF22499863005A5478 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		E799972D226CD26B002E3426 /* leaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaderboardTableViewController.swift; sourceTree = "<group>"; };
 		E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInterestsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		18477B6E223D7C1B00596E94 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E799972D226CD26B002E3426 /* leaderboardTableViewController.swift */,
 				E741540722564E00004B89D1 /* SignUpViewController.swift */,
 				E7833BCD2249974C005A5478 /* ProfileViewController.swift */,
 				E7D2158C2249AC6500400D4F /* ProfileInterestsTableViewController.swift */,
@@ -434,6 +437,7 @@
 				9C0CB7D52253521F0065AE30 /* EventDetailsViewController.swift in Sources */,
 				9C16A327222461100028CEAC /* Event.swift in Sources */,
 				E7776772225476B800D25A5D /* NavigationTableViewController.swift in Sources */,
+				E799972E226CD26B002E3426 /* leaderboardTableViewController.swift in Sources */,
 				E77767752255033C00D25A5D /* NavigationStepTableViewCell.swift in Sources */,
 				E7833BCE2249974C005A5478 /* ProfileViewController.swift in Sources */,
 				3929C48C1E89EC2C00E00B60 /* AppDelegate.swift in Sources */,

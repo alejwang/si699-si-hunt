@@ -12,13 +12,14 @@ import SwiftyJSON
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var userFullnameLabel: UILabel!
-    @IBOutlet weak var userUsernameLabel: UILabel!
+    @IBOutlet weak var userUsernameLabel: UIButton!
     @IBOutlet weak var userHeadlineAndInterestLabel: UILabel!
     
     @IBOutlet weak var chooseInterestButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
     var fullname: String = ""
+    var points: Int = 0
     var username: String = "John Doe"
     var headlineString : String = ""
     var userTags = [String]()
@@ -58,7 +59,7 @@ class ProfileViewController: UIViewController {
         
         
         // get data
-        if username != UserDefaults.standard.string(forKey: "username") {
+        if username != UserDefaults.standard.string(forKey: "username")! {
             username = UserDefaults.standard.string(forKey: "username")!
             getProfileData(username: username)
         }
@@ -93,6 +94,7 @@ class ProfileViewController: UIViewController {
         APIClient.getProfile(withUsername: username, completion: { json in
             if json != nil {
                 self.fullname = "\(json!["fistname"].stringValue) \(json!["lastname"].stringValue)"
+                self.points = json!["points"].intValue
                 self.headlineString = json!["description"].stringValue
                 self.userTags = []
                 for tag in json!["tags"].arrayValue {
@@ -116,7 +118,7 @@ class ProfileViewController: UIViewController {
         } else {
             userFullnameLabel.text = fullname
         }
-        userUsernameLabel.text = "@\(username)"
+        userUsernameLabel.titleLabel?.text = "\(points) pts →"
         if headlineString == "" {
             headlineString = "I'm lazy and I don't want to introduce myself."
         }

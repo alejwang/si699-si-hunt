@@ -24,7 +24,7 @@ class UserModel(db.Model):
 
     # holder = db.relationship("HolderModel", back_populates="administrator", primaryjoin="HolderModel.id == UserModel.is_administrator")
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, tag_list= ['Orientation']):
         # don"t need to pass id - the primary will be implemented automatically
         self.username = username
         self.password = password
@@ -32,6 +32,11 @@ class UserModel(db.Model):
         self.description = ""
         # self.is_administrator = 0
         self.points = 0
+        if tags_list:
+            for tag_name in tags_list:
+                tag = TagModel.find_tag_by_name(tag_name)
+                if tag :
+                    self.tags.append(tag)
 
     def json(self):
         json = {

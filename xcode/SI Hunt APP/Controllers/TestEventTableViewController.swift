@@ -22,7 +22,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     var recom_events = [Event]()
     var mandatory_events = [Event]()
     var user_name : String! = ""
-    var user_tags = [String]()
+    var user_tags : [String] = ["Orientation"]
     
 
     override func viewDidLoad() {
@@ -34,7 +34,11 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         getEventData(url:APICLIENT_URL)
-        getRecommEventData(url:APICLIENT_URL_profile, username:"mark_newman")
+        if let username = UserDefaults.standard.string(forKey: "username") {
+            getRecommEventData(url:APICLIENT_URL_profile, username: username)
+        } else {
+            getRecommEventData(url:APICLIENT_URL_profile, username: "mark_newman")
+        }
     }
 
     

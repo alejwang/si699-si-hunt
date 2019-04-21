@@ -73,6 +73,24 @@ class APIClient {
             }
         }
     }
+    
+    static func getLeaderboard(completion: @escaping (JSON?) -> Void) {
+        print("> Sending getLeaderboard request")
+        Alamofire.request("https://alejwang.pythonanywhere.com/leaderboard", method: .get,  encoding: JSONEncoding.default).responseJSON { response in
+            if response.result.isSuccess{
+                let json : JSON = JSON(response.result.value!)
+                if json["message"].string != nil {
+                    completion(nil)
+                }
+                print("> JSON: \(json)")
+                completion(json)
+            }
+            else{
+                print("Error")
+                completion(nil)
+            }
+        }
+    }
 //
 //    static func getEvents(completion: @escaping (_ events: [(name: String,description: String, capacity: Int, organizer_id: Int, organizer_name: String, start_time: String, end_time: String, location_id: Int, location_name: String, location_is_armap_available: Bool, is_published: Bool, pub_date: String)]) -> Void) {
 //        AF.request("https://alejwang.pythonanywhere.com/events", method: .get).responseJSON { response in

@@ -19,7 +19,7 @@ class UserLogIn(Resource):
     @api.expect(parser)
     def post(self):
         data = UserLogIn.parser.parse_args()
-    
+
         user = UserModel.find_user_by_username(data['username'])
         if user and user.password == data['password']:
             access_token = create_access_token(identity=user.username)
@@ -28,7 +28,7 @@ class UserLogIn(Resource):
 
         else:
             return {"message": "Bad username and/or password"}, 401
-        
+
 
 
 @api.route("register")
@@ -71,7 +71,7 @@ class UserProfile(Resource):
         if not user:
             return {"message": "User not exists"}, 400
         return user.json(), 200
-    
+
     @api.doc(security=None, responses={200:'Updated', 400: 'Bad request: user not exsits'})
     @api.expect(parser)
     def put(self, username):
@@ -90,7 +90,7 @@ class UserReward(Resource):
 
     parser = api.parser()
     parser.add_argument('addon', type=int, default=0, help="add how many points?")
-    
+
     @api.doc(security=None, responses={200:'Updated', 400: 'Bad request: user not exsits'})
     @api.expect(parser)
     def put(self, username):
@@ -107,4 +107,4 @@ class UserReward(Resource):
 class UserList(Resource):
     @api.doc(security=None, responses={200:'OK'})
     def get(self):
-        return {"leaderboard_results": list(map(lambda x: x.json(), UserModel.query.order_by(UserModel.points).all()))}
+        return {"leaderboard_results": list(map(lambda x: x.json(), UserModel.query.order_by(UserModel.points.desc()).all()))}

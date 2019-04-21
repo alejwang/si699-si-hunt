@@ -59,6 +59,7 @@ class ProfileInterestsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistCell", for: indexPath)
+        cell.textLabel!.font = UIFont(name: "IBM Plex Sans", size: 17)
         cell.textLabel!.text = allTags[indexPath.row].name
         cell.textLabel!.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         let isSelected = userTags.contains(allTags[indexPath.row].name)

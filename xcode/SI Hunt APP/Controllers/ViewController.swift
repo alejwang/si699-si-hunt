@@ -255,9 +255,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                         }
                        
                         // direction
-                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around then Go "+String(nav_dis/100)+"m"}
-                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right then Go "+String(nav_dis/100)+"m"}
-                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left then Go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == (-180)||self.turn_dir == 180) {self.turn = "Turn around then go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == (-90)||self.turn_dir == 270) {self.turn = "Turn right then go "+String(nav_dis/100)+"m"}
+                        if (self.turn_dir == 90||self.turn_dir == (-270)) {self.turn = "Turn left then go "+String(nav_dis/100)+"m"}
                         
                         self.headDirection = nav_dir
                         
@@ -334,6 +334,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // Connect with tableview
     var containerViewController: NavigationTableViewController?
+    
+    @IBAction func userLost(_ sender: UIButton) {
+        print("> Tapped user lost")
+        let alert = UIAlertController(title: "Don't worry! ", message: "Find another sign or door to scan, so we can know where you are!", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "🆗", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "passToNavigationSteps" {
