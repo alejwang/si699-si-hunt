@@ -133,7 +133,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         configuration.detectionImages = referenceImages
         session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
 
-        statusViewController.scheduleMessage("Look around to detect images", inSeconds: 7.5, messageType: .contentPlacement)
+        statusViewController.scheduleMessage("Look around to detect sign images", inSeconds: 7.5, messageType: .contentPlacement)
 	}
 
     // MARK: - ARSCNViewDelegate (Image detection results)
