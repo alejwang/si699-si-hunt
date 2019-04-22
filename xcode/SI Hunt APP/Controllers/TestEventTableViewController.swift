@@ -22,6 +22,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     var recom_events = [Event]()
     var mandatory_events = [Event]()
     var user_name : String! = ""
+    var user_first_name: String! = ""
     var user_tags : [String] = ["Orientation"]
     
 
@@ -58,6 +59,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         super.viewWillAppear(true)
         // rewrite (hide) the nb
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -97,7 +99,15 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
+        if indexPath.row == 1 {
+            if let cell = cell as? ProfileBtnTableViewCell {
+                if UserDefaults.standard.string(forKey: "username") != nil {
+                    cell.goToProfile.setTitle("Hi, \(String(user_first_name)) ", for: .normal)
+                } else {
+                    cell.goToProfile.setTitle("LOG IN", for: .normal)
+                }
+            }
+        }else if indexPath.row == 2 {
             if let cell = cell as? RecommEventsTableViewCell {
                 cell.recommCollectionView.dataSource = self
                 cell.recommCollectionView.delegate = self
@@ -116,6 +126,8 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
             }
         }
     }
+    
+
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2 {
@@ -251,6 +263,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 let profileJSON = JSON(response.result.value!)
                 userTags = profileJSON["tags"].arrayObject as! [String]
                 self.user_name = profileJSON["username"].stringValue
+                self.user_first_name = profileJSON["fistname"].stringValue
                 self.user_tags = userTags
                 self.updateRecommEventData(userTags: userTags)
                 //self.recomEventCount.text = String(self.recom_events.count)
@@ -271,7 +284,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
                 }
             }
         }
-        tableView.reloadData()
+        //tableView.reloadData()
     }
 
 

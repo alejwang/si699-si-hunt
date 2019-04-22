@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileBtnTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var goToProfile: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
