@@ -3,6 +3,9 @@ SI699 NO NAME Project by TEAM1
 
 This project demos event hunter and indoor navigation inside NQ.
 
+Contact si699-hunt@umich.edu
+
+
 
 Getting started
 ---------------
