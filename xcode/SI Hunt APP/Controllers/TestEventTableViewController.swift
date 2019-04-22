@@ -121,7 +121,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         if indexPath.row == 2 {
             return tableView.bounds.width + 65
         } else if indexPath.row == 3{
-            return CGFloat(events.count*100+30)
+            return CGFloat(events.count*100+50)
         }
         else {
             return UITableViewAutomaticDimension
@@ -149,7 +149,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
             cell.eventName.text = event.name
             cell.eventTime.text = event.start_time
             //cell.eventLocation.text = event.location_name
-            cell.eventImage.image = UIImage(named: "recommEvent")
+            cell.eventImage.image = UIImage(named: "orientation_img_3")
             
             
 //            cell.contentView.layer.cornerRadius = 5.0
@@ -325,7 +325,7 @@ class TestEventTableViewController: UITableViewController, UICollectionViewDataS
         let Storyboard = UIStoryboard(name: "Main", bundle: nil)
         let DvC = Storyboard.instantiateViewController(withIdentifier: "EventDetailsViewController") as! EventDetailsViewController
         
-        DvC.getImage = UIImage(named: "recommEvent")!
+        DvC.getImage = UIImage(named: "orientation_img_3")!
         
         let datasourceIndex = collectionView.tag
         let event: Event

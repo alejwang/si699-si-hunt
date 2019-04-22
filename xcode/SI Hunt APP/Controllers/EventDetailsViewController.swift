@@ -32,6 +32,14 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.1867006123, green: 0.1476626396, blue: 0.8859024048, alpha: 1)
+        
+        
         // rewrite nav bar back btn
         // ref: https://medium.com/simple-swift-programming-tips/how-to-make-custom-uinavigationcontroller-back-button-image-without-title-swift-7ea5673d7e03
         let backButton: UIButton = UIButton (type: UIButtonType.custom)
@@ -64,7 +72,7 @@ class EventDetailsViewController: UIViewController {
         
         navPanel.layer.cornerRadius = 16
         navPanel.layer.shadowColor = UIColor.black.cgColor
-        navPanel.layer.shadowOpacity = 0.1
+        navPanel.layer.shadowOpacity = 0.2
         navPanel.layer.shadowOffset = CGSize.zero
         navPanel.layer.shadowRadius = 8
         navPanel.layer.shadowPath = UIBezierPath(rect: navPanel.bounds).cgPath
